@@ -5,3 +5,5 @@ Il Progetto Meteo prevederà, negli anni successivi, una raccolta dati automatiz
 Data inizio progetto: 13/12/2022
 Data fine progetto: 15/05/2023
 
+Classi partecipanti: 3F,5E, 5G
+
