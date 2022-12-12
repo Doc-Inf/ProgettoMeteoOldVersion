@@ -7,3 +7,5 @@ Data fine progetto: 15/05/2023
 
 Classi partecipanti: 3F,5E, 5G
 L'erogazione dei corsi è prevista nel laboratorio di informatica
+Docenti Relatori: Doc.Inf, Doc.Biologia
+
