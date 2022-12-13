@@ -1,10 +1,10 @@
 /* Creazione database meteo */
-CREATE SCHEMA 'meteo';
+CREATE SCHEMA `meteo`;
 
 /* Template provvisorio per le tabelle 
  * c'è da sperimentare con i tempi di esecuzione delle query
  */
-CREATE TABLE `2022` (
+CREATE TABLE `meteo`.`2022` (
   `id` int(11) NOT NULL,
   `data` datetime DEFAULT NULL,
   `temperatura` int(11) DEFAULT NULL,
