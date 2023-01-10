@@ -2,7 +2,7 @@
     error_reporting(E_ERROR);    
 
     function query(string $sql, string $dbname = "meteo") {
-        $conn = new mysqli("localhost", "root", "", $dbname, 6666);
+        $conn = new mysqli("localhost", "root", "", $dbname, 3306);
         if($conn->connect_error) die("Connessione fallita ".$conn->connect_error);
         
         $query = $conn->query($sql);
