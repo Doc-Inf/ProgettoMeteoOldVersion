@@ -4,7 +4,7 @@ CREATE SCHEMA `meteo`;
 /* Template provvisorio per le tabelle 
  * c'è da sperimentare con i tempi di esecuzione delle query
  */
-CREATE TABLE `meteo`.`2022` (
+CREATE TABLE `meteo`.`2023` (
   `id` int(11) NOT NULL,
   `data` datetime DEFAULT NULL,
   `temperatura` int(11) DEFAULT NULL,
