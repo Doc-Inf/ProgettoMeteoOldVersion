@@ -13,7 +13,7 @@
 </head>
 
 <body onresize="drawChart()">
-    
+      
     <!-- sfondi -->
 
     <video src="./IMG/Nuvole - 8599.mp4" autoplay loop muted></video> 
@@ -103,7 +103,7 @@
         $date = new DateTime(date('Y/m/d H:i:s'));
         $year = $date->format("Y");
 
-        $res = query("SELECT * FROM `$year` where data BETWEEN '".$date->format('Y/m/d')." 00:00:00' and '".$date->format('Y/m/d')." 23:59:59' ORDER BY data desc;")[0];
+        $res = query("SELECT * FROM `Y$year` where data BETWEEN '".$date->format('Y/m/d')." 00:00:00' and '".$date->format('Y/m/d')." 23:59:59' ORDER BY data desc;")[0];
     ?>
     <script type="text/javascript" defer>
         //variabili per il cambio di dati
@@ -128,7 +128,7 @@
                 $day1->modify("-1 day");
             }   
             */
-            $res = query("SELECT umidita, temperatura FROM `$year` WHERE data BETWEEN '".$day1->format('Y/m/d H:i:s')."' and '".$date->format('Y/m/d H:i:s')."';");
+            $res = query("SELECT umidita, temperatura FROM `Y$year` WHERE data BETWEEN '".$day1->format('Y/m/d H:i:s')."' and '".$date->format('Y/m/d H:i:s')."';");
         ?>
         //umidità registrata settimanalmente
         let umiLun = <?php echo (($res[0]['umidita']==null)?0:$res[0]['umidita'])?>;

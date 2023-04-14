@@ -2,8 +2,16 @@
     session_start();
     error_reporting(E_ERROR);    
     
-    function getConfig(string $PathToConfigJson ="/var/www/html/config.json") {
-        return json_decode(file_get_contents($PathToConfigJson));
+    function getConfig(string $PathToConfigJson ="./config.json") {        
+        for($i=0; $i<10; $i++){
+            $confData = file_get_contents($PathToConfigJson);
+            if(!$confData){
+                $PathToConfigJson = "../" . $PathToConfigJson;
+            }else{
+                break;
+            }
+        }       
+        return json_decode($confData);
     }
     /*
     function query(string $sql, string $dbname = "meteo") {
@@ -24,14 +32,14 @@
     } */
     
     
-    function query(string $sql, string $dbname = "meteo") { // `
+    function query(string $sql) { // `
         $config = getConfig();
         $hostname = $config->database->hostname;
         $username = $config->database->username;
         $password = $config->database->password;
         $port = $config->database->port;
         $type = $config->database->type;
-        
+        $dbname =  $config->database->dbname;
 
         try {
             $conn = new PDO("$type:host=$hostname;dbname=$dbname", $username, $password);
