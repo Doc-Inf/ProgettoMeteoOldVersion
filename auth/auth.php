@@ -14,7 +14,7 @@
                 $_SESSION['lastLogin'] = $res['last_access'];
                 $date = new DateTime(date('Y/m/d H:i:s'));
                 $date = $date->format("Y-m-d H:i:s");
-                query("UPDATE login SET last_access='".$date."' where id =".$res['id']);
+                dmlCommand("UPDATE login SET last_access='".$date."' where id =".$res['id']);
                 echo "redirecting...";
                 redirect("../auth/adminpanel.php");
             } else $err['general'] = "username o password errati";

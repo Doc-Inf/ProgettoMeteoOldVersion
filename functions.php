@@ -2,17 +2,6 @@
     session_start();
     error_reporting(E_ERROR);    
     
-    function getConfig(string $PathToConfigJson ="./config.json") {        
-        for($i=0; $i<10; $i++){
-            $confData = file_get_contents($PathToConfigJson);
-            if(!$confData){
-                $PathToConfigJson = "../" . $PathToConfigJson;
-            }else{
-                break;
-            }
-        }       
-        return json_decode($confData);
-    }
     /*
     function query(string $sql, string $dbname = "meteo") {
         $config = getConfig();
@@ -31,8 +20,19 @@
         }
     } */
     
-    
-    function query(string $sql) { // `
+    function getConfig(string $PathToConfigJson ="./config.json") {        
+        for($i=0; $i<10; $i++){
+            $confData = file_get_contents($PathToConfigJson);
+            if(!$confData){
+                $PathToConfigJson = "../" . $PathToConfigJson;
+            }else{
+                break;
+            }
+        }       
+        return json_decode($confData);
+    }
+
+    function getConnection(){
         $config = getConfig();
         $hostname = $config->database->hostname;
         $username = $config->database->username;
@@ -42,19 +42,32 @@
         $dbname =  $config->database->dbname;
 
         try {
-            $conn = new PDO("$type:host=$hostname;dbname=$dbname", $username, $password);
+            $con = new PDO("$type:host=$hostname;dbname=$dbname", $username, $password);
         } catch (PDOException $e){
             die("Connessione fallita ".$e->getMessage());
         }
+        return $con;
+    }
 
-        $query = $conn->query($sql);
-        $i=0;
-        while($row = $query->fetch(PDO::FETCH_ASSOC)) {
+    function fetchData($resultSet){
+        for($i=0; $row = $resultSet->fetch(PDO::FETCH_ASSOC); ++$i) {
             $res[$i] = $row;
-            $i++;
         }
         return $res;
+    }
+
+    function query(string $sql) { // `
+        $con = getConnection();
+        $resultSet = $con->query($sql);
+        $res = fetchData($resultSet);
+        return $res;
         
+    }
+
+    function dmlCommand(string $sql) { // `
+        $con = getConnection();
+        $result = $con->query($sql);
+        return $result;        
     }
 
     function redirect(string $path_to_page) {
@@ -71,4 +84,9 @@
         echo "</form><script type='text/javascript'>document.getElementById('$formName').submit();</script>";
     }
 
+    function extractDate($datetime){
+        $date = explode(" ",$datetime)[0];
+        $dataInfo = explode("-",$date);
+        return $dataInfo[2] . "-" . $dataInfo[1] . "-" . $dataInfo[0];
+    }
 ?>

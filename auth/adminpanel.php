@@ -50,13 +50,16 @@
             <form action="insert.php" method="POST" class="insert-form">
                 <h2>Inserisci dati nel database</h2>
                 <?php
-                    if($_POST['insert'] == "done")
-                        echo "<p style='color:lime;'>Inserimento completato</p>" 
+                    if($_POST['insert'] == "done"){
+                        echo "<p style='color:lime;'>Inserimento completato</p>";
+                    }                                             
                 ?>
-                <input type="number" name="temp" id="temp" placeholder="Temperatura" required> <a>°C</a> <br>
-                <input type="number" name="pres" id="pres" placeholder="Pressione" required> <a>hPa</a> <br>
-                <input type="number" name="umid" id="umid" placeholder="Umidità" required>  <a>%</a> <br>
-                <input type="number" name="velo" id="velo" placeholder="Velocita vento" required> <a>Km/h</a> <br>
+                <input type="date" name="date" id="date" required><label>Data rilevazione </label><input type="time" name="time" id="time" required><label>Ora </label><br>
+                <!--<input type="datetime-local" name="datetime" id="datetime" required><label>Data rilevazione </label><br>-->
+                <input type="number" name="temp" id="temp" placeholder="Temperatura" required> <label>°C</label> <br>
+                <input type="number" name="pres" id="pres" placeholder="Pressione" required> <label>hPa</label> <br>
+                <input type="number" name="umid" id="umid" placeholder="Umidità" required>  <label>%</label> <br>
+                <input type="number" name="velo" id="velo" placeholder="Velocita vento" required> <label>Km/h</label> <br>
                 <a>direzione</a><select name="dire" id="dire">
                     <option value="N">Nord</option>
                     <option value="NE">Nord Est</option>

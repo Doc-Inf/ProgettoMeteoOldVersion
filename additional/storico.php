@@ -61,7 +61,8 @@
             $year = $date->format("Y");
             
             $date->setTime(23,9,4); // set time at last measure for day Hour:minute:second 
-            $res = query("SELECT * FROM `$year` WHERE data='".$date->format('Y/m/d H:i:s')."';");
+            $sql = "SELECT * FROM `Y$year` WHERE DATE(data)='".$date->format('Y-m-d')."';";           
+            $res = query($sql);
             $res = $res[0];
             
 
@@ -81,15 +82,17 @@
                     <div class="pacchetto">
                         <div class="info" id="infolarghezza1">
                             <h3 class="bordo">Misurazione giornaliera</h3>
+                            <h3 class="bordo">Data: '. extractDate($res['data']) .'</h3>
                             <h3 class="bordo">'.cielo($res).'</h3>
-                            <h3 class="bordo">Gradi:'.$res['temperatura'].'°</h3>
-                            <h3 class="bordo">Umidita:'.$res['umidita'].'%</h3>
+                            <h3 class="bordo">Gradi: '.$res['temperatura'].'°</h3>
+                            <h3 class="bordo">Umidita: '.$res['umidita'].'%</h3>
                             <h3 class="bordo">Pressione: '.$res['pressione'].' hPa</h3>
                             <h3 class="bordo">Direzione vento: '.$res['direzione-vento'].'</h3>
                             <h3 class="bordo">Velocità del vento: '.$res['km-h'].' Km/h</h3>
                             <h3>Misurazione n. '.$res['id'].'<h3>
+                            <h6>Data e ora misurazione: '.$res['data'].'</h6>
                         </div>
-                        <h6>Data e ora misurazione: '.$res['data'].'</h6>
+                        
                     </div>
                 </div>';
         }
