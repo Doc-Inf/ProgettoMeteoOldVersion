@@ -39,7 +39,7 @@
 
 
     <nav class="navigazione">
-        <a href="../index.php">
+        <a href="#">
             <span class="material-symbols-outlined">
                 home
             </span>
