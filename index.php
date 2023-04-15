@@ -103,50 +103,61 @@
         $date = new DateTime(date('Y/m/d H:i:s'));
         $year = $date->format("Y");
 
-        $res = query("SELECT * FROM `Y$year` where data BETWEEN '".$date->format('Y/m/d')." 00:00:00' and '".$date->format('Y/m/d')." 23:59:59' ORDER BY data desc;")[0];
+        $res = query("SELECT * FROM `Y$year` where data = (SELECT MAX(data) FROM `Y$year`)")[0];
+        //$res = query("SELECT * FROM `Y$year` where data BETWEEN '".$date->format('Y/m/d')." 00:00:00' and '".$date->format('Y/m/d')." 23:59:59' ORDER BY data desc;")[0];
+    ?>
+    <?php 
+        /*
+        PHP Test Area (JavaScript Embedded)
+        */
     ?>
     <script type="text/javascript" defer>
         //variabili per il cambio di dati
         const giorniSet = ["Lun","Mar","Mer","Gio","Ven","Sab","Dom"];
         let conta = [];
         let giorno = <?php echo ($date->format("N")-1);?>;
-        let numeroMiusrazioni = <?php echo $res['id']?>;
+        let dataMisurazione = "<?php 
+            $dataMis = new DateTime($res['data']);
+            echo $dataMis->format("d-m-Y") . " ore: " . $dataMis->format("H:i:s"); ?>";
+        
         let valoreTemperatura = <?php echo $res['temperatura']?>;
         let valoreUmidità = <?php echo $res['umidita']?>; //al valore dell'umidità va dato un numero da 0 a 100 in base alla rispettiva %
         let valorePressione = <?php echo $res['pressione']?>;
         let direzioneVento = '<?php echo $res['direzione-vento']?>';
         let velocitàVento = <?php echo $res['km-h']?>;
         <?php 
-            $date = new DateTime(date('Y/m/d H:i:s'));
-            $date->setTime(23,9,4);
+              
+            $endDate = new DateTime( query("SELECT MAX(data) as data FROM `Y$year`")[0]["data"] );
+            $startDate = (new DateTime($endDate->format("Y-m-d H:i:s")))->modify("-7 day");
+            $giorni = [];
+            $temperaturaSettimanale = [];
+            $umiditaSettimanale = [];
+            for($i=6;$i>=0;--$i){
+                $currentDay = (new DateTime($endDate->format("Y-m-d H:i:s")))->modify("-$i day");
+                $res = query("SELECT AVG(umidita) as umiditaMedia, AVG(temperatura) as temperaturaMedia FROM `Y$year` WHERE data= '".$currentDay->format('Y/m/d H:i:s')."';");
+                $giorni[] = $currentDay;
+                $temperaturaSettimanale[] = $res[0]['temperaturaMedia'];
+                $umiditaSettimanale[] = $res[0]['umiditaMedia'];
+            }
             
-            $day1 = new DateTime(date('Y/m/d H:i:s'));
-            $day1->modify("-7 day");
-            $day1->setTime(23,9,4);
-            /*
-            for($i =$day1->format("N"); $i>($day1->format("N")); $i--) {
-                $day1->modify("-1 day");
-            }   
-            */
-            $res = query("SELECT umidita, temperatura FROM `Y$year` WHERE data BETWEEN '".$day1->format('Y/m/d H:i:s')."' and '".$date->format('Y/m/d H:i:s')."';");
         ?>
         //umidità registrata settimanalmente
-        let umiLun = <?php echo (($res[0]['umidita']==null)?0:$res[0]['umidita'])?>;
-        let umiMar = <?php echo (($res[1]['umidita']==null)?0:$res[1]['umidita'])?>;
-        let umiMer = <?php echo (($res[2]['umidita']==null)?0:$res[2]['umidita'])?>;
-        let umiGio = <?php echo (($res[3]['umidita']==null)?0:$res[3]['umidita'])?>;
-        let umiVen = <?php echo (($res[4]['umidita']==null)?0:$res[4]['umidita'])?>;
-        let umiSab = <?php echo (($res[5]['umidita']==null)?0:$res[5]['umidita'])?>;
-        let umiDom = <?php echo (($res[6]['umidita']==null)?0:$res[6]['umidita'])?>;
+        let umiLun = <?php echo (($umiditaSettimanale[0]==null)?0:$umiditaSettimanale[0])?>;
+        let umiMar = <?php echo (($umiditaSettimanale[1]==null)?0:$umiditaSettimanale[1])?>;
+        let umiMer = <?php echo (($umiditaSettimanale[2]==null)?0:$umiditaSettimanale[2])?>;
+        let umiGio = <?php echo (($umiditaSettimanale[3]==null)?0:$umiditaSettimanale[3])?>;
+        let umiVen = <?php echo (($umiditaSettimanale[4]==null)?0:$umiditaSettimanale[4])?>;
+        let umiSab = <?php echo (($umiditaSettimanale[5]==null)?0:$umiditaSettimanale[5])?>;
+        let umiDom = <?php echo (($umiditaSettimanale[6]==null)?0:$umiditaSettimanale[6])?>;
 
         //temperatura registrata settimanalmente
-        let tempLun = <?php echo (($res[0]['temperatura']==null)?0:$res[0]['temperatura'])?>;
-        let tempMar = <?php echo (($res[1]['temperatura']==null)?0:$res[1]['temperatura'])?>;
-        let tempMer = <?php echo (($res[2]['temperatura']==null)?0:$res[2]['temperatura'])?>;
-        let tempGio = <?php echo (($res[3]['temperatura']==null)?0:$res[3]['temperatura'])?>;
-        let tempVen = <?php echo (($res[4]['temperatura']==null)?0:$res[4]['temperatura'])?>;
-        let tempSab = <?php echo (($res[5]['temperatura']==null)?0:$res[5]['temperatura'])?>;
-        let tempDom = <?php echo (($res[6]['temperatura']==null)?0:$res[6]['temperatura'])?>;
+        let tempLun = <?php echo (($temperaturaSettimanale[0]==null)?0:$temperaturaSettimanale[0])?>;
+        let tempMar = <?php echo (($temperaturaSettimanale[1]==null)?0:$temperaturaSettimanale[1])?>;
+        let tempMer = <?php echo (($temperaturaSettimanale[2]==null)?0:$temperaturaSettimanale[2])?>;
+        let tempGio = <?php echo (($temperaturaSettimanale[3]==null)?0:$temperaturaSettimanale[3])?>;
+        let tempVen = <?php echo (($temperaturaSettimanale[4]==null)?0:$temperaturaSettimanale[4])?>;
+        let tempSab = <?php echo (($temperaturaSettimanale[5]==null)?0:$temperaturaSettimanale[5])?>;
+        let tempDom = <?php echo (($temperaturaSettimanale[6]==null)?0:$temperaturaSettimanale[6])?>;
 
         //orologio
 
@@ -281,7 +292,8 @@
 
 
         function cambiaInfo(){
-            document.getElementById("numMisurazione").innerHTML= "Misurazione n.: " + numeroMiusrazioni;            
+            //document.getElementById("numMisurazione").innerHTML= "Misurazione " + numeroMisurazioni + " - Data: " + dataMisurazione;    
+            document.getElementById("numMisurazione").innerHTML= "Data misurazione: " + dataMisurazione;           
             document.getElementById("temperatura1").innerHTML = valoreTemperatura + "°";
             document.getElementById("temperatura2").innerHTML = "Temperatura: " + valoreTemperatura + "°";
             document.getElementById("umidità").innerHTML = "Umidità: " + valoreUmidità + "%";
