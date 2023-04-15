@@ -9,6 +9,18 @@ SELECT 'Database creato' as '';
 USE METEO;
 SELECT "Database selezionato e pronto all'uso" as '';
 
+CREATE TABLE `Y2022` (
+  id                int PRIMARY KEY AUTO_INCREMENT, 
+  data              datetime NOT NULL,
+  temperatura       int NOT NULL,
+  pressione         double NOT NULL,
+  umidita           int NOT NULL,
+  `direzione-vento` varchar(2) NOT NULL,
+  `km-h`            int NOT NULL
+);
+
+SELECT 'TABELLA Y2022 CREATA' as '';
+
 CREATE TABLE `Y2023` (
   id                int PRIMARY KEY AUTO_INCREMENT, 
   data              datetime NOT NULL,
@@ -168,7 +180,7 @@ INSERT INTO login(username, password) value ("docente", '4a06fcaff060e92bcc38c5b
 
 SELECT 'INSERIMENTO ACCOUNT ADMIN Completato' as '';
 
-INSERT INTO `Y2023`(data, temperatura, pressione, umidita, `direzione-vento`, `km-h`) VALUES 
+INSERT INTO `Y2022`(data, temperatura, pressione, umidita, `direzione-vento`, `km-h`) VALUES 
     ('2022-10-18 09:00','24','995.4','59','NE','2'),
 		('2022-10-19 09:00','20','989.3','77','W','3'),
 		('2022-10-20 09:00','22','989.4','57','S','2'),
@@ -197,7 +209,11 @@ INSERT INTO `Y2023`(data, temperatura, pressione, umidita, `direzione-vento`, `k
 		('2022-12-15 09:00','13','977.5','88','SW','3'),		
 		('2022-12-16 09:00','14','976.4','94','W','2'),		
 		('2022-12-19 09:00','14','999.9','76','W','0'),		
-		('2022-12-20 09:00','9','996.8','78','S','2'),		
+		('2022-12-20 09:00','9','996.8','78','S','2');
+
+SELECT 'INSERIMENTO Dati rilevazioni Y2022 Completato' as '';
+
+INSERT INTO `Y2023`(data, temperatura, pressione, umidita, `direzione-vento`, `km-h`) VALUES     	
 		('2023-01-09 09:00','14','961.4','95','NE','26'),		
 		('2023-01-10 09:00','9','978.8','58','SE','11'),
     ('2023-01-13 9:00:00', '12', '989.7',  '63', 'NE', '0'),
@@ -225,7 +241,7 @@ INSERT INTO `Y2023`(data, temperatura, pressione, umidita, `direzione-vento`, `k
     ('2023-03-16 9:00:00', '11', '983.9',  '41', 'SW', '0'),
     ('2023-03-17 9:00:00', '12', '988.3',  '55', 'NE', '5');
 
-SELECT 'INSERIMENTO Dati rilevazioni Completato' as '';
+SELECT 'INSERIMENTO Dati rilevazioni Y2023 Completato' as '';
 
 COMMIT;
 
