@@ -8,6 +8,7 @@
     color: #ffffffee;
     scrollbar-width: thin;
     scrollbar-color: #33333333 #00000000;
+    box-sizing: border-box;
 }
 h2{
     text-align: center;
@@ -179,14 +180,33 @@ video{
 
 /* sezione principale (sotto la zona di navigazione) */
 
-.titolo{
-    height: 5rem;
-    margin-top: 6rem;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-}
+@media screen and (max-width: 999px) {
+    .titolo{
+        margin-top: 6rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        box-sizing: border-box;
+    }
+
+    .titolo .sottotitolo{
+        margin-bottom:1rem;             
+    }
+} 
+
+@media screen and (min-width: 1000px) {
+    .titolo{
+        height: 5rem;
+        margin-top: 6rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    
+} 
+
 
 .titolo div{
     display: flex;
@@ -198,6 +218,7 @@ video{
     height: 100%;
     width: 20%;
 }
+
 
 .titolo h2{
     margin: 0.7rem;
@@ -505,7 +526,7 @@ input:hover{
     }
 
     .titolo div{
-        width: 32%;
+        width: 75%;
     }
 
     .titolo h1{
@@ -572,9 +593,7 @@ input:hover{
         padding: 0px;
     }
 
-    .titolo{
-        height: 5.5rem;
-    }
+    
 
     .titolo div{
         height: 100%;
