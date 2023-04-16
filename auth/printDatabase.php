@@ -40,7 +40,7 @@
                 <table class="print-table">
                     <tr>
                         <?php
-                            $res = query("SELECT * FROM `".$_GET["table"]."`;");
+                            $res = $db->query("SELECT * FROM `".$_GET["table"]."`;");
                             foreach ($res[0] as $key => $value) {
                             echo "<th>$key</th>";
                         }

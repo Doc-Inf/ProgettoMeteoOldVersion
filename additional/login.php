@@ -32,7 +32,7 @@
     <div class="log">
     <?php
         require("../functions.php");
-        if($_SESSION['loginUID'] != null) redirect("../index.php");
+        if( isset($_SESSION['loginUID']) ) redirect("../index.php");
     ?>
         <h2>Ciao... inserisci le tue credenziali per effettuare l'accesso</h2>
         <form action="../auth/auth.php" method="POST" class="formale">

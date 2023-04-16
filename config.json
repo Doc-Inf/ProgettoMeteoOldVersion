@@ -4,7 +4,8 @@
         "username" : "docente",
         "password" : "vallauri",
         "port" : "3306",
-        "type" : "mysql",
-        "dbname" : "meteo"
+        "dbmsName" : "mysql",
+        "dbname" : "meteo",
+        "dbLibrary" : "mysqli"
     }
 }

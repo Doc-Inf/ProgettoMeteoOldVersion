@@ -28,7 +28,7 @@
         <a href="./storico.php">Storico</a>
         <?php
             require('../functions.php');
-            if($_SESSION['loginUID'] == null) echo '<a href="./login.php">Accedi</a>';
+            if( !isset($_SESSION['loginUID']) ) echo '<a href="./login.php">Accedi</a>';
             else echo '<a href="../auth/adminpanel.php">Admin Panel</a><a href="../auth/logout.php">Logout</a>';
         ?>
     </nav>

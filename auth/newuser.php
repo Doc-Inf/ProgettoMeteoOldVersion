@@ -6,7 +6,7 @@
     } else { 
         $username = $_POST['username'];
         $password = hash("sha256", $_POST['password']);
-        dmlCommand("INSERT INTO login(username, password) value('$username', '$password');");
+        $db->dmlCommand("INSERT INTO login(username, password) value('$username', '$password');");
         redirect_post_data("adminpanel.php", ['admin' => "done"]);
     }
 ?>

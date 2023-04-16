@@ -21,7 +21,7 @@
 
             if($_SESSION['loginUID'] == null) redirect("../additional/login.php");
             else{
-                $res = query("SELECT * FROM login WHERE id =".$_SESSION["loginUID"])[0];
+                $res = $db->query("SELECT * FROM login WHERE id =".$_SESSION["loginUID"])[0];
                 
                 $id = $res['id'];
                 $username = $res["username"];
@@ -44,13 +44,13 @@
             <h1>Benvenuto <?php echo $username?></h1>
             <?php 
                 $lastLogin = $_SESSION['lastLogin'];
-                if($lastLogin) echo"<a>Ultimo login: $lastLogin</a>";
+                if($lastLogin) echo"<a>Ultimo login: " . formatDate($lastLogin) . "</a>";
             ?>
 
             <form action="insert.php" method="POST" class="insert-form">
                 <h2>Inserisci dati nel database</h2>
                 <?php
-                    if($_POST['insert'] == "done"){
+                    if( isset($_POST['insert']) && $_POST['insert'] == "done"){
                         echo "<p style='color:lime;'>Inserimento completato</p>";
                     }                                             
                 ?>
@@ -75,7 +75,7 @@
             <form action="newuser.php" method="post" class="insert-form">
                 <h2>Crea nuovo account admin</h2>    
                 <?php
-                    if($_POST['admin'] == "done")
+                    if( isset($_POST['admin']) && $_POST['admin'] == "done")
                         echo "<p style='color:lime;'>Admin Creato</p>" 
                 ?>
                 <input type="text" name="username" id="username" placeholder="username" required> <br>
@@ -87,7 +87,7 @@
                 <h2>Printout table</h2>
                 <select name="table" id="table">
                     <?php
-                        $res = query("SHOW tables;");
+                        $res = $db->query("SHOW tables;");
                         foreach ($res as $key => $value) {
                             $value = $value['Tables_in_meteo'];
                             echo "<option value='$value'>$value</option>";

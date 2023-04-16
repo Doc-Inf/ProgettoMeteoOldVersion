@@ -15,7 +15,7 @@
         $year = $date->format("Y");
         $formattedDate = $date->format("Y-m-d H:i:s");
         $sql = "INSERT INTO `Y$year`(data,temperatura,pressione,umidita,`direzione-vento`,`km-h`) VALUES ('$formattedDate',$temperatura, $pressione, $umidita, '$direzione', $velocita);";
-        dmlCommand($sql);
+        $db->dmlCommand($sql);
         redirect_post_data("adminpanel.php", ['insert' => "done"]);
     }
 ?>

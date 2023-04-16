@@ -26,7 +26,7 @@
         <a href="./chi_siamo.php">Chi siamo</a>
         <?php
             require('../functions.php');
-            if($_SESSION['loginUID'] == null) echo '<a href="./login.php">Accedi</a>';
+            if( !isset($_SESSION['loginUID']) ) echo '<a href="./login.php">Accedi</a>';
             else echo '<a href="../auth/adminpanel.php">Admin Panel</a><a href="../auth/logout.php">Logout</a>';
         ?>
     </nav>
@@ -57,15 +57,6 @@
     <?php
         if($_POST) {
         
-            $date = new DateTime($_POST["dataIn"]);
-            $year = $date->format("Y");
-            
-            $date->setTime(23,9,4); // set time at last measure for day Hour:minute:second 
-            $sql = "SELECT * FROM `Y$year` WHERE DATE(data)='".$date->format('Y-m-d')."';";           
-            $res = query($sql);
-            $res = $res[0];
-            
-
             function cielo($res) { // $res MUST be an array containing numeric values labeled as "umidita" and "temperatura"
                 if($res["umidita"] >= 90 && $res["temperatura"] <= 15) {
                     return "Pioggia";
@@ -78,24 +69,50 @@
                 }
             }
 
-            echo '<div class="page" id="zona"> 
-                    <div class="pacchetto">
-                        <div class="info" id="infolarghezza1">
-                            <h3 class="bordo">Misurazione giornaliera</h3>
-                            <h3 class="bordo">Data: '. extractDate($res['data']) .'</h3>
-                            <h3 class="bordo">'.cielo($res).'</h3>
-                            <h3 class="bordo">Gradi: '.$res['temperatura'].'°</h3>
-                            <h3 class="bordo">Umidita: '.$res['umidita'].'%</h3>
-                            <h3 class="bordo">Pressione: '.$res['pressione'].' hPa</h3>
-                            <h3 class="bordo">Direzione vento: '.$res['direzione-vento'].'</h3>
-                            <h3 class="bordo">Velocità del vento: '.$res['km-h'].' Km/h</h3>
-                            <h3>Misurazione n. '.$res['id'].'<h3>
-                            <h6>Data e ora misurazione: '.$res['data'].'</h6>
+            $date = new DateTime($_POST["dataIn"]);
+            $year = $date->format("Y");
+            
+            $date->setTime(23,9,4); // set time at last measure for day Hour:minute:second 
+            $sql = "SELECT * FROM `Y$year` WHERE DATE(data)='".$date->format('Y-m-d')."';";           
+            $res = $db->query($sql);            
+            
+
+            if( $res && isset($res[0]['data'])) {     
+                $res = $res[0];
+                echo '<div class="page" id="zona"> 
+                        <div class="pacchetto">
+                            <div class="info" id="infolarghezza1">
+                                <h3 class="bordo">Misurazione giornaliera</h3>
+                                <h3 class="bordo">Data: '. extractDate($res['data']) .'</h3>
+                                <h3 class="bordo">'.cielo($res).'</h3>
+                                <h3 class="bordo">Gradi: '.$res['temperatura'].'°</h3>
+                                <h3 class="bordo">Umidita: '.$res['umidita'].'%</h3>
+                                <h3 class="bordo">Pressione: '.$res['pressione'].' hPa</h3>
+                                <h3 class="bordo">Direzione vento: '.$res['direzione-vento'].'</h3>
+                                <h3 class="bordo">Velocità del vento: '.$res['km-h'].' Km/h</h3>
+                                <h3>Misurazione n. '.$res['id'].'<h3>                            
+                            </div>                        
                         </div>
-                        
-                    </div>
-                </div>';
+                    </div>';
+            }else{
+                echo '<div class="page" id="zona"> 
+                        <div class="pacchetto">
+                            <div class="info" id="infolarghezza1">
+                                <h3 class="bordo">Misurazione giornaliera non disponibile</h3>
+                                <h3 class="bordo">Data: ' . $date->format("d-m-Y") . '</h3>
+                                <h3 class="bordo">Gradi: NA</h3>
+                                <h3 class="bordo">Umidita: NA</h3>
+                                <h3 class="bordo">Pressione: NA</h3>
+                                <h3 class="bordo">Direzione vento: NA</h3>
+                                <h3 class="bordo">Velocità del vento: NA</h3>
+                                <h3>Misurazione n. NA<h3>                            
+                            </div>                        
+                        </div>
+                    </div>';
+            }
         }
+
+            
     ?>
 
 </body>

@@ -48,7 +48,7 @@
         <a href="./additional/storico.php">Storico</a>
         <?php
             require('functions.php');
-            if($_SESSION['loginUID'] == null) echo '<a href="./additional/login.php">Accedi</a>';
+            if(!isset($_SESSION['loginUID']) ) echo '<a href="./additional/login.php">Accedi</a>';
             else echo '<a href="./auth/adminpanel.php">Admin Panel</a><a href="auth/logout.php">Logout</a>';
         ?>
     </nav>
@@ -103,7 +103,8 @@
         $date = new DateTime(date('Y/m/d H:i:s'));
         $year = $date->format("Y");
 
-        $res = query("SELECT * FROM `Y$year` where data = (SELECT MAX(data) FROM `Y$year`)")[0];
+        $res = $db->query("SELECT * FROM `Y$year` where data = (SELECT MAX(data) FROM `Y$year`)")[0];
+        echo "<h1>Fin qui ok!</h1>";
         //$res = query("SELECT * FROM `Y$year` where data BETWEEN '".$date->format('Y/m/d')." 00:00:00' and '".$date->format('Y/m/d')." 23:59:59' ORDER BY data desc;")[0];
     ?>
     <?php 
@@ -116,10 +117,7 @@
         const giorniSet = ["Lun","Mar","Mer","Gio","Ven","Sab","Dom"];
         let conta = [];
         let giorno = <?php echo ($date->format("N")-1);?>;
-        let dataMisurazione = "<?php 
-            $dataMis = new DateTime($res['data']);
-            echo $dataMis->format("d-m-Y") . " ore: " . $dataMis->format("H:i:s"); ?>";
-        
+        let dataMisurazione = "<?php echo formatDate($res['data']); ?>";        
         let valoreTemperatura = <?php echo $res['temperatura']?>;
         let valoreUmidità = <?php echo $res['umidita']?>; //al valore dell'umidità va dato un numero da 0 a 100 in base alla rispettiva %
         let valorePressione = <?php echo $res['pressione']?>;
@@ -127,14 +125,14 @@
         let velocitàVento = <?php echo $res['km-h']?>;
         <?php 
               
-            $endDate = new DateTime( query("SELECT MAX(data) as data FROM `Y$year`")[0]["data"] );
+            $endDate = new DateTime( $db->query("SELECT MAX(data) as data FROM `Y$year`")[0]["data"] );
             $startDate = (new DateTime($endDate->format("Y-m-d H:i:s")))->modify("-7 day");
             $giorni = [];
             $temperaturaSettimanale = [];
             $umiditaSettimanale = [];
             for($i=6;$i>=0;--$i){
                 $currentDay = (new DateTime($endDate->format("Y-m-d H:i:s")))->modify("-$i day");
-                $res = query("SELECT AVG(umidita) as umiditaMedia, AVG(temperatura) as temperaturaMedia FROM `Y$year` WHERE data= '".$currentDay->format('Y/m/d H:i:s')."';");
+                $res = $db->query("SELECT AVG(umidita) as umiditaMedia, AVG(temperatura) as temperaturaMedia FROM `Y$year` WHERE data= '".$currentDay->format('Y/m/d H:i:s')."';");
                 $giorni[] = $currentDay;
                 $temperaturaSettimanale[] = $res[0]['temperaturaMedia'];
                 $umiditaSettimanale[] = $res[0]['umiditaMedia'];
@@ -293,7 +291,7 @@
 
         function cambiaInfo(){
             //document.getElementById("numMisurazione").innerHTML= "Misurazione " + numeroMisurazioni + " - Data: " + dataMisurazione;    
-            document.getElementById("numMisurazione").innerHTML= "Data misurazione: " + dataMisurazione;           
+            document.getElementById("numMisurazione").innerHTML= "Ultima rilevazione: " + dataMisurazione;           
             document.getElementById("temperatura1").innerHTML = valoreTemperatura + "°";
             document.getElementById("temperatura2").innerHTML = "Temperatura: " + valoreTemperatura + "°";
             document.getElementById("umidità").innerHTML = "Umidità: " + valoreUmidità + "%";

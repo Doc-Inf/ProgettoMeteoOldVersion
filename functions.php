@@ -1,26 +1,27 @@
 <?php
     session_start();
-    error_reporting(E_ERROR);    
+      
+    ini_set ('display_errors', 1);
+    ini_set ('display_startup_errors', 1);
+    error_reporting (E_ALL);  
+    require_once __DIR__ . "/DB/DB.php";
     
-    /*
-    function query(string $sql, string $dbname = "meteo") {
-        $config = getConfig();
-        $hostname = $config->database->hostname;
-        $username = $config->database->username;
-        $password = $config->database->password;
-        $port = $config->database->port;
-
-        $conn = new mysqli($hostname, $username, $password, $dbname, $port);
-        if($conn->connect_error) die("Connessione fallita ".$conn->connect_error);
-        
-        $query = $conn->query($sql);
-        if($query->num_rows > 0) {
-            $res = $query->fetch_all(MYSQLI_ASSOC);
-            return $res;
+    
+    $config = getConfig();
+    if($config->database->dbLibrary === "pdo"){
+        require_once __DIR__ . "/DB/PdoConnection.php";
+        $db = new PdoConnection($config->database->hostname,$config->database->username,$config->database->password,$config->database->port,$config->database->dbname,$config->database->dbmsName);
+    }else{
+        if($config->database->dbLibrary === "mysqli"){
+            require_once __DIR__ . "/DB/MySqliConnection.php";
+            $db = new MySqliConnection($config->database->hostname,$config->database->username,$config->database->password,$config->database->dbname,$config->database->port);
+        }else{
+            die("Errore configurazione: la libreria specificata nel file di configurazione, per connettersi al DBMS non è valida");
         }
-    } */
+    }
     
-    function getConfig(string $PathToConfigJson ="./config.json") {        
+      
+    function getConfig(string $PathToConfigJson =__DIR__ . "/config.json") {        
         for($i=0; $i<10; $i++){
             $confData = file_get_contents($PathToConfigJson);
             if(!$confData){
@@ -31,45 +32,7 @@
         }       
         return json_decode($confData);
     }
-
-    function getConnection(){
-        $config = getConfig();
-        $hostname = $config->database->hostname;
-        $username = $config->database->username;
-        $password = $config->database->password;
-        $port = $config->database->port;
-        $type = $config->database->type;
-        $dbname =  $config->database->dbname;
-
-        try {
-            $con = new PDO("$type:host=$hostname;dbname=$dbname", $username, $password);
-        } catch (PDOException $e){
-            die("Connessione fallita ".$e->getMessage());
-        }
-        return $con;
-    }
-
-    function fetchData($resultSet){
-        for($i=0; $row = $resultSet->fetch(PDO::FETCH_ASSOC); ++$i) {
-            $res[$i] = $row;
-        }
-        return $res;
-    }
-
-    function query(string $sql) { // `
-        $con = getConnection();
-        $resultSet = $con->query($sql);
-        $res = fetchData($resultSet);
-        return $res;
-        
-    }
-
-    function dmlCommand(string $sql) { // `
-        $con = getConnection();
-        $result = $con->query($sql);
-        return $result;        
-    }
-
+  
     function redirect(string $path_to_page) {
         header("Location: $path_to_page");
         die();
@@ -88,5 +51,10 @@
         $date = explode(" ",$datetime)[0];
         $dataInfo = explode("-",$date);
         return $dataInfo[2] . "-" . $dataInfo[1] . "-" . $dataInfo[0];
+    }
+
+    function formatDate($date){
+        $data = new DateTime($date);
+        return $data->format("d-m-Y") . " ore: " . $data->format("H:i:s"); 
     }
 ?>
