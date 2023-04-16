@@ -6,6 +6,6 @@
         "port" : "3306",
         "dbmsName" : "mysql",
         "dbname" : "meteo",
-        "dbLibrary" : "mysqli"
+        "dbLibrary" : "pdo"
     }
 }

@@ -8,7 +8,7 @@
         if($_POST['password'] == "") $err['pass'] = "password non puo essere vuota.";
         
         if(!isset($err)) {
-            $res = $db->query('SELECT id, last_access FROM login WHERE username = "'.$_POST['username'].'" AND password = "'.hash("sha256", $_POST['password']).'"')[0];
+            $res = $db->query('SELECT id, last_access FROM login WHERE username=? AND password=?;',[ "ss", $_POST['username'], hash("sha256", $_POST['password'])])[0];
             if(!is_null($res)) {
                 $_SESSION['loginUID'] = $res['id'];
                 $_SESSION['lastLogin'] = $res['last_access'];

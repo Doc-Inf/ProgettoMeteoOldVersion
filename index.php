@@ -104,7 +104,7 @@
         $year = $date->format("Y");
 
         $res = $db->query("SELECT * FROM `Y$year` where data = (SELECT MAX(data) FROM `Y$year`)")[0];
-        echo "<h1>Fin qui ok!</h1>";
+        
         //$res = query("SELECT * FROM `Y$year` where data BETWEEN '".$date->format('Y/m/d')." 00:00:00' and '".$date->format('Y/m/d')." 23:59:59' ORDER BY data desc;")[0];
     ?>
     <?php 

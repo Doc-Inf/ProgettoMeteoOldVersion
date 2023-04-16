@@ -35,11 +35,12 @@ class MysqliConnection implements DB{
 
     public function query(string $sql,$param=[]) { // `
         $con = $this->getConnection();            
-        if(count($param)>0){
+        if(count($param)>1){
+            //$res = ($con->execute_query($sql,$param))->fetch_all(MYSQLI_ASSOC);
             $stmt = $con->prepare($sql);
-            $stmt->execute($param);
+            $stmt->bind_param($param[0],...array_slice($param,1));
+            $stmt->execute();           
             $res = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-            $stmt->close();
         }else{
             $res = $con->query($sql)->fetch_all(MYSQLI_ASSOC);            
         }

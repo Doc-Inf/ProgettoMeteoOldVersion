@@ -40,7 +40,7 @@
             if(count($param)>0){
                 $stmt = $con->prepare($sql);
                 $stmt->execute($param);
-                $res = $result->fetchAll();
+                $res = $stmt->fetchAll();
                 $stmt = null;
             }else{
                 $resultSet = $con->query($sql);
