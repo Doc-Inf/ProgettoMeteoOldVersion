@@ -61,7 +61,7 @@
         </div>
 
         <div class="sottotitolo">
-            <h2 id="statoParola"> --- </h2>
+            <h2 id="statoParola"> -- </h2>
             <span class="material-symbols-outlined" id="stato">
                 Unknown_Med
             </span>

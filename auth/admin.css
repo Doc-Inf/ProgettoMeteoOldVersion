@@ -164,7 +164,7 @@ input{
 
 .insert-form {
     text-align: left;
-    border-radius: 2rem;
+    border-radius: 1rem;
     width: 50%;
     padding: 1rem;
     animation: anim;
@@ -189,6 +189,7 @@ table, th, tr, td {
     text-align: center;
     border-collapse: collapse;
     border: 2px solid #33333333;
+    width: 90rem;
 }
 
 @media screen and (max-width:650px){
@@ -212,9 +213,6 @@ table, th, tr, td {
 }
 
 @media screen and (max-width:460px){
-    /*tbody{
-        width: 99%;
-    }*/
 
     .log{
         width: 95%;
@@ -226,9 +224,10 @@ table, th, tr, td {
     .print-table{
         margin: 0px;
     }
-/*    table, th, tr, td{
-        font-size:0.3rem;
-    }*/
+
+    table, th, tr, td {
+        width: 50rem;
+    }
 }
 
 @media screen and (max-width:350px){
@@ -242,5 +241,9 @@ table, th, tr, td {
 
     input{
         margin-bottom:0.4rem;
+    }
+
+    table, th, tr, td {
+        width: 35rem;
     }
 }
