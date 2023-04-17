@@ -47,7 +47,7 @@
         <a href="./additional/chi_siamo.php">Chi siamo</a>
         <a href="./additional/storico.php">Storico</a>
         <?php
-            require('functions.php');
+            require_once 'functions.php';
             if(!isset($_SESSION['loginUID']) ) echo '<a href="./additional/login.php">Accedi</a>';
             else echo '<a href="./auth/adminpanel.php">Admin Panel</a><a href="auth/logout.php">Logout</a>';
         ?>

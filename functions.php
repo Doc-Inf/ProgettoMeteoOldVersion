@@ -5,9 +5,9 @@
     ini_set ('display_startup_errors', 1);
     error_reporting (E_ALL);  
     require_once __DIR__ . "/DB/DB.php";
-    
-    
+        
     $config = getConfig();
+    
     if($config->database->dbLibrary === "pdo"){
         require_once __DIR__ . "/DB/PdoConnection.php";
         $db = new PdoConnection($config->database->hostname,$config->database->username,$config->database->password,$config->database->port,$config->database->dbname,$config->database->dbmsName);

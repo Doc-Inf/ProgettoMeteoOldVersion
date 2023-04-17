@@ -17,7 +17,8 @@
         <div class="sfondo"></div>
 
         <?php
-            require('../functions.php');
+            require_once '../functions.php';
+            require_once 'adminFunctions.php';
 
             if($_SESSION['loginUID'] == null) redirect("../additional/login.php");
             else{
@@ -27,6 +28,21 @@
                 $username = $res["username"];
                 $lastLogin = $res["last_access"];
             } 
+            if(isset($_POST['operation'])){
+                switch($_POST['operation']){
+                    case "insert":{
+                        insertRilevazione();
+                        break;
+                    }
+                    case "createUser":{
+                        createUser();
+                        break;
+                    }
+                    case "printTable":{
+                        break;
+                    }
+                }
+            }
         ?>
 
         <nav class="navigazione">
@@ -47,7 +63,7 @@
                 if($lastLogin) echo"<a>Ultimo login: " . formatDate($lastLogin) . "</a>";
             ?>
 
-            <form action="insert.php" method="POST" class="insert-form">
+            <form action="adminpanel.php" method="POST" class="insert-form">
                 <h2>Inserisci dati nel database</h2>
                 <?php
                     if( isset($_POST['insert']) && $_POST['insert'] == "done"){
@@ -69,10 +85,12 @@
                     <option value="S">Sud</option>
                     <option value="SE">Sud Est</option>
                     <option value="SW">Sud Ovest</option>
-                </select> <input type="submit" value="Registra">
+                </select> 
+                <input type="hidden" name="operation" value="insert">
+                <input type="submit" value="Registra">
             </form>
 
-            <form action="newuser.php" method="post" class="insert-form">
+            <form action="adminpanel.php" method="post" class="insert-form">
                 <h2>Crea nuovo account admin</h2>    
                 <?php
                     if( isset($_POST['admin']) && $_POST['admin'] == "done")
@@ -80,6 +98,7 @@
                 ?>
                 <input type="text" name="username" id="username" placeholder="username" required> <br>
                 <input type="text" name="password" id="password" placeholder="password" required> <br>
+                <input type="hidden" name="operation" value="createUser">
                 <input type="submit" value="Crea">
             </form>
 
@@ -94,6 +113,7 @@
                         }
                     ?>
                 </select>
+                <input type="hidden" name="operation" value="printTable">
                 <input type="submit" value="Print">
             </form>
         </div>
