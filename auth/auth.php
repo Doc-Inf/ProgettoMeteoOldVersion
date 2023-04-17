@@ -8,7 +8,16 @@
         if($_POST['password'] == "") $err['pass'] = "password non puo essere vuota.";
         
         if(!isset($err)) {
-            $res = $db->query('SELECT id, last_access FROM login WHERE username=? AND password=?;',[ "ss", $_POST['username'], hash("sha256", $_POST['password'])])[0];
+            if($config->database->dbLibrary === "pdo"){
+                $res = $db->query('SELECT id, last_access FROM login WHERE username=? AND password=?;',[ $_POST['username'], hash("sha256", $_POST['password'])])[0];
+            }else{
+                if($config->database->dbLibrary === "mysqli"){
+                    $res = $db->query('SELECT id, last_access FROM login WHERE username=? AND password=?;',[ "ss", $_POST['username'], hash("sha256", $_POST['password'])])[0];
+                }else{
+                    die("Libreria di connessione con il DBMS, specificata nel file di configurazione, non è valida");
+                }
+            }
+            
             if(!is_null($res)) {
                 $_SESSION['loginUID'] = $res['id'];
                 $_SESSION['lastLogin'] = $res['last_access'];

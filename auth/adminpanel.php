@@ -60,7 +60,7 @@
                 <input type="number" name="pres" id="pres" placeholder="Pressione" required> <label>hPa</label> <br>
                 <input type="number" name="umid" id="umid" placeholder="Umidità" required>  <label>%</label> <br>
                 <input type="number" name="velo" id="velo" placeholder="Velocita vento" required> <label>Km/h</label> <br>
-                <a>direzione</a><select name="dire" id="dire">
+                <label for="inserisciDirezioneVento">direzione</label><select id="inserisciDirezioneVento" name="dire" id="dire">
                     <option value="N">Nord</option>
                     <option value="NE">Nord Est</option>
                     <option value="NW">Nord Ovest</option>
