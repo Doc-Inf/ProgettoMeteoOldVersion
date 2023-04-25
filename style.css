@@ -735,3 +735,16 @@ input:hover{
         border-bottom: 2rem;
     }
 }
+
+p.descrizione{
+    max-width:90%;
+    display:block;
+    text-align:justify;
+    font-size:2rem;
+    margin:auto;
+}
+
+h2.scuola{
+    font-family: 'Charm', serif;
+    font-size: 4rem;
+}
