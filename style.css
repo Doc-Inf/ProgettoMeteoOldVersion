@@ -8,11 +8,9 @@
     color: #ffffffee;
     scrollbar-width: thin;
     scrollbar-color: #33333333 #00000000;
-    box-sizing: border-box;
 }
 h2{
-    text-align: center;
-    
+    text-align: center; 
 }
 body{
     overflow: auto;
@@ -20,24 +18,24 @@ body{
     background-color: #FFFFFF;
 }
 
-.google-maps{
-    display: flex;
-    margin-top:4rem;
-    height: 30rem;
-    width: 100%;
-    justify-content: center;
-}
-
 .grafico{
     margin-top: 6rem;
 }
 
-.noiSiamo{
-    margin-top: 3rem;
+.grafico2{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 90%;
+    margin-top: 5rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 6rem;
+    position: relative;
 }
 
 .benvenuto{
-    text-shadow: 2px 2px #33333399;
+    text-shadow: none;
     font-size: 2rem;
     animation: animText;
     animation-duration: 1.25s;
@@ -46,9 +44,6 @@ body{
     animation-direction: alternate;
 }
 
-.spazio{
-    margin-top: 8rem;
-}
 
 /* scroll bar*/
 
@@ -87,7 +82,67 @@ video{
     min-height: 100%;
 }
 
-/* tendina laterale */
+/* chi siamo */
+
+.sfondotrasparente{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.storia{
+    text-shadow: none;
+    font-size: 2rem;
+}
+
+.spazio{
+    background-color: #33333333;
+    backdrop-filter: blur(5px);
+    border-radius: 1rem;
+    margin-top: 8rem;
+    margin-bottom: 8rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.spazio>h5{
+    margin-top: 0.4rem;
+    margin-bottom: 0.4rem;
+    text-align: center;
+}
+
+.sottoSpazio1{
+    width: 68%;
+}
+
+.sottoSpazio2{
+    width: 27%;
+}
+
+.sottoSpazio2 img{
+    border-radius: 0.5rem;
+    width: 97%;
+}
+
+.noiSiamo{
+    margin-top: 10rem;
+}
+
+.google-maps{
+    display: flex;
+    margin: auto;
+    margin-top:4rem;
+    height: 50rem;
+    width: 90%;
+    justify-content: center;
+}
+.google-maps>iframe{
+    width: 100%;
+    height: 100%;
+}
+
+/* tendina laterale 
 
 .tendalaterale{
     display:flex;
@@ -147,6 +202,7 @@ video{
     border-bottom-left-radius: 1rem;
 
 }
+*/
 
 /* barra superiore di navigazione */
 
@@ -180,33 +236,14 @@ video{
 
 /* sezione principale (sotto la zona di navigazione) */
 
-@media screen and (max-width: 999px) {
-    .titolo{
-        margin-top: 6rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-evenly;
-        box-sizing: border-box;
-    }
-
-    .titolo .sottotitolo{
-        margin-bottom:1rem;             
-    }
-} 
-
-@media screen and (min-width: 1000px) {
-    .titolo{
-        height: 5rem;
-        margin-top: 6rem;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-evenly;
-    }
-    
-} 
-
+.titolo{
+    height: 5rem;
+    margin-top: 6rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
 
 .titolo div{
     display: flex;
@@ -218,7 +255,6 @@ video{
     height: 100%;
     width: 20%;
 }
-
 
 .titolo h2{
     margin: 0.7rem;
@@ -512,8 +548,26 @@ input:hover{
 
 /* media per la parte responsive */
 
+@media screen and (max-width:1400px){
+    .sfondotrasparente{
+        flex-direction: column;
+    }
+    .sottoSpazio1{
+        width: 80%;
+    }
+    .sottoSpazio2{
+        width: 80%;
+    }
+}
 
 @media screen and (max-width:999px){
+
+    .sottoSpazio1{
+        width: 98%;
+    }
+    .sottoSpazio2{
+        width: 98%;
+    }
 
     .grafico{
         margin-top: 1rem;
@@ -526,7 +580,7 @@ input:hover{
     }
 
     .titolo div{
-        width: 75%;
+        width: 32%;
     }
 
     .titolo h1{
@@ -565,7 +619,7 @@ input:hover{
     }
 
     .formale input{
-        width: 75%;
+        width: 45%;
     }
 
     .grafico{
@@ -575,8 +629,14 @@ input:hover{
 
     .benvenuto{
         margin: 10%;
-        font-size: 1.6rem;
+        font-size: 1.5rem;
     }
+
+    .storia{
+        margin: 2%;
+        font-size: 1.1rem;
+    }
+
     body{
         margin:0px;
     }
@@ -593,10 +653,21 @@ input:hover{
         padding: 0px;
     }
 
-    
+    .titolo{
+        height: auto;
+        flex-direction: column;
+    }
 
     .titolo div{
-        height: 100%;
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 1rem;
+        height: 5rem;
+        width: 95%;
+    }
+
+    .titolo>div>h2{
+        margin: 0.1rem;
     }
 
     .page{
@@ -628,21 +699,18 @@ input:hover{
     .log{
         width: 90%;
     }
-    
-    .formale{
-        width: 85%;
-    }
 
     .formale input{
-        width: 80%;
+        width: 40%;
     }
 
-    .titolo>div>h2{
-        margin: 0.1rem;
+    .spazio{
+        padding-top: 0px;
     }
 
-    .titolo>div{
-        flex-direction: column;
+    .spazio>h2{
+        font-size: 1.2rem;
+        margin: 0.3rem;
     }
 }
 
@@ -651,16 +719,12 @@ input:hover{
         width: 90%;
     }
 
-    .formale input{
-        width: 85%;
-    }
-
     .titolo>div>h2{
         margin: 0px;
     }
 
     .titolo h1{
-        font-size: 1.3rem;
+        font-size: 2.3rem;
     }
 
     .noiSiamo{

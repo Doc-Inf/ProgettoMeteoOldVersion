@@ -61,7 +61,7 @@
         </div>
 
         <div class="sottotitolo">
-            <h2 id="statoParola"> --- </h2>
+            <h2 id="statoParola"> -- </h2>
             <span class="material-symbols-outlined" id="stato">
                 Unknown_Med
             </span>
@@ -123,6 +123,7 @@
         let valorePressione = <?php echo $res['pressione']?>;
         let direzioneVento = '<?php echo $res['direzione-vento']?>';
         let velocitàVento = <?php echo $res['km-h']?>;
+
         <?php 
               
             $endDate = new DateTime( $db->query("SELECT MAX(data) as data FROM `Y$year`")[0]["data"] );
@@ -139,6 +140,7 @@
             }
             
         ?>
+    
         //umidità registrata settimanalmente
         let umiLun = <?php echo (($umiditaSettimanale[0]==null)?0:$umiditaSettimanale[0])?>;
         let umiMar = <?php echo (($umiditaSettimanale[1]==null)?0:$umiditaSettimanale[1])?>;
@@ -226,39 +228,39 @@
 
         function drawChart() {
 
-        if(x.clientWidth/2 <= 441){
-            z = x.clientWidth-25;
-            k = y.clientHeight/2;
-        }else if(x.clientWidth/2 >= 700){
-            z = 700;
-            k = y.clientHeight/1.25;
-        }else{
-            z= x.clientWidth/2;
-            k = y.clientHeight/1.25;
-        }
+            if(x.clientWidth/2 <= 441){
+                z = x.clientWidth-25;
+                k = y.clientHeight/2;
+            }else if(x.clientWidth/2 >= 700){
+                z = 700;
+                k = y.clientHeight/1.25;
+            }else{
+                z= x.clientWidth/2;
+                k = y.clientHeight/1.25;
+            }
 
-        var data = google.visualization.arrayToDataTable([
-            ['Settimana', 'Temperatura', 'Umidità'],
-            [giorniSet[conta[6]],         tempLun,      umiLun],
-            [giorniSet[conta[5]],         tempMar,      umiMar],
-            [giorniSet[conta[4]],         tempMer,      umiMer],
-            [giorniSet[conta[3]],         tempGio,      umiGio],
-            [giorniSet[conta[2]],         tempVen,      umiVen],
-            [giorniSet[conta[1]],         tempSab,      umiSab],
-            [">"+giorniSet[conta[0]]+"<",         tempDom,      umiDom]
-        ]);
+            var data = google.visualization.arrayToDataTable([
+                ['Settimana', 'Temperatura', 'Umidità'],
+                [giorniSet[conta[6]],         tempLun,      umiLun],
+                [giorniSet[conta[5]],         tempMar,      umiMar],
+                [giorniSet[conta[4]],         tempMer,      umiMer],
+                [giorniSet[conta[3]],         tempGio,      umiGio],
+                [giorniSet[conta[2]],         tempVen,      umiVen],
+                [giorniSet[conta[1]],         tempSab,      umiSab],
+                [">"+giorniSet[conta[0]]+"<", tempDom,      umiDom]
+            ]);
 
-        var options = {
-            title: 'Temperatura e Umidità',
-            curveType: 'function',
-            legend: { position: 'bottom' },
-            width: Math.trunc(z),
-            height: Math.trunc(k)
-        };
+            var options = {
+                title: 'Temperatura e Umidità',
+                curveType: 'function',
+                legend: { position: 'bottom' },
+                width: Math.trunc(z),
+                height: Math.trunc(k)
+            };
 
-        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
 
-        chart.draw(data, options);
+            chart.draw(data, options);
         }
 
         //per cambiare icona !!! ANCORA DA MODIFICARE, IMPRECISO !!!
