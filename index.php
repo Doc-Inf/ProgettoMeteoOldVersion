@@ -98,20 +98,12 @@
         <div id="curve_chart" class="grafico"></div>
         
     </div>
-    <?php
-        
+    <?php        
         $date = new DateTime(date('Y/m/d H:i:s'));
         $year = $date->format("Y");
-
         $res = $db->query("SELECT * FROM `Y$year` where data = (SELECT MAX(data) FROM `Y$year`)")[0];
-        
-        //$res = query("SELECT * FROM `Y$year` where data BETWEEN '".$date->format('Y/m/d')." 00:00:00' and '".$date->format('Y/m/d')." 23:59:59' ORDER BY data desc;")[0];
     ?>
-    <?php 
-        /*
-        PHP Test Area (JavaScript Embedded)
-        */
-    ?>
+  
     <script type="text/javascript" defer>
         //variabili per il cambio di dati
         const giorniSet = ["Lun","Mar","Mer","Gio","Ven","Sab","Dom"];

@@ -16,7 +16,7 @@
 
     <video src="../IMG/Nuvole - 8599.mp4" autoplay loop muted></video>
     <div class="sfondo"></div>
-    
+
     <!-- barra superiore di navigazione -->
 
     <nav class="navigazione">
@@ -116,20 +116,6 @@
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     /*
     if($_POST) {
 
@@ -186,10 +172,36 @@
         
         $date = new DateTime(date('Y/m/d H:i:s'));
         $year = $date->format("Y");
-
-        $res = $db->query("SELECT * FROM `Y$year` where data = (SELECT MAX(data) FROM `Y$year`)")[0];
-        
-        //$res = query("SELECT * FROM `Y$year` where data BETWEEN '".$date->format('Y/m/d')." 00:00:00' and '".$date->format('Y/m/d')." 23:59:59' ORDER BY data desc;")[0];
+        $currentMonth = (int) $date->format("m");
+        $dayOfMonth = -1;
+        switch($currentMonth){
+            case 11:
+            case 4:
+            case 6:
+            case 9:{
+                $dayOfMonth = 30;
+                break;
+            }
+            case 2:{
+                $dayOfMonth = 28;
+                break;
+            }
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:{
+                $dayOfMonth = 31;
+                break;
+            }    
+            default:{
+                die("Errore critico nel calcolo dei giorni del mese corrente");
+            }
+        }        
+        //$res = $db->query("SELECT * FROM `Y$year` where data = (SELECT MAX(data) FROM `Y$year`)")[0];
+                
     ?>
 
     <script type="text/javascript" defer>
@@ -206,11 +218,13 @@
             $startDate = (new DateTime($endDate->format("Y-m-d H:i:s")))->modify("-31 day");
             $temperaturaMensile = [];
             $umiditaMensile = [];
+            $giornoMese = [];
             for($i=30;$i>=0;--$i){
                 $currentDay = (new DateTime($endDate->format("Y-m-d H:i:s")))->modify("-$i day");
                 $res = $db->query("SELECT AVG(umidita) as umiditaMedia, AVG(temperatura) as temperaturaMedia FROM `Y$year` WHERE data= '".$currentDay->format('Y/m/d H:i:s')."';");
                 $temperaturaMensile[] = $res[0]['temperaturaMedia'];
                 $umiditaMensile[] = $res[0]['umiditaMedia'];
+                $giornoMese[] = $currentDay->format("M-d");
             }
             
         ?>
@@ -238,41 +252,41 @@
 
             var data = google.visualization.arrayToDataTable([
                 ['Giorno', 'Temperatura', 'Umidità'],
-                ["",         <?php echo (($temperaturaMensile[0]==null)?0:$temperaturaMensile[0])?>, <?php echo (($umiditaMensile[0]==null)?0:$umiditaMensile[0]) ?>],
-                ["",         <?php echo (($temperaturaMensile[1]==null)?0:$temperaturaMensile[1])?>, <?php echo (($umiditaMensile[1]==null)?0:$umiditaMensile[1]) ?>],
-                ["",         <?php echo (($temperaturaMensile[2]==null)?0:$temperaturaMensile[2])?>, <?php echo (($umiditaMensile[2]==null)?0:$umiditaMensile[2]) ?>],
-                ["",         <?php echo (($temperaturaMensile[3]==null)?0:$temperaturaMensile[3])?>, <?php echo (($umiditaMensile[3]==null)?0:$umiditaMensile[3]) ?>],
-                ["",         <?php echo (($temperaturaMensile[4]==null)?0:$temperaturaMensile[4])?>, <?php echo (($umiditaMensile[4]==null)?0:$umiditaMensile[4]) ?>],
-                ["",         <?php echo (($temperaturaMensile[5]==null)?0:$temperaturaMensile[5])?>, <?php echo (($umiditaMensile[5]==null)?0:$umiditaMensile[5]) ?>],
-                ["",         <?php echo (($temperaturaMensile[6]==null)?0:$temperaturaMensile[6])?>, <?php echo (($umiditaMensile[6]==null)?0:$umiditaMensile[6]) ?>],
-                ["",         <?php echo (($temperaturaMensile[7]==null)?0:$temperaturaMensile[7])?>, <?php echo (($umiditaMensile[7]==null)?0:$umiditaMensile[7]) ?>],
-                ["",         <?php echo (($temperaturaMensile[8]==null)?0:$temperaturaMensile[8])?>, <?php echo (($umiditaMensile[8]==null)?0:$umiditaMensile[8]) ?>],
-                ["",        <?php echo (($temperaturaMensile[9]==null)?0:$temperaturaMensile[9])?>, <?php echo (($umiditaMensile[9]==null)?0:$umiditaMensile[9]) ?>],
-                ["",        <?php echo (($temperaturaMensile[10]==null)?0:$temperaturaMensile[10])?>, <?php echo (($umiditaMensile[10]==null)?0:$umiditaMensile[10]) ?>],
-                ["",        <?php echo (($temperaturaMensile[11]==null)?0:$temperaturaMensile[11])?>, <?php echo (($umiditaMensile[11]==null)?0:$umiditaMensile[11]) ?>],
-                ["",        <?php echo (($temperaturaMensile[12]==null)?0:$temperaturaMensile[12])?>, <?php echo (($umiditaMensile[12]==null)?0:$umiditaMensile[12]) ?>],
-                ["",        <?php echo (($temperaturaMensile[13]==null)?0:$temperaturaMensile[13])?>, <?php echo (($umiditaMensile[13]==null)?0:$umiditaMensile[13]) ?>],
-                ["",        <?php echo (($temperaturaMensile[14]==null)?0:$temperaturaMensile[14])?>, <?php echo (($umiditaMensile[14]==null)?0:$umiditaMensile[14]) ?>],
-                ["",        <?php echo (($temperaturaMensile[15]==null)?0:$temperaturaMensile[15])?>, <?php echo (($umiditaMensile[15]==null)?0:$umiditaMensile[15]) ?>],
-                ["",        <?php echo (($temperaturaMensile[16]==null)?0:$temperaturaMensile[16])?>, <?php echo (($umiditaMensile[16]==null)?0:$umiditaMensile[16]) ?>],
-                ["",        <?php echo (($temperaturaMensile[17]==null)?0:$temperaturaMensile[17])?>, <?php echo (($umiditaMensile[17]==null)?0:$umiditaMensile[17]) ?>],
-                ["",        <?php echo (($temperaturaMensile[18]==null)?0:$temperaturaMensile[18])?>, <?php echo (($umiditaMensile[18]==null)?0:$umiditaMensile[18]) ?>],
-                ["",        <?php echo (($temperaturaMensile[19]==null)?0:$temperaturaMensile[19])?>, <?php echo (($umiditaMensile[19]==null)?0:$umiditaMensile[19]) ?>],
-                ["",        <?php echo (($temperaturaMensile[20]==null)?0:$temperaturaMensile[20])?>, <?php echo (($umiditaMensile[20]==null)?0:$umiditaMensile[20]) ?>],
-                ["",       <?php echo (($temperaturaMensile[21]==null)?0:$temperaturaMensile[21])?>, <?php echo (($umiditaMensile[21]==null)?0:$umiditaMensile[21]) ?>],
-                ["",       <?php echo (($temperaturaMensile[22]==null)?0:$temperaturaMensile[22])?>, <?php echo (($umiditaMensile[22]==null)?0:$umiditaMensile[22]) ?>],
-                ["",       <?php echo (($temperaturaMensile[23]==null)?0:$temperaturaMensile[23])?>, <?php echo (($umiditaMensile[23]==null)?0:$umiditaMensile[23]) ?>],
-                ["",       <?php echo (($temperaturaMensile[24]==null)?0:$temperaturaMensile[24])?>, <?php echo (($umiditaMensile[24]==null)?0:$umiditaMensile[24]) ?>],
-                ["",       <?php echo (($temperaturaMensile[25]==null)?0:$temperaturaMensile[25])?>, <?php echo (($umiditaMensile[25]==null)?0:$umiditaMensile[25]) ?>],
-                ["",       <?php echo (($temperaturaMensile[26]==null)?0:$temperaturaMensile[26])?>, <?php echo (($umiditaMensile[26]==null)?0:$umiditaMensile[26]) ?>],
-                ["",       <?php echo (($temperaturaMensile[27]==null)?0:$temperaturaMensile[27])?>, <?php echo (($umiditaMensile[27]==null)?0:$umiditaMensile[27]) ?>],
-                ["",       <?php echo (($temperaturaMensile[28]==null)?0:$temperaturaMensile[28])?>, <?php echo (($umiditaMensile[28]==null)?0:$umiditaMensile[28]) ?>],
-                ["",       <?php echo (($temperaturaMensile[29]==null)?0:$temperaturaMensile[29])?>, <?php echo (($umiditaMensile[29]==null)?0:$umiditaMensile[29]) ?>],
+                ['<?php echo $giornoMese[0]; ?>',         <?php echo (($temperaturaMensile[0]==null)?0:$temperaturaMensile[0])?>, <?php echo (($umiditaMensile[0]==null)?0:$umiditaMensile[0]) ?>],
+                ['<?php echo $giornoMese[1]; ?>',         <?php echo (($temperaturaMensile[1]==null)?0:$temperaturaMensile[1])?>, <?php echo (($umiditaMensile[1]==null)?0:$umiditaMensile[1]) ?>],
+                ['<?php echo $giornoMese[2]; ?>',         <?php echo (($temperaturaMensile[2]==null)?0:$temperaturaMensile[2])?>, <?php echo (($umiditaMensile[2]==null)?0:$umiditaMensile[2]) ?>],
+                ['<?php echo $giornoMese[3]; ?>',         <?php echo (($temperaturaMensile[3]==null)?0:$temperaturaMensile[3])?>, <?php echo (($umiditaMensile[3]==null)?0:$umiditaMensile[3]) ?>],
+                ['<?php echo $giornoMese[4]; ?>',         <?php echo (($temperaturaMensile[4]==null)?0:$temperaturaMensile[4])?>, <?php echo (($umiditaMensile[4]==null)?0:$umiditaMensile[4]) ?>],
+                ['<?php echo $giornoMese[5]; ?>',         <?php echo (($temperaturaMensile[5]==null)?0:$temperaturaMensile[5])?>, <?php echo (($umiditaMensile[5]==null)?0:$umiditaMensile[5]) ?>],
+                ['<?php echo $giornoMese[6]; ?>',         <?php echo (($temperaturaMensile[6]==null)?0:$temperaturaMensile[6])?>, <?php echo (($umiditaMensile[6]==null)?0:$umiditaMensile[6]) ?>],
+                ['<?php echo $giornoMese[7]; ?>',         <?php echo (($temperaturaMensile[7]==null)?0:$temperaturaMensile[7])?>, <?php echo (($umiditaMensile[7]==null)?0:$umiditaMensile[7]) ?>],
+                ['<?php echo $giornoMese[8]; ?>',         <?php echo (($temperaturaMensile[8]==null)?0:$temperaturaMensile[8])?>, <?php echo (($umiditaMensile[8]==null)?0:$umiditaMensile[8]) ?>],
+                ['<?php echo $giornoMese[9]; ?>',        <?php echo (($temperaturaMensile[9]==null)?0:$temperaturaMensile[9])?>, <?php echo (($umiditaMensile[9]==null)?0:$umiditaMensile[9]) ?>],
+                ['<?php echo $giornoMese[10]; ?>',        <?php echo (($temperaturaMensile[10]==null)?0:$temperaturaMensile[10])?>, <?php echo (($umiditaMensile[10]==null)?0:$umiditaMensile[10]) ?>],
+                ['<?php echo $giornoMese[11]; ?>',        <?php echo (($temperaturaMensile[11]==null)?0:$temperaturaMensile[11])?>, <?php echo (($umiditaMensile[11]==null)?0:$umiditaMensile[11]) ?>],
+                ['<?php echo $giornoMese[12]; ?>',        <?php echo (($temperaturaMensile[12]==null)?0:$temperaturaMensile[12])?>, <?php echo (($umiditaMensile[12]==null)?0:$umiditaMensile[12]) ?>],
+                ['<?php echo $giornoMese[13]; ?>',        <?php echo (($temperaturaMensile[13]==null)?0:$temperaturaMensile[13])?>, <?php echo (($umiditaMensile[13]==null)?0:$umiditaMensile[13]) ?>],
+                ['<?php echo $giornoMese[14]; ?>',        <?php echo (($temperaturaMensile[14]==null)?0:$temperaturaMensile[14])?>, <?php echo (($umiditaMensile[14]==null)?0:$umiditaMensile[14]) ?>],
+                ['<?php echo $giornoMese[15]; ?>',        <?php echo (($temperaturaMensile[15]==null)?0:$temperaturaMensile[15])?>, <?php echo (($umiditaMensile[15]==null)?0:$umiditaMensile[15]) ?>],
+                ['<?php echo $giornoMese[16]; ?>',        <?php echo (($temperaturaMensile[16]==null)?0:$temperaturaMensile[16])?>, <?php echo (($umiditaMensile[16]==null)?0:$umiditaMensile[16]) ?>],
+                ['<?php echo $giornoMese[17]; ?>',        <?php echo (($temperaturaMensile[17]==null)?0:$temperaturaMensile[17])?>, <?php echo (($umiditaMensile[17]==null)?0:$umiditaMensile[17]) ?>],
+                ['<?php echo $giornoMese[18]; ?>',        <?php echo (($temperaturaMensile[18]==null)?0:$temperaturaMensile[18])?>, <?php echo (($umiditaMensile[18]==null)?0:$umiditaMensile[18]) ?>],
+                ['<?php echo $giornoMese[19]; ?>',        <?php echo (($temperaturaMensile[19]==null)?0:$temperaturaMensile[19])?>, <?php echo (($umiditaMensile[19]==null)?0:$umiditaMensile[19]) ?>],
+                ['<?php echo $giornoMese[20]; ?>',        <?php echo (($temperaturaMensile[20]==null)?0:$temperaturaMensile[20])?>, <?php echo (($umiditaMensile[20]==null)?0:$umiditaMensile[20]) ?>],
+                ['<?php echo $giornoMese[21]; ?>',       <?php echo (($temperaturaMensile[21]==null)?0:$temperaturaMensile[21])?>, <?php echo (($umiditaMensile[21]==null)?0:$umiditaMensile[21]) ?>],
+                ['<?php echo $giornoMese[22]; ?>',       <?php echo (($temperaturaMensile[22]==null)?0:$temperaturaMensile[22])?>, <?php echo (($umiditaMensile[22]==null)?0:$umiditaMensile[22]) ?>],
+                ['<?php echo $giornoMese[23]; ?>',       <?php echo (($temperaturaMensile[23]==null)?0:$temperaturaMensile[23])?>, <?php echo (($umiditaMensile[23]==null)?0:$umiditaMensile[23]) ?>],
+                ['<?php echo $giornoMese[24]; ?>',       <?php echo (($temperaturaMensile[24]==null)?0:$temperaturaMensile[24])?>, <?php echo (($umiditaMensile[24]==null)?0:$umiditaMensile[24]) ?>],
+                ['<?php echo $giornoMese[25]; ?>',       <?php echo (($temperaturaMensile[25]==null)?0:$temperaturaMensile[25])?>, <?php echo (($umiditaMensile[25]==null)?0:$umiditaMensile[25]) ?>],
+                ['<?php echo $giornoMese[26]; ?>',       <?php echo (($temperaturaMensile[26]==null)?0:$temperaturaMensile[26])?>, <?php echo (($umiditaMensile[26]==null)?0:$umiditaMensile[26]) ?>],
+                ['<?php echo $giornoMese[27]; ?>',       <?php echo (($temperaturaMensile[27]==null)?0:$temperaturaMensile[27])?>, <?php echo (($umiditaMensile[27]==null)?0:$umiditaMensile[27]) ?>],
+                ['<?php echo $giornoMese[28]; ?>',       <?php echo (($temperaturaMensile[28]==null)?0:$temperaturaMensile[28])?>, <?php echo (($umiditaMensile[28]==null)?0:$umiditaMensile[28]) ?>],
+                ['<?php echo $giornoMese[29]; ?>',       <?php echo (($temperaturaMensile[29]==null)?0:$temperaturaMensile[29])?>, <?php echo (($umiditaMensile[29]==null)?0:$umiditaMensile[29]) ?>],
                 [giornoSet+" "+giorno,       <?php echo (($temperaturaMensile[30]==null)?0:$temperaturaMensile[30])?>, <?php echo (($umiditaMensile[30]==null)?0:$umiditaMensile[30]) ?>]
             ])
 
             var options = {
-                title: 'Temperatura, Umidità e Pressione Mensile',
+                title: 'Temperatura e Umidità Mensile',
                 curveType: 'function',
                 legend: { position: 'bottom' },
                 width: Math.trunc(z),
