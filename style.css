@@ -37,25 +37,37 @@ body{
 .benvenuto{
     text-shadow: none;
     font-size: 2rem;
-    animation: animText;
-    animation-duration: 1.25s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-    animation-direction: alternate;
 }
 
+.specialText1{
+    background: linear-gradient(#FF0000, #630000);
+    background-clip: inherit;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.specialText2{
+    background: linear-gradient(#00eaff, #05b867);
+    background-clip: inherit;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.importante{
+    color:#FF0000;
+}
 
 /* scroll bar*/
 
-body::-webkit-scrollbar {
+::-webkit-scrollbar {
     width: 0.7rem;              /* width of the entire scrollbar */
 }
   
-body::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
     background: #00000000;        /* color of the tracking area */
 }
 
-body::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
     background-color: #33333333 ;    /* color of the scroll thumb */
     border-radius: 2rem;       /* roundness of the scroll thumb */
 }
@@ -84,6 +96,30 @@ video{
 
 /* chi siamo */
 
+.sfondOscurato{
+    background-color: #33333333;
+    backdrop-filter: blur(5px);
+    border-radius: 1rem;
+}
+
+.plusInfo{
+    margin: auto;
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    background-color: #33333333;
+    align-items: center;
+    border-radius: 1rem;
+}
+
+.plusInfo a{
+    text-decoration: none;
+}
+
+.plusInfo a :hover{
+    color: #FF000033;
+}
+
 .sfondotrasparente{
     display: flex;
     flex-direction: row;
@@ -96,9 +132,81 @@ video{
     font-size: 2rem;
 }
 
+#timeLine{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+}
+
+.subTimeLine{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.subTimeLineDescription{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    text-align: center;
+    border-radius: 1rem;
+    width: 30%;
+    overflow:clip;
+    overflow-y: scroll;
+    height: 15rem;
+    border:0.5rem solid #FFFFFF33;
+}
+
+.subTimeLineDescription h2,h3,h4{
+    margin: 0.3rem;
+}
+
+#partecipanti{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#partecipanti .spazio{
+    margin: 1rem;
+}
+
+#sottoPartecipanti{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-bottom: 5rem;
+}
+
+#sottoPartecipanti>.spazio{
+    overflow:clip;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    height: 32rem;
+}
+
+#partecipanti>.spazio{
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    margin-bottom: 3rem;
+}
+
+#partecipanti hr{
+    width: 75%;
+}
+
 .spazio{
-    background-color: #33333333;
-    backdrop-filter: blur(5px);
     border-radius: 1rem;
     margin-top: 8rem;
     margin-bottom: 8rem;
@@ -562,6 +670,14 @@ input:hover{
 
 @media screen and (max-width:999px){
 
+    #sottoPartecipanti{
+        flex-direction: column;
+    }
+    
+    #sottoPartecipanti>.spazio{
+        width: 95%;
+    }
+    
     .sottoSpazio1{
         width: 98%;
     }
@@ -609,7 +725,7 @@ input:hover{
 }
 
 @media screen and (max-width:650px){
-    
+
     .log{
         width: 85%;
     }
@@ -641,6 +757,15 @@ input:hover{
         margin:0px;
     }
 
+    .subTimeLine{
+        flex-direction: column;
+    }
+
+    .subTimeLineDescription{
+        width: 75%;
+        height: 10rem;
+        margin-bottom: 2rem;
+    }
 
     .navigazione{
         border-top-left-radius:0px ;
@@ -696,6 +821,10 @@ input:hover{
 
 @media screen and (max-width:460px){
     
+    .subTimeLineDescription{
+        height: 12.5rem;
+    }
+
     .log{
         width: 90%;
     }
@@ -734,17 +863,4 @@ input:hover{
     .page{
         border-bottom: 2rem;
     }
-}
-
-p.descrizione{
-    max-width:90%;
-    display:block;
-    text-align:justify;
-    font-size:2rem;
-    margin:auto;
-}
-
-h2.scuola{
-    font-family: 'Charm', serif;
-    font-size: 4rem;
 }
