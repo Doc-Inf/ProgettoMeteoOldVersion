@@ -107,8 +107,11 @@
     <script type="text/javascript" defer>
         //variabili per il cambio di dati
         const giorniSet = ["Lun","Mar","Mer","Gio","Ven","Sab","Dom"];
-        let conta = [];
-        let giorno = <?php echo ($date->format("N")-1);?>;
+        let conta = [];       
+        let giorno = <?php 
+            $endDate = new DateTime( $db->query("SELECT MAX(data) as data FROM `Y$year`")[0]["data"] );
+            echo ( $endDate->format("N")-1);
+        ?>; 
         let dataMisurazione = "<?php echo formatDate($res['data']); ?>";        
         let valoreTemperatura = <?php echo $res['temperatura']?>;
         let valoreUmidità = <?php echo $res['umidita']?>; //al valore dell'umidità va dato un numero da 0 a 100 in base alla rispettiva %
@@ -116,9 +119,7 @@
         let direzioneVento = '<?php echo $res['direzione-vento']?>';
         let velocitàVento = <?php echo $res['km-h']?>;
 
-        <?php 
-              
-            $endDate = new DateTime( $db->query("SELECT MAX(data) as data FROM `Y$year`")[0]["data"] );
+        <?php            
             $startDate = (new DateTime($endDate->format("Y-m-d H:i:s")))->modify("-7 day");
             $giorni = [];
             $temperaturaSettimanale = [];
