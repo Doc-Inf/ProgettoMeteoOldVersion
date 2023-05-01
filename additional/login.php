@@ -39,10 +39,10 @@
             <?php if(isset($_POST) && isset($_POST['general'])) echo "<p style='color: red;'>".$_POST['general']."</p>"; ?>
             <label for="user.name">Nome utente</label>
             <?php if(isset($_POST) && isset($_POST['user'])) echo "<p style='color: red;'>".$_POST['user']."</p>"; ?>
-            <input type="text" name="username" placeholder="*Nome-utente">
+            <input type="text" name="username" placeholder="*Nome-utente" required>
             <label for="user.password">Password utente</label>
             <?php if(isset($_POST) && isset($_POST['pass'])) echo "<p style='color: red;'>".$_POST['pass']."</p>"; ?>
-            <input type="password" name="password" placeholder="*Password">
+            <input type="password" name="password" placeholder="*Password" required>
             <input type="submit" value="Accedi">
         </form>
     </div>
