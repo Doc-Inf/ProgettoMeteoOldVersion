@@ -105,10 +105,10 @@
             </h2>
             <hr>
 
-            <h5 class="benvenuto specialText1">
+            <h5 class="benvenuto specialText">
                 Bonifazi Andrea [Informatica]
             </h5>
-            <h5 class="benvenuto specialText2">
+            <h5 class="benvenuto specialText">
                 Rispoli Maria [Scienze e Biologia]
             </h5>
         </div>
@@ -122,31 +122,31 @@
                 </h2>
                 <hr>
                 
-                <h5 class="benvenuto" style="color:#00FF00;">
+                <h5 class="benvenuto">
                     Somma Francesco [Back-End, Front-End, Database]
                 </h5>
                 
-                <h5 class="benvenuto" style="color:#00FF00;">
+                <h5 class="benvenuto">
                     Fonti Luca [Back-End, Front-End, Database]
                 </h5>
                 
-                <h5 class="benvenuto" style="color:#00FF00;">     
+                <h5 class="benvenuto">     
                     Boaretto Lorenzo [Back-End, Front-End, Grafica]
                 </h5>
                 
-                <h5 class="benvenuto" style="color:#0000FF;">
+                <h5 class="benvenuto">
                     Cipolla Emilio [Front-end, Grafica]
                 </h5>
                 
-                <h5 class="benvenuto" style="color:#0000FF;">
+                <h5 class="benvenuto">
                     Pietrosanti Francesco [Front-End, Grafica, Presentazione]
                 </h5>
                 
-                <h5 class="benvenuto" style="color:#FF0000;">
+                <h5 class="benvenuto">
                     Imbastari Riccardo [Grafica, Presentazione]
                 </h5>
                 
-                <h5 class="benvenuto" style="color:#FF0000;">
+                <h5 class="benvenuto">
                     Fruncillo Carmine [Idee]
                 </h5>
             </div>
@@ -158,31 +158,31 @@
                 </h2>
                 <hr>
                 
-                <h5 class="benvenuto" style="color:#000000;">
+                <h5 class="benvenuto">
                     . []
                 </h5>
                 
-                <h5 class="benvenuto" style="color:#000000;">
+                <h5 class="benvenuto">
                     . []
                 </h5>
                 
-                <h5 class="benvenuto" style="color:#000000;">     
+                <h5 class="benvenuto">     
                     . []
                 </h5>
                 
-                <h5 class="benvenuto" style="color:#000000;">
+                <h5 class="benvenuto">
                     . []
                 </h5>
                 
-                <h5 class="benvenuto" style="color:#000000;">
+                <h5 class="benvenuto">
                     . []
                 </h5>
                 
-                <h5 class="benvenuto" style="color:#000000;">
+                <h5 class="benvenuto">
                     . []
                 </h5>
                 
-                <h5 class="benvenuto" style="color:#000000;">
+                <h5 class="benvenuto">
                     . []
                 </h5>
             </div>
