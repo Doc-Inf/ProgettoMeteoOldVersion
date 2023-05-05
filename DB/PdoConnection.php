@@ -50,10 +50,10 @@
             return $res;            
         }
     
-        public function dmlCommand(string $sql, $params=[]) { // `
+        public function dmlCommand(string $sql, $param=[]) { // `
             $con = $this->getConnection();
             $result = -1;
-            if(count($params)>0){
+            if(count($param)>0){
                 $stmt = $con->prepare($sql);
                 $result = $stmt->execute($param); 
                 $stmt = null;               

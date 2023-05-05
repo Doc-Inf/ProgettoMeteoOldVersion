@@ -9,128 +9,16 @@
 
 -------------------------------------------------------
 
-function drawChart() {
-            if(x.clientWidth/2 <= 441){
-                z = x.clientWidth-25;
-                k = y.clientHeight*6;
-            }else if(x.clientWidth/2 >= 700){
-                z= x.clientWidth*1;
-                k = y.clientHeight*6;
-            }else{
-                z= x.clientWidth*1;
-                k = y.clientHeight*6;
-            }
 
-            var data = google.visualization.arrayToDataTable([
-                ['Data', 'Temperatura', 'Umidità', 'Pressione', 'Velocita vento'],
-                <?php 
-                foreach($monthData as $key=>$val) {
-                    
-                    if($key == sizeof($monthData)-1) 
-                        echo "['".$val['t']."', ".$val['temperatura'].", ".$val['umidita'].", ".$val["pressione"].", ".$val['km-h']."]";
-                    else 
-                        echo "['".$val['t']."', ".$val['temperatura'].", ".$val['umidita'].", ".$val["pressione"].", ".$val['km-h']."],";
-                }
-                ?>
-            ]);
-
-
-            var options = {
-                title: 'Resoconto mensile',
-                curveType: 'function',
-                legend: { position: 'bottom' },
-                width: Math.trunc(z),
-                height: Math.trunc(k),
-                vAxis: {
-                    viewWindowMode: 'explicit',
-                    viewWindow: {
-                        min: 0
-                    }
-                }
-            };
-
-            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-
-            chart.draw(data, options);
-        }
-
-
-
-        <?php 
-            $endDate = new DateTime( $db->query("SELECT MAX(data) as data FROM `Y$year`")[0]["data"] );
-            $startDate = (new DateTime($endDate->format("Y-m-d H:i:s")))->modify("-31 day");
-            $temperaturaMensile = [];
-            $umiditaMensile = [];
-            for($i=30;$i>=0;--$i){
-                $currentDay = (new DateTime($endDate->format("Y-m-d H:i:s")))->modify("-$i day");
-                $res = $db->query("SELECT AVG(umidita) as umiditaMedia, AVG(temperatura) as temperaturaMedia FROM `Y$year` WHERE data= '".$currentDay->format('Y/m/d H:i:s')."';");
-                $temperaturaMensile[] = $res[0]['temperaturaMedia'];
-                $umiditaMensile[] = $res[0]['umiditaMedia'];
-            }
-            
-        ?>
-
-
-
-
-
-                  function drawChart() {
-            console.log(x.clientWidth);
-            if(x.clientWidth/2 <= 441){
-                z = x.clientWidth*0.90;
-                k = y.clientHeight/4;
-            }else if(x.clientWidth/2 >= 700){
-                z= x.clientWidth/1.5;
-                k = y.clientHeight/2;
-            }else{
-                z= x.clientWidth/1.5;
-                k = y.clientHeight/3;
-            }
-
-            var data = google.visualization.arrayToDataTable([
-                ['Giorno', 'Temperatura', 'Umidità'],
-                [giorniSet[conta[30]],         <?php echo (($temperaturaMensile[0]==null)?0:$temperaturaMensile[0])?>, <?php echo (($umiditaMensile[0]==null)?0:$umiditaMensile[0]) ?>],
-                [giorniSet[conta[29]],         <?php echo (($temperaturaMensile[1]==null)?0:$temperaturaMensile[1])?>, <?php echo (($umiditaMensile[1]==null)?0:$umiditaMensile[1]) ?>],
-                [giorniSet[conta[28]],         <?php echo (($temperaturaMensile[2]==null)?0:$temperaturaMensile[2])?>, <?php echo (($umiditaMensile[2]==null)?0:$umiditaMensile[2]) ?>],
-                [giorniSet[conta[27]],         <?php echo (($temperaturaMensile[3]==null)?0:$temperaturaMensile[3])?>, <?php echo (($umiditaMensile[3]==null)?0:$umiditaMensile[3]) ?>],
-                [giorniSet[conta[26]],         <?php echo (($temperaturaMensile[4]==null)?0:$temperaturaMensile[4])?>, <?php echo (($umiditaMensile[4]==null)?0:$umiditaMensile[4]) ?>],
-                [giorniSet[conta[25]],         <?php echo (($temperaturaMensile[5]==null)?0:$temperaturaMensile[5])?>, <?php echo (($umiditaMensile[5]==null)?0:$umiditaMensile[5]) ?>],
-                [giorniSet[conta[24]],         <?php echo (($temperaturaMensile[6]==null)?0:$temperaturaMensile[6])?>, <?php echo (($umiditaMensile[6]==null)?0:$umiditaMensile[6]) ?>],
-                [giorniSet[conta[23]],         <?php echo (($temperaturaMensile[7]==null)?0:$temperaturaMensile[7])?>, <?php echo (($umiditaMensile[7]==null)?0:$umiditaMensile[7]) ?>],
-                [giorniSet[conta[22]],         <?php echo (($temperaturaMensile[8]==null)?0:$temperaturaMensile[8])?>, <?php echo (($umiditaMensile[8]==null)?0:$umiditaMensile[8]) ?>],
-                [giorniSet[conta[21]],        <?php echo (($temperaturaMensile[9]==null)?0:$temperaturaMensile[9])?>, <?php echo (($umiditaMensile[9]==null)?0:$umiditaMensile[9]) ?>],
-                [giorniSet[conta[20]],        <?php echo (($temperaturaMensile[10]==null)?0:$temperaturaMensile[10])?>, <?php echo (($umiditaMensile[10]==null)?0:$umiditaMensile[10]) ?>],
-                [giorniSet[conta[19]],        <?php echo (($temperaturaMensile[11]==null)?0:$temperaturaMensile[11])?>, <?php echo (($umiditaMensile[11]==null)?0:$umiditaMensile[11]) ?>],
-                [giorniSet[conta[18]],        <?php echo (($temperaturaMensile[12]==null)?0:$temperaturaMensile[12])?>, <?php echo (($umiditaMensile[12]==null)?0:$umiditaMensile[12]) ?>],
-                [giorniSet[conta[17]],        <?php echo (($temperaturaMensile[13]==null)?0:$temperaturaMensile[13])?>, <?php echo (($umiditaMensile[13]==null)?0:$umiditaMensile[13]) ?>],
-                [giorniSet[conta[16]],        <?php echo (($temperaturaMensile[14]==null)?0:$temperaturaMensile[14])?>, <?php echo (($umiditaMensile[14]==null)?0:$umiditaMensile[14]) ?>],
-                [giorniSet[conta[15]],        <?php echo (($temperaturaMensile[15]==null)?0:$temperaturaMensile[15])?>, <?php echo (($umiditaMensile[15]==null)?0:$umiditaMensile[15]) ?>],
-                [giorniSet[conta[14]],        <?php echo (($temperaturaMensile[16]==null)?0:$temperaturaMensile[16])?>, <?php echo (($umiditaMensile[16]==null)?0:$umiditaMensile[16]) ?>],
-                [giorniSet[conta[13]],        <?php echo (($temperaturaMensile[17]==null)?0:$temperaturaMensile[17])?>, <?php echo (($umiditaMensile[17]==null)?0:$umiditaMensile[17]) ?>],
-                [giorniSet[conta[12]],        <?php echo (($temperaturaMensile[18]==null)?0:$temperaturaMensile[18])?>, <?php echo (($umiditaMensile[18]==null)?0:$umiditaMensile[18]) ?>],
-                [giorniSet[conta[11]],        <?php echo (($temperaturaMensile[19]==null)?0:$temperaturaMensile[19])?>, <?php echo (($umiditaMensile[19]==null)?0:$umiditaMensile[19]) ?>],
-                [giorniSet[conta[10]],        <?php echo (($temperaturaMensile[20]==null)?0:$temperaturaMensile[20])?>, <?php echo (($umiditaMensile[20]==null)?0:$umiditaMensile[20]) ?>],
-                [giorniSet[conta[9]],        <?php echo (($temperaturaMensile[21]==null)?0:$temperaturaMensile[21])?>, <?php echo (($umiditaMensile[21]==null)?0:$umiditaMensile[21]) ?>],
-                [giorniSet[conta[8]],        <?php echo (($temperaturaMensile[22]==null)?0:$temperaturaMensile[22])?>, <?php echo (($umiditaMensile[22]==null)?0:$umiditaMensile[22]) ?>],
-                [giorniSet[conta[7]],        <?php echo (($temperaturaMensile[23]==null)?0:$temperaturaMensile[23])?>, <?php echo (($umiditaMensile[23]==null)?0:$umiditaMensile[23]) ?>],
-                [giorniSet[conta[6]],        <?php echo (($temperaturaMensile[24]==null)?0:$temperaturaMensile[24])?>, <?php echo (($umiditaMensile[24]==null)?0:$umiditaMensile[24]) ?>],
-                [giorniSet[conta[5]],        <?php echo (($temperaturaMensile[25]==null)?0:$temperaturaMensile[25])?>, <?php echo (($umiditaMensile[25]==null)?0:$umiditaMensile[25]) ?>],
-                [giorniSet[conta[4]],        <?php echo (($temperaturaMensile[26]==null)?0:$temperaturaMensile[26])?>, <?php echo (($umiditaMensile[26]==null)?0:$umiditaMensile[26]) ?>],
-                [giorniSet[conta[3]],        <?php echo (($temperaturaMensile[27]==null)?0:$temperaturaMensile[27])?>, <?php echo (($umiditaMensile[27]==null)?0:$umiditaMensile[27]) ?>],
-                [giorniSet[conta[2]],        <?php echo (($temperaturaMensile[28]==null)?0:$temperaturaMensile[28])?>, <?php echo (($umiditaMensile[28]==null)?0:$umiditaMensile[28]) ?>],
-                [giorniSet[conta[1]],        <?php echo (($temperaturaMensile[29]==null)?0:$temperaturaMensile[29])?>, <?php echo (($umiditaMensile[29]==null)?0:$umiditaMensile[29]) ?>],
-                [giorniSet[conta[0]],        <?php echo (($temperaturaMensile[30]==null)?0:$temperaturaMensile[30])?>, <?php echo (($umiditaMensile[30]==null)?0:$umiditaMensile[30]) ?>]
-            ])
-
-            var options = {
-                title: 'Temperatura, Umidità e Pressione Mensile',
-                curveType: 'function',
-                legend: { position: 'bottom' },
-                width: Math.trunc(z),
-                height: Math.trunc(k)
-            };
-
-            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-
-            chart.draw(data, options);
-        }
+            <h2 class="benvenuto">
+                La Storia della scuola []
+            </h2>
+            <hr>
+            <img id="scuola1" src="../IMG/scuola1.jpg" alt="IMG-scuola">
+            <h2 class="storia">
+                La scuola viene istituita nell' A. S. 1960 /61 come succursale dell'I.T.I.S. "E. Fermi" di Roma all'epoca esistevano solo tre sezioni: la sezione A di 37 alunni la sezione B di 37 alunni la sezione C di 39 alunni le quali erano seguite dal Prof. Diana Umberto. il quale è stato il coordinatore con la partecipazione dell' I.T.I.S. E. Fermi di Roma per l' avvio e la gestione iniziale della scuola. Tutti i comuni a sud di Roma come ad esempio i Castelli , Colleferro ecc. insieme ad alcuni comuni della provincia di Latina, fino a giungere a Terracina, rappresentano il bacino d 'utenza dell' attuale I.T.I.S. "Giancarlo Vallauri" di Velletri.
+            </h2>
+            <img id="scuola2" src="../IMG/scuola2.jpg" alt="IMG-scuola">
+            <h2>
+            Inizialmente l'Istituto si appoggiò presso l' I.T.C.G. "Cesare Battisti" , per passare poi dal palazzo comunale ad una villetta non troppo distante l'ospedale di Velletri. Nel mese di novembre dell'anno 1965 l'I.T.I.S. Vallauri, si trasferì definitivamente presso la sede attuale di via Salvo D' Acquisto. Nell' A. S. 1968 / 69 divenne istituto autonomo e prese per l'appunto il nome dell' ingegnere "Giancarlo Vallauri". Dalla sua autonomia ad oggi, più di cinquemila sono stati gli studenti diplomati. Questo perché il numero delle sezioni e degli alunni è progressivamente cresciuto nel corso del tempo; fino a raggiungere, un numero complessivo di 53 classi, 14 di esse sono state ospitate nella sede staccata di via Paolina a Velletri. La scuola dispone inoltre di diversi laboratori, dove gli alunni possono predisporre numerose esperienze. Al tempo stesso, dopo l'entrata in vigore dei bacini di utenza, (DISTRETTO N°39/42) si è precisata e definita l'area geografica dell'I.T.I.S. "G. Vallauri": gli allievi provengono ,infatti, prevalentemente da Lariano, Genzano, Albano, Ariccia, Lanuvio, Cecchina, S.Maria delle Mole, Castel Gandolfo, Ciampino, Cisterna e Artena oltre che , come ovvio, dalla stessa Velletri. Alla iniziale specializzazione in Elettronica Industriale si sono affiancati, più di recente nuovi corsi (INFORMATICA e LICEO SCIENTIFICO TECNOLOGICO), ciò nell'intento di rispondere con sempre maggiore efficacia alla domanda e alle legittime esigenze del mondo del lavoro che, alla scuola chiede un continuo sforzo di aggiornamento per adeguare i futuri periti all'apprendimento e all'uso delle nuove tecnologie.
+            </h2>
