@@ -6,7 +6,7 @@ SELECT 'DROP Database effettuato' as '';
 
 CREATE DATABASE meteo;
 SELECT 'Database creato' as '';
-USE METEO;
+USE meteo;
 SELECT "Database selezionato e pronto all'uso" as '';
 
 CREATE TABLE `Y2022` (
@@ -169,13 +169,14 @@ CREATE TABLE login(
     id              INT primary key AUTO_INCREMENT,
     username        varchar(32) NOT NULL,
     password        varchar(2048) NOT NULL,
+    ruolo           enum('admin','operatore') DEFAULT 'operatore' NOT NULL,
     last_access     DATETIME
 );
 
 SELECT 'TABELLA login CREATA' as '';
 
 -- username:root password:root (sha256) --
-INSERT INTO login(username, password) value ("docente", '4a06fcaff060e92bcc38c5b5ecb2e599c6dc20dd92fcbe13f9fee62c2b735db9');
+INSERT INTO login(username, password,ruolo) value ("docente", '4a06fcaff060e92bcc38c5b5ecb2e599c6dc20dd92fcbe13f9fee62c2b735db9','admin');
 -- Password originale (Studenti): '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2' 
 
 SELECT 'INSERIMENTO ACCOUNT ADMIN Completato' as '';

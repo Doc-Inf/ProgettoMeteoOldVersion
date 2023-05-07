@@ -35,11 +35,11 @@
             return $res;
         }
     
-        public function query(string $sql,$param=[]) { // `
+        public function query(string $sql,$params=[]) { // `
             $con = $this->getConnection();            
-            if(count($param)>0){
+            if(count($params)>0){
                 $stmt = $con->prepare($sql);
-                $stmt->execute($param);
+                $stmt->execute($params);
                 $res = $stmt->fetchAll();
                 $stmt = null;
             }else{
@@ -55,7 +55,7 @@
             $result = -1;
             if(count($params)>0){
                 $stmt = $con->prepare($sql);
-                $result = $stmt->execute($param); 
+                $result = $stmt->execute($params); 
                 $stmt = null;               
             }else{
                 $result = $con->query($sql);
