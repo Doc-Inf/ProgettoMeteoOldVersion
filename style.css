@@ -52,6 +52,19 @@ body{
     -webkit-text-fill-color: transparent;
 }
 
+p.descrizione{
+    max-width:90%;
+    display:block;
+    text-align:justify;
+    font-size:2rem;
+    margin:auto;
+}
+
+h2.scuola{
+    font-family: 'Charm', serif;
+    font-size: 4rem;
+}
+
 .importante{
     color:#FF0000;
 }
@@ -173,7 +186,7 @@ video{
     border:0.5rem solid #FFFFFF33;
 }
 
-.subTimeLineDescription h2,h3,h4{
+.subTimeLineDescription h3,p{
     margin: 0.3rem;
 }
 
