@@ -34,7 +34,7 @@
             }
             return $res;
         }
-    
+        
         public function query(string $sql,$param=[]) { // `
             $con = $this->getConnection();            
             if(count($param)>0){

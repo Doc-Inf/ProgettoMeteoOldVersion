@@ -48,7 +48,6 @@
                 if(!array_key_exists(0, $res)):
                     die("Operation successful");
                 else:
-                    var_dump($res);
             ?>
             <div style="overflow-x: auto;">
                 <table class="print-table">

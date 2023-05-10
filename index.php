@@ -105,7 +105,7 @@
     <?php        
         $date = new DateTime(date('Y/m/d H:i:s'));
         $year = $date->format("Y");
-        $res = $db->query("SELECT * FROM `Y$year` where data = (SELECT MAX(data) FROM `Y$year`)")[0];
+        $res = $db->query("SELECT * FROM `Y$year` where data = (SELECT MAX(data) FROM `Y$year`);")[0];
     ?>
   
     <script type="text/javascript" defer>
