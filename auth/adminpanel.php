@@ -123,8 +123,10 @@
                             }
                             if(strpos($value, 'y') === 0){
                                 $value = substr($value, 1, strlen($value));
-                            } 
-                            echo "<option value='$value'>$value</option>";
+                                echo "<option value='y$value'>$value</option>";
+                            } else {
+                                echo "<option value='$value'>$value</option>";
+                            }
                         }
                     ?>
                 </select>

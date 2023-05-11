@@ -45,6 +45,9 @@
                     die("Error Executing query. Please close this page and try again");
 
                 $res = $res->fetchAll();
+                if(isset($_POST["fromwhere"])){
+                    redirect($_POST["fromwhere"]."?table=$_POST[table]");
+                }
                 if(!array_key_exists(0, $res)):
                     die("Operation successful");
                 else:
