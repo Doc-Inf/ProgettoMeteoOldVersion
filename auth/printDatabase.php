@@ -41,10 +41,12 @@
                     <tr>
                         <?php
                             $res = $db->query("SELECT * FROM `".$_GET["table"]."`;");
-                            foreach ($res[0] as $key => $value) {
-                            echo "<th>$key</th>";
-                        }
-                    ?>
+                            if(count($res)>0){
+                                foreach ($res[0] as $key => $value) {
+                                    echo "<th>$key</th>";
+                                }
+                            }                            
+                        ?>
                     </tr>
                     <?php
                         foreach ($res as $key => $value) {
