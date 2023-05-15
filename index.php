@@ -16,7 +16,7 @@
       
     <!-- sfondi -->
 
-    <video src="./IMG/Nuvole - 8599.mp4" autoplay loop muted></video> 
+    <video src="./img/Nuvole - 8599.mp4" autoplay loop muted></video> 
     <div class="sfondo"></div>
 
     <!-- tendina laterale (ancora da testase se tenere o meno) -->

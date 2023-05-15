@@ -13,7 +13,7 @@
         
         <!-- sfondi -->
 
-        <video src="../IMG/Nuvole - 8599.mp4" autoplay loop muted></video> 
+        <video src="../img/Nuvole - 8599.mp4" autoplay loop muted></video> 
         <div class="sfondo"></div>
 
         <?php
@@ -107,10 +107,11 @@
                 <select name="table" id="table">
                     <?php
                         $res = $db->query("SHOW tables;");
-                        foreach ($res as $key => $value) {
-                            $value = $value['Tables_in_meteo'];
-                            echo "<option value='$value'>$value</option>";
-                        }
+                        for($i=0;$i<count($res);++$i){
+                            foreach ($res[$i] as $key => $value) {                                                    
+                                echo "<option value='$value'>$value</option>";
+                            }
+                        }                        
                     ?>
                 </select>
                 <input type="hidden" name="operation" value="printTable">
