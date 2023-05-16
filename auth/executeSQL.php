@@ -20,7 +20,9 @@
             require('../functions.php');
 
             if(!isset($_SESSION['loginUID']) || !isset($_POST)) redirect("../auth/adminpanel.php");
-
+            if(isset($_POST["editStuff"])) {
+                goto zero;
+            }
             if(!isset($_POST['sql'])) die("no query");
         ?>
 
@@ -47,6 +49,18 @@
                 $res = $res->fetchAll();
                 if(isset($_POST["fromwhere"])){
                     redirect($_POST["fromwhere"]."?table=$_POST[table]");
+                }
+                zero:
+                if(isset($_POST["editStuff"])) {
+                    $sql = "UPDATE TABLE $_POST[table] SET ";
+                    unset($_POST["editStuff"]);
+                    unset($_POST['table']);
+                    foreach ($_POST as $key => $value) {
+                        $sql .= "`$key` = `$value`, ";
+                        echo "$key => $value <br>";
+                    }
+                    echo $sql;
+                    $res = [];
                 }
                 if(!array_key_exists(0, $res)):
                     die("Operation successful");
