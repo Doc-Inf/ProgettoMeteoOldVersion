@@ -40,6 +40,10 @@
                 <table class="print-table">
                     <tr>
                         <?php
+                            $dbname = getConfig()->database->dbname;
+                            if(count($db->query("SHOW TABLES where Tables_in_$dbname LIKE '$_GET[table]';")) == 0) {
+                                die("<p>Tabella non trovata</p>");
+                            }
                             $res = $db->query("SELECT * FROM `".$_GET["table"]."`;");
                             if(!isset($res[0]))
                                 die("Tabella Vuota");
