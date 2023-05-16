@@ -46,7 +46,7 @@
                             }
                             $res = $db->query("SELECT * FROM `".$_GET["table"]."`;");
                             if(!isset($res[0]))
-                                die("Tabella Vuota");
+                                die("<p>Tabella Vuota</p>");
                             foreach ($res[0] as $key => $value) {
                                 echo "<th>$key</th>";
                             }
