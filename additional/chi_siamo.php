@@ -48,7 +48,7 @@
             Per maggiori informazioni sulla scuola:
         </h2>
 
-        <a href="https://www.itisvallauri.edu.it">
+        <a href="https://www.itisvallauri.edu.it" class="link">
             <h2 class="benvenuto">| Sito della Scuola |</h2>
         </a>
     </div>
@@ -167,31 +167,31 @@
                 <hr>
                 
                 <h5 class="benvenuto">
-                    Somma Francesco [Back-End, Front-End, Database]
+                    Boaretto Lorenzo
                 </h5>
                 
                 <h5 class="benvenuto">
-                    Fonti Luca [Back-End, Front-End, Database]
-                </h5>
-                
-                <h5 class="benvenuto">     
-                    Boaretto Lorenzo [Back-End, Front-End, Grafica]
+                    Cipolla Emilio
                 </h5>
                 
                 <h5 class="benvenuto">
-                    Cipolla Emilio [Front-end, Grafica]
+                    Fonti Luca    
                 </h5>
                 
                 <h5 class="benvenuto">
-                    Pietrosanti Francesco [Front-End, Grafica, Presentazione]
+                    Fruncillo Carmine
                 </h5>
                 
                 <h5 class="benvenuto">
-                    Imbastari Riccardo [Grafica, Presentazione]
+                    Imbastari Riccardo
                 </h5>
                 
                 <h5 class="benvenuto">
-                    Fruncillo Carmine [Idee]
+                    Pietrosanti Francesco
+                </h5>
+                
+                <h5 class="benvenuto">
+                    Somma Francesco 
                 </h5>
             </div>
 
@@ -203,31 +203,35 @@
                 <hr>
                 
                 <h5 class="benvenuto">
-                    . []
+                    Bastianelli Gabriele
                 </h5>
                 
                 <h5 class="benvenuto">
-                    . []
+                    Bastianelli Tommaso
                 </h5>
                 
                 <h5 class="benvenuto">     
-                    . []
+                    Crespi Edoardo
                 </h5>
                 
                 <h5 class="benvenuto">
-                    . []
+                    Masi Gabriele
                 </h5>
                 
                 <h5 class="benvenuto">
-                    . []
+                    Mattoccia Gianmarco
                 </h5>
                 
                 <h5 class="benvenuto">
-                    . []
+                    Miu Tivriu Sebastian Marco
                 </h5>
                 
                 <h5 class="benvenuto">
-                    . []
+                    Nsia Emmanuel
+                </h5>
+
+                <h5 class="benvenuto">
+                    Ranieri Francesco
                 </h5>
             </div>
 

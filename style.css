@@ -55,6 +55,7 @@ body{
 p.descrizione{
     max-width:90%;
     display:block;
+    text-shadow: 0.1rem 0.1rem 0.2rem #00000077;
     text-align:justify;
     font-size:2rem;
     margin:auto;
@@ -107,6 +108,10 @@ video{
 }
 
 /* chi siamo */
+
+.link{
+    width: 80%;
+}
 
 .sfondOscurato{
     background-color: #33333333;
@@ -220,7 +225,7 @@ video{
     display: flex;
     flex-direction: column;
     width: 45%;
-    height: 32rem;
+    height: 20rem;
 }
 
 #partecipanti>.spazio{
@@ -804,6 +809,10 @@ input:hover{
     .benvenuto{
         margin: 10%;
         font-size: 1.5rem;
+    }
+
+    p.descrizione{
+        font-size: 1.4rem;
     }
 
     .sottoSpazio1 img{

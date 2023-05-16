@@ -9,7 +9,7 @@ SELECT 'Database creato' as '';
 USE meteo;
 SELECT "Database selezionato e pronto all'uso" as '';
 
-CREATE TABLE `Y2022` (
+CREATE TABLE `y2022` (
   id                int PRIMARY KEY AUTO_INCREMENT, 
   data              datetime NOT NULL,
   temperatura       int NOT NULL,
@@ -21,7 +21,7 @@ CREATE TABLE `Y2022` (
 
 SELECT 'TABELLA Y2022 CREATA' as '';
 
-CREATE TABLE `Y2023` (
+CREATE TABLE `y2023` (
   id                int PRIMARY KEY AUTO_INCREMENT, 
   data              datetime NOT NULL,
   temperatura       int NOT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE `Y2023` (
 
 SELECT 'TABELLA Y2023 CREATA' as '';
 
-CREATE TABLE `Y2024` (
+CREATE TABLE `y2024` (
   id                int PRIMARY KEY AUTO_INCREMENT, 
   data              datetime NOT NULL,
   temperatura       int NOT NULL,
@@ -45,7 +45,7 @@ CREATE TABLE `Y2024` (
 
 SELECT 'TABELLA Y2024 CREATA' as '';
 
-CREATE TABLE `Y2025` (
+CREATE TABLE `y2025` (
   id                int PRIMARY KEY AUTO_INCREMENT, 
   data              datetime NOT NULL,
   temperatura       int NOT NULL,
@@ -57,7 +57,7 @@ CREATE TABLE `Y2025` (
 
 SELECT 'TABELLA Y2025 CREATA' as '';
 
-CREATE TABLE `Y2026` (
+CREATE TABLE `y2026` (
   id                int PRIMARY KEY AUTO_INCREMENT, 
   data              datetime NOT NULL,
   temperatura       int NOT NULL,
@@ -69,7 +69,7 @@ CREATE TABLE `Y2026` (
 
 SELECT 'TABELLA Y2026 CREATA' as '';
 
-CREATE TABLE `Y2027` (
+CREATE TABLE `y2027` (
   id                int PRIMARY KEY AUTO_INCREMENT, 
   data              datetime NOT NULL,
   temperatura       int NOT NULL,
@@ -81,7 +81,7 @@ CREATE TABLE `Y2027` (
 
 SELECT 'TABELLA Y2027 CREATA' as '';
 
-CREATE TABLE `Y2028` (
+CREATE TABLE `y2028` (
   id                int PRIMARY KEY AUTO_INCREMENT, 
   data              datetime NOT NULL,
   temperatura       int NOT NULL,
@@ -93,7 +93,7 @@ CREATE TABLE `Y2028` (
 
 SELECT 'TABELLA Y2028 CREATA' as '';
 
-CREATE TABLE `Y2029` (
+CREATE TABLE `y2029` (
   id                int PRIMARY KEY AUTO_INCREMENT, 
   data              datetime NOT NULL,
   temperatura       int NOT NULL,
@@ -105,7 +105,7 @@ CREATE TABLE `Y2029` (
 
 SELECT 'TABELLA Y2029 CREATA' as '';
 
-CREATE TABLE `Y2030` (
+CREATE TABLE `y2030` (
   id                int PRIMARY KEY AUTO_INCREMENT, 
   data              datetime NOT NULL,
   temperatura       int NOT NULL,
@@ -117,7 +117,7 @@ CREATE TABLE `Y2030` (
 
 SELECT 'TABELLA Y2030 CREATA' as '';
 
-CREATE TABLE `Y2031` (
+CREATE TABLE `y2031` (
   id                int PRIMARY KEY AUTO_INCREMENT, 
   data              datetime NOT NULL,
   temperatura       int NOT NULL,
@@ -129,7 +129,7 @@ CREATE TABLE `Y2031` (
 
 SELECT 'TABELLA Y2031 CREATA' as '';
 
-CREATE TABLE `Y2032` (
+CREATE TABLE `y2032` (
   id                int PRIMARY KEY AUTO_INCREMENT, 
   data              datetime NOT NULL,
   temperatura       int NOT NULL,
@@ -141,7 +141,7 @@ CREATE TABLE `Y2032` (
 
 SELECT 'TABELLA Y2032 CREATA' as '';
 
-CREATE TABLE `Y2033` (
+CREATE TABLE `y2033` (
   id                int PRIMARY KEY AUTO_INCREMENT, 
   data              datetime NOT NULL,
   temperatura       int NOT NULL,
@@ -153,7 +153,7 @@ CREATE TABLE `Y2033` (
 
 SELECT 'TABELLA Y2033 CREATA' as '';
 
-CREATE TABLE `Y2034` (
+CREATE TABLE `y2034` (
   id                int PRIMARY KEY AUTO_INCREMENT, 
   data              datetime NOT NULL,
   temperatura       int NOT NULL,
@@ -181,7 +181,7 @@ INSERT INTO login(username, password, authlevel) value ("docente", '4a06fcaff060
 
 SELECT 'INSERIMENTO ACCOUNT ADMIN Completato' as '';
 
-INSERT INTO `Y2022`(data, temperatura, pressione, umidita, `direzione-vento`, `km-h`) VALUES 
+INSERT INTO `y2022`(data, temperatura, pressione, umidita, `direzione-vento`, `km-h`) VALUES 
     ('2022-10-18 09:00','24','995.4','59','NE','2'),
 		('2022-10-19 09:00','20','989.3','77','W','3'),
 		('2022-10-20 09:00','22','989.4','57','S','2'),
@@ -214,7 +214,7 @@ INSERT INTO `Y2022`(data, temperatura, pressione, umidita, `direzione-vento`, `k
 
 SELECT 'INSERIMENTO Dati rilevazioni Y2022 Completato' as '';
 
-INSERT INTO `Y2023`(data, temperatura, pressione, umidita, `direzione-vento`, `km-h`) VALUES     	
+INSERT INTO `y2023`(data, temperatura, pressione, umidita, `direzione-vento`, `km-h`) VALUES     	
 		('2023-03-25 09:00','14','961.4','95','NE','26'),		
 		('2023-03-26 09:00','9','978.8','58','SE','11'),
     ('2023-03-27 9:00:00', '12', '989.7',  '63', 'NE', '0'),
