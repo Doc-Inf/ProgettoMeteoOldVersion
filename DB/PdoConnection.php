@@ -34,13 +34,8 @@
             }
             return $res;
         }
-<<<<<<< HEAD
-        
-        public function query(string $sql,$param=[]) { // `
-=======
-    
-        public function query(string $sql,$params=[]) { // `
->>>>>>> development
+                   
+        public function query(string $sql,$params=[]) { 
             $con = $this->getConnection();            
             if(count($params)>0){
                 $stmt = $con->prepare($sql);
