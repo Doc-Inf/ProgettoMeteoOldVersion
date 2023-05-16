@@ -29,7 +29,8 @@
             } else $err['general'] = "username o password errati";
         }
         if(isset($err)) redirect_post_data("../additional/login.php", $err);
-    } else 
+    } else {
         redirect("../additional/login.php");
+    }    
 
 ?>

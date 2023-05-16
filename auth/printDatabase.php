@@ -13,7 +13,7 @@
         
         <!-- sfondi -->
 
-        <video src="../IMG/Nuvole - 8599.mp4" autoplay loop muted></video> 
+        <video src="../img/Nuvole - 8599.mp4" autoplay loop muted></video> 
         <div class="sfondo"></div>
 
         <?php
@@ -41,43 +41,46 @@
                     <tr>
                         <?php
                             $res = $db->query("SELECT * FROM `".$_GET["table"]."`;");
-                            if(!isset($res[0]))
-                                die("Tabella Vuota");
-                            foreach ($res[0] as $key => $value) {
-                                echo "<th>$key</th>";
-                            }
-                            echo "<th>Modifica</th>";
-                            echo "<th>Cancella</th>";
+                            if(count($res)>0){
+                                foreach ($res[0] as $key => $value) {
+                                    echo "<th>$key</th>";
+                                }
+                                echo "<th>Modifica</th>";
+                                echo "<th>Cancella</th>";
+                            }                            
                         ?>
                     </tr>
-                    <?php
-                        $thisFilePath = __FILE__;
-                        foreach ($res as $key => $value) {
-                            $data = urlencode(json_encode($value));
-                            echo "<tr>";
-                            foreach($value as $kkey => $vvalue) {
-                                echo "<td>$vvalue</td>";
-                            }
-                            echo <<<ITEM
-                                <form action="edit.php" method="POST">
-                                    <input type="hidden" name="table" value="$_GET[table]">
-                                    <td>
-                                    <button style='color: black;' type="submit" name="data" value="$data">Modifica</button>
-                                    </td>
-                                    </form>
-                                    <form action="executeSQL.php" method="post">
-                                    <input type="hidden" name="fromwhere" value="printDatabase.php">
-                                    <input type="hidden" name="table" value="$_GET[table]">
-                                    <td>
-                                        <button style='color: black;' type="submit" name="sql" value="DELETE FROM $_GET[table] WHERE id = $value[id]"'>Cancella</button>
-                                    </td>
-                                </form>
-                            ITEM;
-                            echo "</tr>";
-                        }
+                        <?php
+                            if(count($res)>0){
+                                for ($i=0; $i<count($res); ++$i) {
+                                    echo "<tr>";
+                                    $thisFilePath = __FILE__;
+                                    foreach($res[$i] as $key => $value) {
+                                        $data = urlencode(json_encode($value));
+                                        echo "<td>$value</td>";
+                                    }
+                                    echo <<<ITEM
+                                        <form action="edit.php" method="POST">
+                                            <input type="hidden" name="table" value="$_GET[table]">
+                                            <td>
+                                            <button style='color: black;' type="submit" name="data" value="$data">Modifica</button>
+                                            </td>
+                                        </form>
+                                        <form action="executeSQL.php" method="post">
+                                            <input type="hidden" name="fromwhere" value="printDatabase.php">
+                                            <input type="hidden" name="table" value="$_GET[table]">
+                                            <td>
+                                                <button style='color: black;' type="submit" name="sql" value="DELETE FROM $_GET[table] WHERE id = $value[id]"'>Cancella</button>
+                                            </td>
+                                        </form>
+                                    ITEM;
+                                    echo "</tr>";
+                                }
+                            }    
                         ?>
-                </table>
+                </table>          
             </div>
         </div>
     </body>
+>>>>>>> development
 </html>

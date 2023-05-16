@@ -13,7 +13,7 @@
         
         <!-- sfondi -->
 
-        <video src="../IMG/Nuvole - 8599.mp4" autoplay loop muted></video> 
+        <video src="../img/Nuvole - 8599.mp4" autoplay loop muted></video> 
         <div class="sfondo"></div>
 
         <?php
@@ -27,7 +27,7 @@
                 $id = $res['id'];
                 $username = $res["username"];
                 $lastLogin = $res["last_access"];
-                $authlevel = $res["authlevel"];
+                $authlevel = $res["ruolo"];
             } 
             if(isset($_POST['operation'])){
                 switch($_POST['operation']){
@@ -63,15 +63,13 @@
             <h1>Benvenuto <?php echo $username?></h1>
             <p>Auth level: <?php 
             switch($authlevel) {
-                case 0:
-                    echo "Super Amministratore";
-                    break;
-                case 1:
+                case "admin":
                     echo "Amministratore";
                     break;
-                case 2:
+                case "operatore":
                     echo "Operatore";
                     break;
+                
                 default:
                     die();
                     break;
@@ -116,18 +114,17 @@
                 <select name="table" id="table">
                     <?php
                         $res = $db->query("SHOW tables;");
-                        foreach ($res as $key => $value) {
-                            $value = $value['Tables_in_meteo'];
-                            if($value == "login" && $authlevel >1){
+                 
+                        for($i=0;$i<count($res);++$i){
+                            $table = $res[$i];
+                            if($table == "login" && $authlevel != "admin"){
                                 continue;
-                            }
-                            if(strpos($value, 'y') === 0){
-                                $value = substr($value, 1, strlen($value));
-                                echo "<option value='y$value'>$value</option>";
-                            } else {
+                            }    
+                            foreach ($res[$i] as $key => $value) {                                                    
                                 echo "<option value='$value'>$value</option>";
                             }
-                        }
+                        }                        
+
                     ?>
                 </select>
                 <input type="hidden" name="operation" value="printTable">
