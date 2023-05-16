@@ -109,6 +109,30 @@
                 <input type="hidden" name="operation" value="insert">
                 <input type="submit" value="Registra">
             </form>
+
+            <form target="_blank" action="printDatabase.php" method="get" class="insert-form">
+                <h2>Printout table</h2>
+                <label for="table">Year: </label>
+                <select name="table" id="table">
+                    <?php
+                        $res = $db->query("SHOW tables;");
+                        foreach ($res as $key => $value) {
+                            $value = $value['Tables_in_meteo'];
+                            if($value == "login" && $authlevel >1){
+                                continue;
+                            }
+                            if(strpos($value, 'y') === 0){
+                                $value = substr($value, 1, strlen($value));
+                                echo "<option value='y$value'>$value</option>";
+                            } else {
+                                echo "<option value='$value'>$value</option>";
+                            }
+                        }
+                    ?>
+                </select>
+                <input type="hidden" name="operation" value="printTable">
+                <input type="submit" value="Print">
+            </form>
             
             <?php if($authlevel < 2):?>
                 <form action="adminpanel.php" method="post" class="insert-form">
@@ -127,20 +151,6 @@
                     <input type="submit" value="Crea">
                 </form>
 
-                <form target="_blank" action="printDatabase.php" method="get" class="insert-form">
-                    <h2>Printout table</h2>
-                    <select name="table" id="table">
-                        <?php
-                            $res = $db->query("SHOW tables;");
-                            foreach ($res as $key => $value) {
-                                $value = $value['Tables_in_meteo'];
-                                echo "<option value='$value'>$value</option>";
-                            }
-                        ?>
-                    </select>
-                    <input type="hidden" name="operation" value="printTable">
-                    <input type="submit" value="Print">
-                </form>
             <?php 
                 endif;
                 if($authlevel == 0):    

@@ -41,17 +41,38 @@
                     <tr>
                         <?php
                             $res = $db->query("SELECT * FROM `".$_GET["table"]."`;");
+                            if(!isset($res[0]))
+                                die("Tabella Vuota");
                             foreach ($res[0] as $key => $value) {
-                            echo "<th>$key</th>";
-                        }
-                    ?>
+                                echo "<th>$key</th>";
+                            }
+                            echo "<th>Modifica</th>";
+                            echo "<th>Cancella</th>";
+                        ?>
                     </tr>
                     <?php
+                        $thisFilePath = __FILE__;
                         foreach ($res as $key => $value) {
+                            $data = urlencode(json_encode($value));
                             echo "<tr>";
                             foreach($value as $kkey => $vvalue) {
                                 echo "<td>$vvalue</td>";
                             }
+                            echo <<<ITEM
+                                <form action="edit.php" method="POST">
+                                    <input type="hidden" name="table" value="$_GET[table]">
+                                    <td>
+                                    <button style='color: black;' type="submit" name="data" value="$data">Modifica</button>
+                                    </td>
+                                    </form>
+                                    <form action="executeSQL.php" method="post">
+                                    <input type="hidden" name="fromwhere" value="printDatabase.php">
+                                    <input type="hidden" name="table" value="$_GET[table]">
+                                    <td>
+                                        <button style='color: black;' type="submit" name="sql" value="DELETE FROM $_GET[table] WHERE id = $value[id]"'>Cancella</button>
+                                    </td>
+                                </form>
+                            ITEM;
                             echo "</tr>";
                         }
                         ?>
