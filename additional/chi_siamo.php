@@ -94,8 +94,8 @@
             </div>
         </div>
         <div class="sottoSpazio2">
-            <img src="../IMG/scuola1.jpg" alt="IMG-scuola">
-            <img src="../IMG/scuola2.jpg" alt="IMG-scuola">
+            <img src="../img/scuola1.jpg" alt="IMG-scuola">
+            <img src="../img/scuola2.jpg" alt="IMG-scuola">
         </div>
     </div>
 

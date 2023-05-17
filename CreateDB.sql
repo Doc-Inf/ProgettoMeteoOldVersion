@@ -169,24 +169,15 @@ CREATE TABLE login (
     id              INT primary key AUTO_INCREMENT,
     username        varchar(32) NOT NULL,
     password        varchar(2048) NOT NULL,
-<<<<<<< HEAD
-    last_access     DATETIME,
-    authlevel       INT NOT NULL DEFAULT 2
-=======
-    ruolo           enum('admin','operatore') DEFAULT 'operatore' NOT NULL,
+    ruolo           enum('superadmin','admin','operatore') DEFAULT 'operatore' NOT NULL,
     last_access     DATETIME
->>>>>>> development
+
 );
 
 SELECT 'TABELLA login CREATA' as '';
 
-<<<<<<< HEAD
--- username:docente password:vallauri (sha256) --
-INSERT INTO login(username, password, authlevel) value ("docente", '4a06fcaff060e92bcc38c5b5ecb2e599c6dc20dd92fcbe13f9fee62c2b735db9', 0);
-=======
 -- username:root password:root (sha256) --
-INSERT INTO login(username, password,ruolo) value ("docente", '4a06fcaff060e92bcc38c5b5ecb2e599c6dc20dd92fcbe13f9fee62c2b735db9','admin');
->>>>>>> development
+INSERT INTO login(username, password,ruolo) value ("docente", '4a06fcaff060e92bcc38c5b5ecb2e599c6dc20dd92fcbe13f9fee62c2b735db9','superadmin');
 -- Password originale (Studenti): '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2' 
 
 SELECT 'INSERIMENTO ACCOUNT ADMIN Completato' as '';
@@ -224,7 +215,6 @@ INSERT INTO `y2022`(data, temperatura, pressione, umidita, `direzione-vento`, `k
 
 SELECT 'INSERIMENTO Dati rilevazioni Y2022 Completato' as '';
 
-<<<<<<< HEAD
 INSERT INTO `Y2023`(data, temperatura, pressione, umidita, `direzione-vento`, `km-h`) VALUES     	
     ('2023-01-09 09:00','14','961.4','95','NE','26'),		
     ('2023-01-10 09:00','9','978.8','58','SE','11'),
@@ -243,7 +233,7 @@ INSERT INTO `Y2023`(data, temperatura, pressione, umidita, `direzione-vento`, `k
     ('2023-02-24 9:00:00', '12', '983.3',  '86', 'W', '2'),
     ('2023-02-28 9:00:00', '9', '981.6',  '76', 'SW', '8'),
     ('2023-03-02 9:00:00', '9', '978.2',  '78', 'SW', '6'),
-    ('2023-03-03 9:00:00', '9', '981.2',  '85', 'S', '6'),
+    ('2023-03-03 9:00:00', '9', '981.2',   '85', 'S', '6'),
     ('2023-03-06 9:00:00', '10', '979.6',  '85', 'NE', '3'), 
     ('2023-03-07 9:00:00', '12', '977.3',  '79', 'NW', '6'),
     ('2023-03-08 9:00:00', '12', '978.8',  '93', 'SW', '5'),
@@ -251,12 +241,9 @@ INSERT INTO `Y2023`(data, temperatura, pressione, umidita, `direzione-vento`, `k
     ('2023-03-10 9:00:00', '13', '974.3',  '95', 'NE', '2'),
     ('2023-03-14 9:00:00', '14', '979.4',  '71', 'NW', '5'),
     ('2023-03-16 9:00:00', '11', '983.9',  '41', 'SW', '0'),
-    ('2023-03-17 9:00:00', '12', '988.3',  '55', 'NE', '5'),
-=======
-INSERT INTO `y2023`(data, temperatura, pressione, umidita, `direzione-vento`, `km-h`) VALUES     	
->>>>>>> d32c0ee8073a54633e242374f39fbac59adff8ed
-		('2023-03-25 09:00','14','961.4','95','NE','26'),		
-		('2023-03-26 09:00','9','978.8','58','SE','11'),
+    ('2023-03-17 9:00:00', '12', '988.3',  '55', 'NE', '5'),	
+		('2023-03-25 09:00',  '14', '961.4',  '95', 'NE', '26'),		
+		('2023-03-26 09:00',  '9',  '978.8',  '58', 'SE', '11'),
     ('2023-03-27 9:00:00', '12', '989.7',  '63', 'NE', '0'),
     ('2023-03-28 9:00:00', '12', '973.5',  '74', 'NE', '27'), 
     ('2023-03-29 9:00:00', '13', '960.1',  '94', 'NE', '13'),

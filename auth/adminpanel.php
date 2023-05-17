@@ -63,6 +63,9 @@
             <h1>Benvenuto <?php echo $username?></h1>
             <p>Auth level: <?php 
             switch($authlevel) {
+                case "superadmin":
+                    echo "Super Amministratore";
+                    break;
                 case "admin":
                     echo "Amministratore";
                     break;
@@ -131,7 +134,7 @@
                 <input type="submit" value="Print">
             </form>
             
-            <?php if($authlevel < 2):?>
+            <?php if($authlevel == 'admin' || $authlevel == 'superadmin'):?>
                 <form action="adminpanel.php" method="post" class="insert-form">
                     <h2>Crea nuovo account</h2>    
                     <?php
@@ -141,8 +144,8 @@
                     <input type="text" name="username" id="username" placeholder="username" required> <br>
                     <input type="text" name="password" id="password" placeholder="password" required> <br>
                     <select name="authlevel" id="authlevel">
-                        <option value="2">Operatore</option>
-                        <?php if($authlevel == 0) echo '<option value="1">Amministratore</option><option value="0">Super Amministratore</option>';?>
+                        <option value="operatore">Operatore</option>
+                        <?php if($authlevel == 'admin') echo '<option value="admin">Amministratore</option><option value="superadmin">Super Amministratore</option>';?>
                     </select>
                     <input type="hidden" name="operation" value="createUser">
                     <input type="submit" value="Crea">
@@ -150,7 +153,7 @@
 
             <?php 
                 endif;
-                if($authlevel == 0):    
+                if($authlevel == 'superadmin'):    
             ?>
 
                 <form target="_blank" action="executeSQL.php" method="POST" class="insert-form">
