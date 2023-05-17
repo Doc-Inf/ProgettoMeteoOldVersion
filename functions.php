@@ -57,4 +57,8 @@
         $data = new DateTime($date);
         return $data->format("d-m-Y") . " ore: " . $data->format("H:i:s"); 
     }
+
+    function closeTab(){
+        echo "<script>window.close()</script>";
+    }
 ?>

@@ -20,7 +20,7 @@ class MysqliConnection implements DB{
     public function getConnection(){
         $con = new mysqli($this->hostname,$this->username, $this->password,$this->dbname,$this->port);
         if ($con->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
+            die("Connection failed: " . $con->connect_error);
         } 
         return $con;
     }
@@ -48,10 +48,10 @@ class MysqliConnection implements DB{
         return $res;            
     }
 
-    public function dmlCommand(string $sql, $params=[]) { // `
+    public function dmlCommand(string $sql, $param=[]) { // `
         $con = $this->getConnection();
         $result = -1;
-        if(count($params)>0){
+        if(count($param)>0){
             $stmt = $con->prepare($sql);
             $result = $stmt->execute($params);    
             $stmt->close();            

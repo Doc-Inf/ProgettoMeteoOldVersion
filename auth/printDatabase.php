@@ -40,25 +40,52 @@
                 <table class="print-table">
                     <tr>
                         <?php
+                            $dbname = getConfig()->database->dbname;
+                            if(count($db->query("SHOW TABLES where Tables_in_$dbname LIKE '$_GET[table]';")) == 0) {
+                                die("<p>Tabella non trovata</p>");
+                            }
                             $res = $db->query("SELECT * FROM `".$_GET["table"]."`;");
                             if(count($res)>0){
                                 foreach ($res[0] as $key => $value) {
                                     echo "<th>$key</th>";
                                 }
+                                echo "<th>Modifica</th>";
+                                echo "<th>Cancella</th>";
                             }                            
+
                         ?>
                     </tr>
-                    <?php
-                        foreach ($res as $key => $value) {
-                            echo "<tr>";
-                            foreach($value as $kkey => $vvalue) {
-                                echo "<td>$vvalue</td>";
-                            }
-                            echo "</tr>";
-                        }
+                        <?php
+                            if(count($res)>0){
+                                for ($i=0; $i<count($res); ++$i) {
+                                    echo "<tr>";
+                                    $thisFilePath = __FILE__;
+                                    foreach($res[$i] as $key => $value) {
+                                        $data = urlencode(json_encode($value));
+                                        echo "<td>$value</td>";
+                                    }
+                                    echo <<<ITEM
+                                        <form action="edit.php" method="POST">
+                                            <input type="hidden" name="table" value="$_GET[table]">
+                                            <td>
+                                            <button style='color: black;' type="submit" name="data" value="$data">Modifica</button>
+                                            </td>
+                                        </form>
+                                        <form action="executeSQL.php" method="post">
+                                            <input type="hidden" name="fromwhere" value="printDatabase.php">
+                                            <input type="hidden" name="table" value="$_GET[table]">
+                                            <td>
+                                                <button style='color: black;' type="submit" name="sql" value="DELETE FROM $_GET[table] WHERE id = $value[id]"'>Cancella</button>
+                                            </td>
+                                        </form>
+                                    ITEM;
+                                    echo "</tr>";
+                                }
+                            }    
                         ?>
-                </table>
+                </table>          
             </div>
         </div>
     </body>
+>>>>>>> development
 </html>

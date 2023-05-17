@@ -191,10 +191,13 @@ table, th, tr, td {
     width: 90rem;
 }
 
-@media screen and (max-width:650px){
+@media screen and (max-width:999px){
     .log{
-        width: 90%;
+        width: 95%;
     }
+}
+
+@media screen and (max-width:650px){
     .insert-form{
         width: 75%;
     }
@@ -213,9 +216,6 @@ table, th, tr, td {
 
 @media screen and (max-width:460px){
 
-    .log{
-        width: 95%;
-    }
     .insert-form{
         width: 85%;
         padding: 0.5rem;
