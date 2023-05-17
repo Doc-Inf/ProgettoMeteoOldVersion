@@ -52,6 +52,20 @@ body{
     -webkit-text-fill-color: transparent;
 }
 
+p.descrizione{
+    max-width:90%;
+    display:block;
+    text-shadow: 0.1rem 0.1rem 0.2rem #00000077;
+    text-align:justify;
+    font-size:2rem;
+    margin:auto;
+}
+
+h2.scuola{
+    font-family: 'Charm', serif;
+    font-size: 4rem;
+}
+
 .importante{
     color:#FF0000;
 }
@@ -94,6 +108,10 @@ video{
 }
 
 /* chi siamo */
+
+.link{
+    width: 80%;
+}
 
 .sfondOscurato{
     background-color: #33333333;
@@ -173,7 +191,7 @@ video{
     border:0.5rem solid #FFFFFF33;
 }
 
-.subTimeLineDescription h2,h3,h4{
+.subTimeLineDescription h3,p{
     margin: 0.3rem;
 }
 
@@ -207,7 +225,7 @@ video{
     display: flex;
     flex-direction: column;
     width: 45%;
-    height: 32rem;
+    height: 20rem;
 }
 
 #partecipanti>.spazio{
@@ -791,6 +809,10 @@ input:hover{
     .benvenuto{
         margin: 10%;
         font-size: 1.5rem;
+    }
+
+    p.descrizione{
+        font-size: 1.4rem;
     }
 
     .sottoSpazio1 img{

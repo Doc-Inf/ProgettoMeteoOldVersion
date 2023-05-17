@@ -6,11 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Storico</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Charm">
 </head>
 <body id="chiSiamo" onresize="miniSchermo()">
     
@@ -35,12 +34,21 @@
         ?>
     </nav>
 
+    <h2 class="scuola noiSiamo">
+        ITIS G. Vallauri di Velletri
+    </h2>
+
+    <p class="descrizione">
+        Questo progetto è stato sviluppato per rendere fruibile i dati raccolti dalle rilevazioni della nostra stazione meteorologica in modo semplice e veloce, attraverso il Web.
+        Per la creazione della piattaforma, il reperimento e la catalogazione dei dati hanno lavorato gruppi di studenti provenienti dalle classi 3F, 5e e 5G nell'a.s. 2022/2023
+    </p>
+
     <div class="plusInfo noiSiamo">
         <h2 class="benvenuto">
             Per maggiori informazioni sulla scuola:
         </h2>
 
-        <a href="https://www.itisvallauri.edu.it">
+        <a href="https://www.itisvallauri.edu.it" class="link">
             <h2 class="benvenuto">| Sito della Scuola |</h2>
         </a>
     </div>
@@ -48,7 +56,7 @@
     <!-- mappa -->
 
     <h2 class="benvenuto noiSiamo"> 
-        Posizione della Scuola: 
+        Qui è dove ci troviamo: 
     </h2>
 
     <div class="google-maps">
@@ -57,30 +65,30 @@
 
     <div id="max" class="spazio sfondotrasparente sfondOscurato">
         <div class="sottoSpazio1">
-            <h2 class="benvenuto">
+            <h2 class="scuola benvenuto">
                 La Storia della scuola
             </h2>
             <hr>
-            <h2 class="storia">
+            <p class="storia">
                 La scuola viene istituita nell' A. S. 1960 /61 come succursale dell'I.T.I.S. "E. Fermi" di Roma all'epoca esistevano solo tre sezioni: la sezione A di 37 alunni la sezione B di 37 alunni la sezione C di 39 alunni le quali erano seguite dal Prof. Diana Umberto. il quale è stato il coordinatore con la partecipazione dell' I.T.I.S. E. Fermi di Roma per l' avvio e la gestione iniziale della scuola. Tutti i comuni a sud di Roma come ad esempio i Castelli , Colleferro ecc. insieme ad alcuni comuni della provincia di Latina, fino a giungere a Terracina, rappresentano il bacino d 'utenza dell' attuale I.T.I.S. "Giancarlo Vallauri" di Velletri. Inizialmente l'Istituto si appoggiò presso l' I.T.C.G. "Cesare Battisti" , per passare poi dal palazzo comunale ad una villetta non troppo distante l'ospedale di Velletri. Nel mese di novembre dell'anno 1965 l'I.T.I.S. Vallauri, si trasferì definitivamente presso la sede attuale di via Salvo D' Acquisto. Nell' A. S. 1968 / 69 divenne istituto autonomo e prese per l'appunto il nome dell' ingegnere "Giancarlo Vallauri". Dalla sua autonomia ad oggi, più di cinquemila sono stati gli studenti diplomati. Questo perché il numero delle sezioni e degli alunni è progressivamente cresciuto nel corso del tempo; fino a raggiungere, un numero complessivo di 53 classi, 14 di esse sono state ospitate nella sede staccata di via Paolina a Velletri. La scuola dispone inoltre di diversi laboratori, dove gli alunni possono predisporre numerose esperienze. Al tempo stesso, dopo l'entrata in vigore dei bacini di utenza, (DISTRETTO N°39/42) si è precisata e definita l'area geografica dell'I.T.I.S. "G. Vallauri": gli allievi provengono ,infatti, prevalentemente da Lariano, Genzano, Albano, Ariccia, Lanuvio, Cecchina, S.Maria delle Mole, Castel Gandolfo, Ciampino, Cisterna e Artena oltre che , come ovvio, dalla stessa Velletri. Alla iniziale specializzazione in Elettronica Industriale si sono affiancati, più di recente nuovi corsi (INFORMATICA e LICEO SCIENTIFICO TECNOLOGICO), ciò nell'intento di rispondere con sempre maggiore efficacia alla domanda e alle legittime esigenze del mondo del lavoro che, alla scuola chiede un continuo sforzo di aggiornamento per adeguare i futuri periti all'apprendimento e all'uso delle nuove tecnologie.
-            </h2>
+            </p>
             <div class="timeLine">
                 <h2 class="benvenuto">---Time Line-></h2>
                 <div class="subTimeLine">
                     <div class="subTimeLineDescription">
-                        <h4>Settembre 1960</h4>
+                        <p>Settembre 1960</p>
                         <h2>Fondazione della scuola</h2>
-                        <h3>La scuola viene istituita nell' A. S. 1960 /61 come succursale dell'I.T.I.S. "E. Fermi" di Roma all'epoca esistevano solo tre sezioni.</h3>
+                        <p>La scuola viene istituita nell' A. S. 1960 /61 come succursale dell'I.T.I.S. "E. Fermi" di Roma all'epoca esistevano solo tre sezioni.</p>
                     </div>
                     <div class="subTimeLineDescription">
-                        <h4>Novembre 1965</h4>
+                        <p>Novembre 1965</p>
                         <h2>Trasferimento sede</h2>
-                        <h3>Nel mese di novembre dell'anno 1965 l'I.T.I.S. Vallauri, si trasferì definitivamente presso la sede attuale di via Salvo D' Acquisto.</h3>
+                        <p>Nel mese di novembre dell'anno 1965 l'I.T.I.S. Vallauri, si trasferì definitivamente presso la sede attuale di via Salvo D' Acquisto.</p>
                     </div>
                     <div class="subTimeLineDescription">
-                        <h4>Settembre 1968</h4>
+                        <p>Settembre 1968</p>
                         <h2>Ridenominazione istituto</h2>
-                        <h3>Nell' A. S. 1968 / 69 divenne istituto autonomo e prese per l'appunto il nome dell' ingegnere "Giancarlo Vallauri".</h3>
+                        <p>Nell' A. S. 1968 / 69 divenne istituto autonomo e prese per l'appunto il nome dell' ingegnere "Giancarlo Vallauri".</p>
                     </div>
                 </div>
             </div>
@@ -100,35 +108,37 @@
             </h2>
             <hr>
             <img id="scuola1" src="../IMG/scuola1.jpg" alt="IMG-scuola">
-            <h2 class="storia">
+            <p class="storia">
                 La scuola viene istituita nell' A. S. 1960 /61 come succursale dell'I.T.I.S. "E. Fermi" di Roma all'epoca esistevano solo tre sezioni: la sezione A di 37 alunni la sezione B di 37 alunni la sezione C di 39 alunni le quali erano seguite dal Prof. Diana Umberto. il quale è stato il coordinatore con la partecipazione dell' I.T.I.S. E. Fermi di Roma per l' avvio e la gestione iniziale della scuola. Tutti i comuni a sud di Roma come ad esempio i Castelli , Colleferro ecc. insieme ad alcuni comuni della provincia di Latina, fino a giungere a Terracina, rappresentano il bacino d 'utenza dell' attuale I.T.I.S. "Giancarlo Vallauri" di Velletri.
-            </h2>
+            </p>
             <img id="scuola2" src="../IMG/scuola2.jpg" alt="IMG-scuola">
-            <h2 class="storia">
+            <p class="storia">
                 Inizialmente l'Istituto si appoggiò presso l' I.T.C.G. "Cesare Battisti" , per passare poi dal palazzo comunale ad una villetta non troppo distante l'ospedale di Velletri. Nel mese di novembre dell'anno 1965 l'I.T.I.S. Vallauri, si trasferì definitivamente presso la sede attuale di via Salvo D' Acquisto. Nell' A. S. 1968 / 69 divenne istituto autonomo e prese per l'appunto il nome dell' ingegnere "Giancarlo Vallauri". Dalla sua autonomia ad oggi, più di cinquemila sono stati gli studenti diplomati. Questo perché il numero delle sezioni e degli alunni è progressivamente cresciuto nel corso del tempo; fino a raggiungere, un numero complessivo di 53 classi, 14 di esse sono state ospitate nella sede staccata di via Paolina a Velletri. La scuola dispone inoltre di diversi laboratori, dove gli alunni possono predisporre numerose esperienze. Al tempo stesso, dopo l'entrata in vigore dei bacini di utenza, (DISTRETTO N°39/42) si è precisata e definita l'area geografica dell'I.T.I.S. "G. Vallauri": gli allievi provengono ,infatti, prevalentemente da Lariano, Genzano, Albano, Ariccia, Lanuvio, Cecchina, S.Maria delle Mole, Castel Gandolfo, Ciampino, Cisterna e Artena oltre che , come ovvio, dalla stessa Velletri. Alla iniziale specializzazione in Elettronica Industriale si sono affiancati, più di recente nuovi corsi (INFORMATICA e LICEO SCIENTIFICO TECNOLOGICO), ciò nell'intento di rispondere con sempre maggiore efficacia alla domanda e alle legittime esigenze del mondo del lavoro che, alla scuola chiede un continuo sforzo di aggiornamento per adeguare i futuri periti all'apprendimento e all'uso delle nuove tecnologie.
-            </h2>
+            </p>
             <div class="timeLine">
                 <h2 class="benvenuto">---Time Line-></h2>
                 <div class="subTimeLine">
                     <div class="subTimeLineDescription">
-                        <h4>Settembre 1960</h4>
+                        <p>Settembre 1960</p>
                         <h2>Fondazione della scuola</h2>
-                        <h3>La scuola viene istituita nell' A. S. 1960 /61 come succursale dell'I.T.I.S. "E. Fermi" di Roma all'epoca esistevano solo tre sezioni.</h3>
+                        <p>La scuola viene istituita nell' A. S. 1960 /61 come succursale dell'I.T.I.S. "E. Fermi" di Roma all'epoca esistevano solo tre sezioni.</p>
                     </div>
                     <div class="subTimeLineDescription">
-                        <h4>Novembre 1965</h4>
+                        <p>Novembre 1965</p>
                         <h2>Trasferimento sede</h2>
-                        <h3>Nel mese di novembre dell'anno 1965 l'I.T.I.S. Vallauri, si trasferì definitivamente presso la sede attuale di via Salvo D' Acquisto.</h3>
+                        <p>Nel mese di novembre dell'anno 1965 l'I.T.I.S. Vallauri, si trasferì definitivamente presso la sede attuale di via Salvo D' Acquisto.</p>
                     </div>
                     <div class="subTimeLineDescription">
-                        <h4>Settembre 1968</h4>
+                        <p>Settembre 1968</p>
                         <h2>Ridenominazione istituto</h2>
-                        <h3>Nell' A. S. 1968 / 69 divenne istituto autonomo e prese per l'appunto il nome dell' ingegnere "Giancarlo Vallauri".</h3>
+                        <p>Nell' A. S. 1968 / 69 divenne istituto autonomo e prese per l'appunto il nome dell' ingegnere "Giancarlo Vallauri".</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <div></div>
 
     <div id="partecipanti">
 
@@ -157,31 +167,31 @@
                 <hr>
                 
                 <h5 class="benvenuto">
-                    Somma Francesco [Back-End, Front-End, Database]
+                    Boaretto Lorenzo
                 </h5>
                 
                 <h5 class="benvenuto">
-                    Fonti Luca [Back-End, Front-End, Database]
-                </h5>
-                
-                <h5 class="benvenuto">     
-                    Boaretto Lorenzo [Back-End, Front-End, Grafica]
+                    Cipolla Emilio
                 </h5>
                 
                 <h5 class="benvenuto">
-                    Cipolla Emilio [Front-end, Grafica]
+                    Fonti Luca    
                 </h5>
                 
                 <h5 class="benvenuto">
-                    Pietrosanti Francesco [Front-End, Grafica, Presentazione]
+                    Fruncillo Carmine
                 </h5>
                 
                 <h5 class="benvenuto">
-                    Imbastari Riccardo [Grafica, Presentazione]
+                    Imbastari Riccardo
                 </h5>
                 
                 <h5 class="benvenuto">
-                    Fruncillo Carmine [Idee]
+                    Pietrosanti Francesco
+                </h5>
+                
+                <h5 class="benvenuto">
+                    Somma Francesco 
                 </h5>
             </div>
 
@@ -193,31 +203,35 @@
                 <hr>
                 
                 <h5 class="benvenuto">
-                    . []
+                    Bastianelli Gabriele
                 </h5>
                 
                 <h5 class="benvenuto">
-                    . []
+                    Bastianelli Tommaso
                 </h5>
                 
                 <h5 class="benvenuto">     
-                    . []
+                    Crespi Edoardo
                 </h5>
                 
                 <h5 class="benvenuto">
-                    . []
+                    Masi Gabriele
                 </h5>
                 
                 <h5 class="benvenuto">
-                    . []
+                    Mattoccia Gianmarco
                 </h5>
                 
                 <h5 class="benvenuto">
-                    . []
+                    Miu Tivriu Sebastian Marco
                 </h5>
                 
                 <h5 class="benvenuto">
-                    . []
+                    Nsia Emmanuel
+                </h5>
+
+                <h5 class="benvenuto">
+                    Ranieri Francesco
                 </h5>
             </div>
 

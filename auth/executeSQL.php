@@ -21,7 +21,15 @@
 
             if(!isset($_SESSION['loginUID']) || !isset($_POST)) redirect("../auth/adminpanel.php");
             if(isset($_POST["editStuff"])) {
-                goto zero;
+                $sql = "UPDATE `$_POST[table]` SET ";
+                unset($_POST["editStuff"]);
+                $table = $_POST['table'];
+                unset($_POST['table']);
+                foreach ($_POST as $key => $value) {
+                    $sql .= !strcmp(array_key_last($_POST), $key)?"`$key` = '$value' WHERE id = $_POST[id];":"`$key` = '$value', ";
+                }
+                $_POST['sql'] = $sql;
+                $_POST["fromwhere"] = "printDatabase.php"; $_POST['table'] = $table;
             }
             if(!isset($_POST['sql'])) die("no query");
         ?>
@@ -40,7 +48,7 @@
 
         <div class="log fill-div">
             <h1>Risultato della query</h1>
-            <?php
+            <?php                
                 echo $_POST['sql']."<br>";
                 $res = $db->getConnection()->query($_POST['sql']);
                 if(!$res)
@@ -48,19 +56,8 @@
 
                 $res = $res->fetchAll();
                 if(isset($_POST["fromwhere"])){
+                    echo "<h2>REDIRECTING</h2>";
                     redirect($_POST["fromwhere"]."?table=$_POST[table]");
-                }
-                zero:
-                if(isset($_POST["editStuff"])) {
-                    $sql = "UPDATE TABLE $_POST[table] SET ";
-                    unset($_POST["editStuff"]);
-                    unset($_POST['table']);
-                    foreach ($_POST as $key => $value) {
-                        $sql .= "`$key` = `$value`, ";
-                        echo "$key => $value <br>";
-                    }
-                    echo $sql;
-                    $res = [];
                 }
                 if(!array_key_exists(0, $res)):
                     die("Operation successful");

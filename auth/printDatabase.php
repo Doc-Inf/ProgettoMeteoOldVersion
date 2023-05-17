@@ -40,6 +40,10 @@
                 <table class="print-table">
                     <tr>
                         <?php
+                            $dbname = getConfig()->database->dbname;
+                            if(count($db->query("SHOW TABLES where Tables_in_$dbname LIKE '$_GET[table]';")) == 0) {
+                                die("<p>Tabella non trovata</p>");
+                            }
                             $res = $db->query("SELECT * FROM `".$_GET["table"]."`;");
                             if(count($res)>0){
                                 foreach ($res[0] as $key => $value) {
@@ -48,6 +52,7 @@
                                 echo "<th>Modifica</th>";
                                 echo "<th>Cancella</th>";
                             }                            
+
                         ?>
                     </tr>
                         <?php
