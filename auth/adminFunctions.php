@@ -26,8 +26,8 @@
         }  
         $username = $_POST['username'];
         $password = hash("sha256", $_POST['password']);
-        $authlevel = $_POST['authlevel'];
-        $db->dmlCommand("INSERT INTO login(username, password, authlevel) value('$username', '$password', '$authlevel');");
+        $ruolo = $_POST['ruolo'];
+        $db->dmlCommand("INSERT INTO login(username, password, ruolo) value('$username', '$password', '$ruolo');");
         $_POST['admin'] = "done"; 
     }
 

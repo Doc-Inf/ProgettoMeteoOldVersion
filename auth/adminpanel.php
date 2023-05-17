@@ -27,7 +27,7 @@
                 $id = $res['id'];
                 $username = $res["username"];
                 $lastLogin = $res["last_access"];
-                $authlevel = $res["ruolo"];
+                $ruolo = $res["ruolo"];
             } 
             if(isset($_POST['operation'])){
                 switch($_POST['operation']){
@@ -62,7 +62,7 @@
         <div class="log admin-div">
             <h1>Benvenuto <?php echo $username?></h1>
             <p>Auth level: <?php 
-            switch($authlevel) {
+            switch($ruolo) {
                 case "superadmin":
                     echo "Super Amministratore";
                     break;
@@ -120,7 +120,7 @@
                  
                         for($i=0;$i<count($res);++$i){
                             $table = $res[$i];
-                            if($table == "login" && $authlevel != "admin"){
+                            if($table == "login" && $ruolo != "admin"){
                                 continue;
                             }    
                             foreach ($res[$i] as $key => $value) {                                                    
@@ -134,7 +134,7 @@
                 <input type="submit" value="Print">
             </form>
             
-            <?php if($authlevel == 'admin' || $authlevel == 'superadmin'):?>
+            <?php if($ruolo == 'admin' || $ruolo == 'superadmin'):?>
                 <form action="adminpanel.php" method="post" class="insert-form">
                     <h2>Crea nuovo account</h2>    
                     <?php
@@ -143,9 +143,10 @@
                     ?> 
                     <input type="text" name="username" id="username" placeholder="username" required> <br>
                     <input type="text" name="password" id="password" placeholder="password" required> <br>
-                    <select name="authlevel" id="authlevel">
+                    <select name="ruolo" id="ruolo">
                         <option value="operatore">Operatore</option>
-                        <?php if($authlevel == 'admin') echo '<option value="admin">Amministratore</option><option value="superadmin">Super Amministratore</option>';?>
+                        <?php if($ruolo == 'admin') echo '<option value="admin">Amministratore</option>';?>
+                        <?php if($ruolo == 'superadmin') echo '<option value="superadmin">Super Amministratore</option>';?>
                     </select>
                     <input type="hidden" name="operation" value="createUser">
                     <input type="submit" value="Crea">
@@ -153,7 +154,7 @@
 
             <?php 
                 endif;
-                if($authlevel == 'superadmin'):    
+                if($ruolo == 'superadmin'):    
             ?>
 
                 <form target="_blank" action="executeSQL.php" method="POST" class="insert-form">

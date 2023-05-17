@@ -64,6 +64,7 @@
                                         $data = urlencode(json_encode($value));
                                         echo "<td>$value</td>";
                                     }
+                                    $id = $res[$i]['id'];
                                     echo <<<ITEM
                                         <form action="edit.php" method="POST">
                                             <input type="hidden" name="table" value="$_GET[table]">
@@ -75,7 +76,7 @@
                                             <input type="hidden" name="fromwhere" value="printDatabase.php">
                                             <input type="hidden" name="table" value="$_GET[table]">
                                             <td>
-                                                <button style="color: black;" type="submit" name="sql" value="DELETE FROM $_GET[table] WHERE id = $res[$i]['id']">Cancella</button>
+                                                <button style="color: black;" type="submit" name="sql" value="DELETE FROM $_GET[table] WHERE id = $id">Cancella</button>
                                             </td>
                                         </form>
                                     ITEM;
