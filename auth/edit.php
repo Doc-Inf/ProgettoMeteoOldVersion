@@ -41,7 +41,7 @@
             ?>
             <form action="executeSQL.php" method="post" class="insert-form">
                 <?php
-                    $data = $db->query("SELECT * FROM " . $_POST['table'] . " WHERE id='" . $data ."'");
+                    $data = $db->query("SELECT * FROM " . $_POST['table'] . " WHERE id='" . $_POST['id'] ."'");
                     foreach ($data[0] as $key => $value) {
                         echo <<<ITEM
                         <label for="$key">$key</label>

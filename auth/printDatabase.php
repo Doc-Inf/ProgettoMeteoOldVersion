@@ -69,7 +69,7 @@
                                         <form action="edit.php" method="POST">
                                             <input type="hidden" name="table" value="$_GET[table]">
                                             <td>
-                                            <button style='color: black;' type="submit" name="data" value="$data">Modifica</button>
+                                            <button style='color: black;' type="submit" name="id" value="$id">Modifica</button>
                                             </td>
                                         </form>
                                         <form action="executeSQL.php" method="post">
