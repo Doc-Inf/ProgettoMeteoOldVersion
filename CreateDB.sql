@@ -215,7 +215,7 @@ INSERT INTO `y2022`(data, temperatura, pressione, umidita, `direzione-vento`, `k
 
 SELECT 'INSERIMENTO Dati rilevazioni Y2022 Completato' as '';
 
-INSERT INTO `Y2023`(data, temperatura, pressione, umidita, `direzione-vento`, `km-h`) VALUES     	
+INSERT INTO `y2023`(data, temperatura, pressione, umidita, `direzione-vento`, `km-h`) VALUES     	
     ('2023-01-09 09:00','14','961.4','95','NE','26'),		
     ('2023-01-10 09:00','9','978.8','58','SE','11'),
     ('2023-01-13 9:00:00', '12', '989.7',  '63', 'NE', '0'),
