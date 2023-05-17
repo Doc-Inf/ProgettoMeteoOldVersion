@@ -145,7 +145,7 @@
                     <input type="text" name="password" id="password" placeholder="password" required> <br>
                     <select name="ruolo" id="ruolo">
                         <option value="operatore">Operatore</option>
-                        <?php if($ruolo == 'admin') echo '<option value="admin">Amministratore</option>';?>
+                        <?php if($ruolo == 'admin' || $ruolo == 'superadmin') echo '<option value="admin">Amministratore</option>';?>
                         <?php if($ruolo == 'superadmin') echo '<option value="superadmin">Super Amministratore</option>';?>
                     </select>
                     <input type="hidden" name="operation" value="createUser">
