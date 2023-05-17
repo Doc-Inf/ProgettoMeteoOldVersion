@@ -78,7 +78,7 @@
         $year = $date->format("Y");
         
         $date->setTime(23,9,4); // set time at last measure for day Hour:minute:second 
-        $sql = "SELECT * FROM `Y$year` WHERE DATE(data)='".$date->format('Y-m-d')."';";           
+        $sql = "SELECT * FROM `y$year` WHERE DATE(data)='".$date->format('Y-m-d')."';";           
         $res = $db->query($sql);            
         
 
@@ -178,7 +178,7 @@
             if($dataSelezionata != null){
                 $endDate = $dataSelezionata;
             }else{
-                $endDate = new DateTime( $db->query("SELECT MAX(data) as data FROM `Y$year`")[0]["data"] );
+                $endDate = new DateTime( $db->query("SELECT MAX(data) as data FROM `y$year`")[0]["data"] );
             }
             
             $startDate = (new DateTime($endDate->format("Y-m-d H:i:s")))->modify("-31 day");
@@ -187,7 +187,7 @@
             $giornoMese = [];
             for($i=30;$i>=0;--$i){
                 $currentDay = (new DateTime($endDate->format("Y-m-d H:i:s")))->modify("-$i day");
-                $res = $db->query("SELECT AVG(umidita) as umiditaMedia, AVG(temperatura) as temperaturaMedia FROM `Y$year` WHERE DATE(data)= '".$currentDay->format('Y-m-d')."';");
+                $res = $db->query("SELECT AVG(umidita) as umiditaMedia, AVG(temperatura) as temperaturaMedia FROM `y$year` WHERE DATE(data)= '".$currentDay->format('Y-m-d')."';");
                 $temperaturaMensile[] = $res[0]['temperaturaMedia'];
                 
                 $umiditaMensile[] = $res[0]['umiditaMedia'];

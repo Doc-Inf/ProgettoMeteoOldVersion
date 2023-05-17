@@ -102,7 +102,7 @@
     <?php        
         $date = new DateTime(date('Y/m/d H:i:s'));
         $year = $date->format("Y");
-        $res = $db->query("SELECT * FROM `Y$year` where data = (SELECT MAX(data) FROM `Y$year`);")[0];
+        $res = $db->query("SELECT * FROM `y$year` where data = (SELECT MAX(data) FROM `y$year`);")[0];
     ?>
   
     <script type="text/javascript" defer>
@@ -110,7 +110,7 @@
         const giorniSet = ["Lun","Mar","Mer","Gio","Ven","Sab","Dom"];
         let conta = [];       
         let giorno = <?php 
-            $endDate = new DateTime( $db->query("SELECT MAX(data) as data FROM `Y$year`")[0]["data"] );
+            $endDate = new DateTime( $db->query("SELECT MAX(data) as data FROM `y$year`")[0]["data"] );
             echo ( $endDate->format("N")-1);
         ?>; 
         let dataMisurazione = "<?php echo formatDate($res['data']); ?>";        
@@ -127,7 +127,7 @@
             $umiditaSettimanale = [];
             for($i=6;$i>=0;--$i){
                 $currentDay = (new DateTime($endDate->format("Y-m-d H:i:s")))->modify("-$i day");
-                $res = $db->query("SELECT AVG(umidita) as umiditaMedia, AVG(temperatura) as temperaturaMedia FROM `Y$year` WHERE data= '".$currentDay->format('Y/m/d H:i:s')."';");
+                $res = $db->query("SELECT AVG(umidita) as umiditaMedia, AVG(temperatura) as temperaturaMedia FROM `y$year` WHERE data= '".$currentDay->format('Y/m/d H:i:s')."';");
                 $giorni[] = $currentDay;
                 $temperaturaSettimanale[] = $res[0]['temperaturaMedia'];
                 $umiditaSettimanale[] = $res[0]['umiditaMedia'];

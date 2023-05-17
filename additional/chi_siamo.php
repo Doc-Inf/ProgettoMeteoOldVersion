@@ -201,11 +201,7 @@
                     [Scientifico]
                 </h2>
                 <hr>
-                
-                <h5 class="benvenuto">
-                    Bastianelli Gabriele
-                </h5>
-                
+                            
                 <h5 class="benvenuto">
                     Bastianelli Tommaso
                 </h5>
@@ -217,22 +213,7 @@
                 <h5 class="benvenuto">
                     Masi Gabriele
                 </h5>
-                
-                <h5 class="benvenuto">
-                    Mattoccia Gianmarco
-                </h5>
-                
-                <h5 class="benvenuto">
-                    Miu Tivriu Sebastian Marco
-                </h5>
-                
-                <h5 class="benvenuto">
-                    Nsia Emmanuel
-                </h5>
-
-                <h5 class="benvenuto">
-                    Ranieri Francesco
-                </h5>
+               
             </div>
 
         </div>

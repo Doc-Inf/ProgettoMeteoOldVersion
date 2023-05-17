@@ -75,7 +75,7 @@
                                             <input type="hidden" name="fromwhere" value="printDatabase.php">
                                             <input type="hidden" name="table" value="$_GET[table]">
                                             <td>
-                                                <button style='color: black;' type="submit" name="sql" value="DELETE FROM $_GET[table] WHERE id = $value[id]"'>Cancella</button>
+                                                <button style="color: black;" type="submit" name="sql" value="DELETE FROM $_GET[table] WHERE id = $res[$i]['id']">Cancella</button>
                                             </td>
                                         </form>
                                     ITEM;
@@ -87,5 +87,5 @@
             </div>
         </div>
     </body>
->>>>>>> development
+
 </html>
