@@ -28,6 +28,7 @@
                 $username = $res["username"];
                 $lastLogin = $res["last_access"];
                 $ruolo = $res["ruolo"];
+                $_SESSION["ruolo"] = $ruolo;
             } 
             if(isset($_POST['operation'])){
                 switch($_POST['operation']){
@@ -118,15 +119,19 @@
                     <?php
                         $res = $db->query("SHOW tables;");
                  
-                        for($i=0;$i<count($res);++$i){
-                            $table = $res[$i];
-                            if($table == "login" && $ruolo != "admin"){
+                        foreach ($res as $key => $value) {
+                            $value = $value['Tables_in_meteo'];
+
+                            if($value == "login" && $ruolo == "operatore"){
                                 continue;
-                            }    
-                            foreach ($res[$i] as $key => $value) {                                                    
+                            }
+                            if(strpos($value, 'y') === 0){
+                                $value = substr($value, 1, strlen($value));
+                                echo "<option value='y$value'>$value</option>";
+                            } else {
                                 echo "<option value='$value'>$value</option>";
                             }
-                        }                        
+                        }                     
 
                     ?>
                 </select>

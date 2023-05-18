@@ -41,10 +41,21 @@
                     <tr>
                         <?php
                             $dbname = getConfig()->database->dbname;
+                            $ruolo = $_SESSION['ruolo'];
+                            if($_GET["table"] == "login" && $ruolo == "operatore") {
+                                die("<p>Non hai il permesso</p>");
+                            }
+
                             if(count($db->query("SHOW TABLES where Tables_in_$dbname LIKE '$_GET[table]';")) == 0) {
                                 die("<p>Tabella non trovata</p>");
                             }
-                            $res = $db->query("SELECT * FROM `".$_GET["table"]."`;");
+
+                            if($_GET["table"] == "login" && $ruolo == "admin") {
+                                $res = $db->query("SELECT * FROM $_GET[table] WHERE ruolo NOT LIKE 'superadmin';");
+                            } else {
+                                $res = $db->query("SELECT * FROM `".$_GET["table"]."`;");
+                            }
+                            
                             if(count($res)>0){
                                 foreach ($res[0] as $key => $value) {
                                     echo "<th>$key</th>";
