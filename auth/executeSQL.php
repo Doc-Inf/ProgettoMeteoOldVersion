@@ -26,7 +26,15 @@
                 $table = $_POST['table'];
                 unset($_POST['table']);
                 foreach ($_POST as $key => $value) {
-                    $sql .= !strcmp(array_key_last($_POST), $key)?"`$key` = '$value' WHERE id = $_POST[id];":"`$key` = '$value', ";
+                    if($table == "login" && $key == "password"){
+                        if(strlen($value) == 0) {
+                            continue;
+                        } else {
+                            $sql .= !strcmp(array_key_last($_POST), $key)?"`$key` = '".hash("sha256",$value)."' WHERE id = $_POST[id];":"`$key` = '".hash("sha256",$value)."', ";        
+                        }
+                    } else {
+                        $sql .= !strcmp(array_key_last($_POST), $key)?"`$key` = '$value' WHERE id = $_POST[id];":"`$key` = '$value', ";
+                    }
                 }
                 $_POST['sql'] = $sql;
                 $_POST["fromwhere"] = "printDatabase.php"; $_POST['table'] = $table;
