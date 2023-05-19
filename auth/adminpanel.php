@@ -118,21 +118,20 @@
                 <select name="table" id="table">
                     <?php
                         $res = $db->query("SHOW tables;");
-                 
-                        foreach ($res as $key => $value) {
-                            $value = $value['Tables_in_meteo'];
 
-                            if($value == "login" && $ruolo == "operatore"){
-                                continue;
-                            }
-                            if(strpos($value, 'y') === 0){
-                                $value = substr($value, 1, strlen($value));
-                                echo "<option value='y$value'>$value</option>";
-                            } else {
-                                echo "<option value='$value'>$value</option>";
-                            }
-                        }                     
-
+                        for($i=0; $i<count($res);++$i){
+                            foreach ($res[$i] as $key => $value) {
+                                if($value == "login" && $ruolo == "operatore"){
+                                    continue;
+                                }
+                                if(strpos($value, 'y') === 0){
+                                    $value = substr($value, 1, strlen($value));
+                                    echo "<option value='y$value'>$value</option>";
+                                } else {
+                                    echo "<option value='$value'>$value</option>";
+                                }
+                            }                     
+                        }
                     ?>
                 </select>
                 <input type="hidden" name="operation" value="printTable">
