@@ -1,0 +1,964 @@
+/* dati generali */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+*{
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #ffffffee;
+    scrollbar-width: thin;
+    scrollbar-color: #33333333 #00000000;
+}
+
+p{
+    font-family: 'Maven Pro', sans-serif;
+    text-align: center;
+}
+#vers{
+    display: flex;
+    width: 10%;
+    z-index: 1;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    margin-left: 2px;
+
+}
+#vers h6{
+    color: black;
+}
+h2{
+    text-align: center; 
+}
+body{
+    overflow: auto;
+    position: relative;
+    background-color: #FFFFFF;
+}
+
+.grafico{
+    margin-top: 6rem;
+}
+
+.grafico2{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 90%;
+    margin-top: 5rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 6rem;
+    position: relative;
+}
+
+.benvenuto{
+    text-shadow: none;
+    font-size: 2rem;
+}
+
+.specialText{
+    background: linear-gradient(#00b3ff, #0000FF);
+    background-clip: inherit;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+p.descrizione{
+    max-width:90%;
+    display:block;
+    text-shadow: 0.1rem 0.1rem 0.2rem #00000077;
+    text-align:justify;
+    font-size:2rem;
+    margin:auto;
+}
+
+h2.scuola{
+    font-family: 'Charm', serif;
+    font-size: 4rem;
+}
+
+.importante{
+    color:#FF0000;
+}
+
+/* scroll bar*/
+
+::-webkit-scrollbar {
+    width: 0.7rem;              /* width of the entire scrollbar */
+}
+  
+::-webkit-scrollbar-track {
+    background: #00000000;        /* color of the tracking area */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #33333333 ;    /* color of the scroll thumb */
+    border-radius: 2rem;       /* roundness of the scroll thumb */
+}
+
+/* sfondi */
+
+video{
+    z-index:-100;
+    position: fixed;
+    min-width: 100%;
+    min-height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.sfondo{
+    position:fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    background: linear-gradient(to bottom, #00000000 10%, #FFFFFF99 65% , #FFFFFFEE 85%);
+    min-width: 100%;
+    min-height: 100%;
+}
+
+/* chi siamo */
+
+.link{
+    width: 80%;
+}
+
+.sfondOscurato{
+    background-color: #33333333;
+    backdrop-filter: blur(5px);
+    border-radius: 1rem;
+}
+
+.plusInfo{
+    margin: auto;
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    background-color: #33333333;
+    align-items: center;
+    border-radius: 1rem;
+}
+
+.plusInfo a{
+    text-decoration: none;
+}
+
+.plusInfo a :hover{
+    background: linear-gradient(#00b3ff33, #0000FF77);
+    background-clip: inherit;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.sfondotrasparente{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#max{
+    display: flex;
+}
+
+#mini{
+    display: none;
+}
+
+.storia{
+    text-shadow: none;
+    font-size: 1.5rem;
+    text-align: justify;
+}
+
+.timeLine{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+}
+
+.subTimeLine{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.subTimeLineDescription{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    text-align: center;
+    border-radius: 1rem;
+    width: 30%;
+    overflow:clip;
+    overflow-y: scroll;
+    height: 15rem;
+    border:0.5rem solid #FFFFFF33;
+}
+
+.subTimeLineDescription h3,p{
+    margin: 0.3rem;
+}
+
+.subTimeLineDescription h3{
+    text-align: justify;
+}
+
+#partecipanti{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#partecipanti .spazio{
+    margin: 1rem;
+}
+
+#sottoPartecipanti{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-bottom: 5rem;
+}
+
+#sottoPartecipanti>.spazio{
+    overflow:clip;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    height: 20rem;
+}
+
+#partecipanti>.spazio{
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    margin-bottom: 3rem;
+}
+
+#partecipanti hr{
+    width: 75%;
+}
+
+.spazio{
+    border-radius: 1rem;
+    margin-top: 8rem;
+    margin-bottom: 8rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.spazio>h5{
+    margin-top: 0.4rem;
+    margin-bottom: 0.4rem;
+    text-align: center;
+}
+
+.sottoSpazio1{
+    width: 68%;
+}
+
+.sottoSpazio2{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 27%;
+}
+
+.sottoSpazio2 img{
+    margin-bottom: 8rem;
+    border-radius: 0.5rem;
+    width: 97%;
+    float: left;
+}
+
+.noiSiamo{
+    margin-top: 10rem;
+}
+
+.google-maps{
+    display: flex;
+    margin: auto;
+    margin-top:4rem;
+    height: 50rem;
+    width: 90%;
+    justify-content: center;
+}
+.google-maps>iframe{
+    width: 100%;
+    height: 100%;
+}
+
+/* tendina laterale 
+
+.tendalaterale{
+    display:flex;
+    position: fixed;
+    top: 1.5;
+    right: 0;
+    z-index: 1500;
+    width: 2rem;
+    height:5rem;
+    animation: anim;
+    animation-duration: 1.25s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-direction: alternate;
+    border-left:0.2rem solid #FFF;
+    border-top:0.2rem solid #FFF;
+    border-bottom:0.2rem solid #FFF;
+    border-bottom-left-radius:0.5rem ;
+    border-top-left-radius:0.5rem ;
+}
+
+
+
+#tendinalat{
+    display: flex;
+    position:relative;
+    margin: 0px;
+    height: 5rem;
+    width: 1.8rem;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#tendinalat>input{
+    position: absolute;
+    z-index:2001;
+    display: flex;
+    margin: 0px;
+    padding:0px;
+    width: 1.8rem;
+    height:5rem;
+    border:0px;
+    background-color:#00000000;
+    color: #000FFF;
+}
+
+#tendacharts{
+    display: none;
+    position:fixed;
+    right: 0;
+    top: 1.5;
+    z-index: 2000;
+    width: 75%;
+    height: 80%;
+    background-color: #FFFFFFCC;
+    border:0.3rem solid #FFF;
+    border-bottom-left-radius: 1rem;
+
+}
+*/
+
+/* barra superiore di navigazione */
+
+.navigazione{
+    animation: anim;
+    animation-duration: 1.25s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-direction: alternate;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    flex-direction: row;
+    justify-content:space-around;
+    width:70%;
+    margin: auto;
+    margin-top: 0.5rem;
+    border-radius: 1rem;
+    padding: 0.4rem;
+    align-items: center;
+}
+.navigazione a{
+    text-decoration:none;
+}
+.navigazione a:hover{
+    color:#33333355;
+}
+
+/* sezione principale (sotto la zona di navigazione) */
+
+.titolo{
+    height: 5rem;
+    margin-top: 6rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.titolo div{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #33333333;
+    backdrop-filter: blur(5px);
+    border-radius: 1rem;
+    height: 100%;
+    width: 20%;
+}
+
+.titolo h2{
+    margin: 0.7rem;
+}
+
+.sottotitolo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+/* lista dove vengono disposti i dati, e per la ricerca */
+
+.pacchetto{
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    width: 40%;
+}
+
+.page{
+    position: relative;
+    margin:auto;
+    border-radius: 1rem;
+    background-color: #33333311;
+    backdrop-filter: blur(5px);
+    display: flex;
+    width:90%;
+    flex-direction: row;
+    margin-top: 2rem;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+#infolarghezza1{
+
+    position: relative;
+    margin: auto;
+    width: 60%;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    
+    animation: anim;
+    animation-duration: 1.25s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-direction: alternate;
+    
+}
+
+#infolarghezza1 h3{
+    margin: 0.5rem;
+    margin-bottom: 0.2rem;
+}
+
+.bordo{
+    border-bottom: 0.2rem solid #33333333;
+}
+
+
+#zona h6{
+    width: 11rem;
+    border-radius: 0.3rem;
+    padding: 0.2rem;
+    margin: 1;
+    background-color: #33333322;
+}
+
+#spazio{
+    width: 100%;
+    height: 4rem;
+    background-color: #00000000;
+}
+
+.info{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+}
+.info h3{
+    text-align: center;
+    word-wrap: break-word;
+    
+    width: 100%;
+    padding: 0.4rem;
+}
+
+.info h6{
+    
+    text-align: center;
+    width: 100%;
+    padding: 0.4rem;
+}
+
+.info div{
+    
+    display: flex;
+    flex-direction: row;
+    
+    width: 75%;
+    
+    
+    margin-bottom: 0.9rem;
+}
+
+.info div div{
+    display: block; 
+    width: 50%;
+    
+  
+}
+.info div div h3{
+    margin: auto;
+    margin-top: 2rem;
+}
+
+.zonaricerca{
+    display: flex;
+    flex-direction:column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 40%;
+}
+
+.ricerca{
+    display: flex;
+    flex-direction: column;
+    height: 10rem;
+    width: 100%;
+    border-right: 0.3rem solid #ffffffee;
+    border-left: 0.3rem solid #ffffffee;
+    border-top: 0.3rem solid #ffffffee;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    margin: 0px;
+}
+
+/* personalizzazioni per i form*/
+
+input{
+    background-color:#FFFFFF99;
+    border-radius: 0.4rem;
+    border: 0.1rem solid #ffffffee;
+    height: 2rem;
+    width: 40%;
+    
+}
+input:hover{
+    background-color: #6a65b8;
+    border-radius: 0.4rem;
+    border: 0.1rem solid #ffffffee;
+    
+}
+
+#rec{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color:#FFFFFF99;
+    border-radius: 0.4rem;
+    border: 0.1rem solid #ffffffee;
+    height: 2rem;
+    width: 40%;
+}
+
+#rec:hover{
+    background-color: #6a65b8;
+    border-radius: 0.4rem;
+    border: 0.1rem solid #ffffffee;
+}
+
+.formale{
+    border-radius: 1rem;
+    animation: anim;
+    animation-duration: 1.25s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-direction: alternate;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 75%;
+    padding: 0.4rem;
+    margin: 1rem;
+}
+
+.log{
+    display: flex;
+    width: 70%;
+    margin:auto;
+    flex-direction: column;
+    background-color: #33333333;
+    backdrop-filter: blur(5px);
+    margin-top: 7rem;
+    border-radius: 1rem;
+    height: 32rem;
+}
+.log .formale{
+    display: flex;
+    flex-direction:column;
+    margin: auto;
+}
+.log-body{
+    background-color: #FFF;
+    height: 100rem;
+}
+.log input{
+    margin-bottom: 2rem;
+}
+.log p{
+    text-align:center;
+}
+
+
+
+
+
+
+
+
+/* animazioni */
+
+@keyframes anim{
+    0%{
+        background: linear-gradient(90deg, #1003fa44 0%, #358aebCc 100%);
+    }
+    5%{
+        background: linear-gradient(90deg, #180ded44 0%, #358aebCc 100%);
+    }
+    10%{
+        background: linear-gradient(90deg, #2218e655 0%, #358aebCC 100%);
+    }
+    15%{
+        background: linear-gradient(90deg, #241add55 0%, #358aebCC 100%);
+    }
+    20%{
+        background: linear-gradient(90deg, #3129c966 0%, #358aebCC 100%);
+    }
+    25%{
+        background: linear-gradient(90deg, #3029bc66 0%, #358aebCC 100%);
+    }
+    30%{
+        background: linear-gradient(90deg, #352ec677 0%, #358aebCC 100%);
+    }
+    35%{
+        background: linear-gradient(90deg, #332cb277 0%, #358aebCC 100%);
+    }
+    40%{
+        background: linear-gradient(90deg, #322ca288 0%, #358aebCC 100%);
+    }
+    45%{
+        background: linear-gradient(90deg, #2e299288 0%, #358aebCC 100%);
+    } 
+    50%{
+        background: linear-gradient(90deg, #28239199 0%, #358aebCC 100%);
+    }
+    55%{
+        background: linear-gradient(90deg, #26208a99 0%, #358aebCC 100%);
+    } 
+    60%{
+        background: linear-gradient(90deg, #221c88aa 0%, #358aebCC 100%);
+    }
+    65%{
+        background: linear-gradient(90deg, #231e83aa 0%, #358aebCC 100%);
+    } 
+    70%{
+        background: linear-gradient(90deg, #1c1683bb 0%, #358aebCC 100%);
+    }
+    75%{
+        background: linear-gradient(90deg, #151084bb 0%, #358aebCC 100%);
+    }
+    80%{
+        background: linear-gradient(90deg, #130d85cc 0%, #358aebCC 100%);
+    }
+    85%{
+        background: linear-gradient(90deg, #120c88cc 0%, #358aebCC 100%);
+    }
+    90%{
+        background: linear-gradient(90deg, #110b87DD 0%, #358aebCC 100%);
+    }
+    95%{
+        background: linear-gradient(90deg, #0f088cdd 0%, #358aebCC 100%);
+    }
+    100%{
+        background: linear-gradient(90deg, #0a047bEE 0%, #358aebCC 100%);
+    }
+    
+}
+
+/* media per la parte responsive */
+
+@media screen and (max-width:1400px){
+    .sfondotrasparente{
+        flex-direction: column;
+    }
+    .sottoSpazio1{
+        width: 80%;
+    }
+
+    .sottoSpazio1 img{
+        width: 40%;
+        border-radius: 1rem;
+        shape-outside: margin-box;
+        clear:both;
+    }
+
+    .sottoSpazio1 p{
+        overflow: visible;
+    }
+
+    #scuola1{
+        margin: 2rem;
+        margin-bottom: 0.3rem;
+        margin-left:0;
+        float: left;
+    }
+
+    #scuola2{
+        margin: 1rem;
+        margin-right:0;
+        float: right;
+    }
+
+    .storia{
+        font-size: 1.7rem;
+    }
+}
+
+@media screen and (max-width:999px){
+
+    #sottoPartecipanti{
+        flex-direction: column;
+    }
+    
+    #sottoPartecipanti>.spazio{
+        width: 95%;
+    }
+    
+    .sottoSpazio1{
+        width: 95%;
+    }
+
+    .timeLine{
+        margin-top: 1.5rem;
+    }
+
+    .grafico{
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .page{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .titolo div{
+        width: 32%;
+    }
+
+    .titolo h1{
+        margin: 0.5rem;
+    }
+
+    .pacchetto{
+        margin-top: 1.3rem;
+        width: 100%;
+    }
+
+    #infolarghezza1{
+        width:90%;
+    }
+
+    .zonaricerca{
+        width: 100%;
+    }
+    .info div{
+        flex-direction: column;
+        width: 100%;
+    }
+    .info div div{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:650px){
+
+    .log{
+        width: 85%;
+    }
+
+    .formale{
+        width: 80%;
+    }
+
+    .formale input{
+        width: 45%;
+    }
+
+    .grafico{
+        margin-top: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .benvenuto{
+        margin: 10%;
+        font-size: 1.5rem;
+    }
+
+    p.descrizione{
+        font-size: 1.4rem;
+    }
+
+    .sottoSpazio1 img{
+        width: 50%;
+    }
+
+    .noiSiamo{
+        margin-top: 5rem;
+    }
+
+    .plusInfo{
+        width:95%;
+    }
+
+    .storia{
+        margin: 2%;
+        font-size: 1rem;
+    }
+    #storia0 img{
+        float: left;
+    }
+    #storia1 img{
+        float: right;
+    }
+    body{
+        margin:0px;
+    }
+
+    .subTimeLine{
+        flex-direction: column;
+    }
+
+    .subTimeLineDescription{
+        width: 75%;
+        height: 10rem;
+        margin-bottom: 2rem;
+    }
+
+    .navigazione{
+        border-top-left-radius:0px ;
+        border-top-right-radius:0px ;
+        border-bottom-left-radius:1rem ;
+        border-bottom-right-radius:1rem ;
+        width: 100%;
+        height: 2.5rem;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .titolo{
+        height: auto;
+        flex-direction: column;
+    }
+
+    .titolo div{
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 1rem;
+        height: 5rem;
+        width: 95%;
+    }
+
+    .titolo>div>h2{
+        margin: 0.1rem;
+    }
+
+    .page{
+        flex-direction: column;
+    }
+
+    .pacchetto{
+        width: 100%;
+    }
+
+    #infolarghezza1{
+        width:90%;
+    }
+
+    .zonaricerca{
+        width: 100%;
+    }
+
+    .info div{
+        flex-direction: column;
+        width: 100%;
+    }
+    .info div div{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:460px){
+    
+    .subTimeLineDescription{
+        height: 12.5rem;
+    }
+
+    .log{
+        width: 90%;
+    }
+
+    .formale input{
+        width: 40%;
+    }
+
+    .spazio{
+        padding-top: 0px;
+    }
+
+    .spazio>h2{
+        font-size: 1.2rem;
+        margin: 0.3rem;
+    }
+}
+
+@media screen and (max-width:350px){
+    .formale{
+        width: 90%;
+    }
+
+    .titolo>div>h2{
+        margin: 0px;
+    }
+
+    .titolo h1{
+        font-size: 2.3rem;
+    }
+
+    .noiSiamo{
+        font-size: 2rem;
+    }
+
+    .page{
+        border-bottom: 2rem;
+    }
+}
