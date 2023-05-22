@@ -18,15 +18,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Charm">
 </head>
-<body id="chiSiamo" onresize="miniSchermo()">
-    <?php 
-        //include '';
-    ?>
+<body id="chiSiamo" onresize="miniSchermo()"> 
     <!-- sfondi -->
-    <script>
-        let wtStatus= <?php echo $wtStatus?>
-        console.log("variabile super"+wtStatus);
-    </script>
     <video src="../img/nuvoleP.mp4" autoplay loop muted></video>
     <div class="sfondo"></div>
 
@@ -56,33 +49,60 @@
     </p>
 
     <div class="plusInfo noiSiamo">
-        <h2 class="benvenuto">
+        <h2>
             Per maggiori informazioni sulla scuola:
         </h2>
 
         <a href="https://www.itisvallauri.edu.it" class="link">
-            <h2 class="benvenuto">| Sito della Scuola |</h2>
+            <h2>| Sito della Scuola |</h2>
         </a>
     </div>
 
     <!-- mappa -->
 
-    <h2 class="benvenuto noiSiamo"> 
-        Qui è dove ci troviamo: 
-    </h2>
+    <div class="sfondOscurato barraInfo" onclick="mappaOpen()">
+        <h2> Scopri di più sulla nostra scuola!</h2>
+        <span id="infoArrow1" class="material-symbols-outlined">
+            navigate_next
+        </span>
+    </div>
 
-    <div class="google-maps">
+   
+    <div id="mappaInfo" class="google-maps">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2980.0416283289383!2d12.775315615372184!3d41.676444379238745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13259d347813ad7d%3A0x973948516bf1e19f!2sITIS%20Giancarlo%20Vallauri!5e0!3m2!1sit!2sit!4v1678190626853!5m2!1sit!2sit" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 
-    <div id="max" class="spazio sfondotrasparente sfondOscurato">
+
+    <!-- scuola info -->
+
+    <div class="sfondOscurato barraInfo" onclick="infoOpen()">
+        <h2> Scopri di più sulla nostra scuola!</h2>
+        <span id="infoArrow2" class="material-symbols-outlined">
+            navigate_next
+        </span>
+    </div>
+    
+    <div id="infoZone">
+
+    </div>
+
+    <!-- storia -->
+
+    <div class="sfondOscurato barraInfo" onclick="storiaOpen()">
+        <h2> Scopri di più sulla storia della scuola!</h2>
+        <span id="infoArrow3" class="material-symbols-outlined">
+            navigate_next
+        </span>
+    </div>
+
+    <div id="max" class="sfondotrasparente sfondOscurato">
         <div class="sottoSpazio1">
             <h2 class="scuola benvenuto">
-                La nostra scuola
+                La Storia della scuola
             </h2>
             <hr>
             <p class="storia">
-                Benvenuti noi siamo studenti presso l'istituto tecnico I.T.I.S Vallauri di Velletri, una scuola in grado di fornire un ottima preparazione ai nostri studenti. La scuola offre un percorso di studi che permette una volta terminato, di proseguire con un istruzione universitaria, in caso opposto i nostri studenti escono con un ottima preparazione per il mondo lavorativo. Qui nel nostro istituto durante il triennio gli studenti svolgeranno materie prettamente inerenti al percorso come : informatica-telecomunicazioni per l'indirizzo informatico e elettronica-robotica per l'indirizzo elettronico. L'apprendimento sarà reso completo dai nostri laboratori dove gli studenti avranno a disposizione computer e componenti elettronico-robotiche a seconda dell'indirizzo, abbiamo 9 laboratori che vanno da materie del biennio, come chimica e fisica, a materie del triennio come informatica e robotica, qui sopra riportati ci sono il laboratorio di informatica e di sistemi elettronici. Inoltre la nostra scuola offre non solo formazione tecnica, ma tra i percorsi di studio è possibile scegliere il liceo scientifico scienze applicate, scegliendo un percorso prettamente orientato al proseguimento degli studi.
+                La scuola viene istituita nell' A. S. 1960 /61 come succursale dell'I.T.I.S. "E. Fermi" di Roma all'epoca esistevano solo tre sezioni: la sezione A di 37 alunni la sezione B di 37 alunni la sezione C di 39 alunni le quali erano seguite dal Prof. Diana Umberto. il quale è stato il coordinatore con la partecipazione dell' I.T.I.S. E. Fermi di Roma per l' avvio e la gestione iniziale della scuola. Tutti i comuni a sud di Roma come ad esempio i Castelli , Colleferro ecc. insieme ad alcuni comuni della provincia di Latina, fino a giungere a Terracina, rappresentano il bacino d 'utenza dell' attuale I.T.I.S. "Giancarlo Vallauri" di Velletri. Inizialmente l'Istituto si appoggiò presso l' I.T.C.G. "Cesare Battisti" , per passare poi dal palazzo comunale ad una villetta non troppo distante l'ospedale di Velletri. Nel mese di novembre dell'anno 1965 l'I.T.I.S. Vallauri, si trasferì definitivamente presso la sede attuale di via Salvo D' Acquisto. Nell' A. S. 1968 / 69 divenne istituto autonomo e prese per l'appunto il nome dell' ingegnere "Giancarlo Vallauri". Dalla sua autonomia ad oggi, più di cinquemila sono stati gli studenti diplomati. Questo perché il numero delle sezioni e degli alunni è progressivamente cresciuto nel corso del tempo; fino a raggiungere, un numero complessivo di 53 classi, 14 di esse sono state ospitate nella sede staccata di via Paolina a Velletri. La scuola dispone inoltre di diversi laboratori, dove gli alunni possono predisporre numerose esperienze. Al tempo stesso, dopo l'entrata in vigore dei bacini di utenza, (DISTRETTO N°39/42) si è precisata e definita l'area geografica dell'I.T.I.S. "G. Vallauri": gli allievi provengono ,infatti, prevalentemente da Lariano, Genzano, Albano, Ariccia, Lanuvio, Cecchina, S.Maria delle Mole, Castel Gandolfo, Ciampino, Cisterna e Artena oltre che , come ovvio, dalla stessa Velletri. Alla iniziale specializzazione in Elettronica Industriale si sono affiancati, più di recente nuovi corsi (INFORMATICA e LICEO SCIENTIFICO TECNOLOGICO), ciò nell'intento di rispondere con sempre maggiore efficacia alla domanda e alle legittime esigenze del mondo del lavoro che, alla scuola chiede un continuo sforzo di aggiornamento per adeguare i futuri periti all'apprendimento e all'uso delle nuove tecnologie.
             </p>
             <div class="timeLine">
                 <h2 class="benvenuto">---Time Line-></h2>
@@ -106,27 +126,26 @@
             </div>
         </div>
         <div class="sottoSpazio2">
-            <img src="../img/lab-sistemi-elettronici01-1.jpg" alt="IMG-scuola">
-            <img src="../img/lab-sistemi03.jpg" alt="IMG-scuola">
+            <img src="../img/scuola1.jpg" alt="IMG-scuola">
+            <img src="../img/scuola2.jpg" alt="IMG-scuola">
         </div>
     </div>
 
     <!------------------------------------------------------------------------------->
     
-    <div id="mini" class="spazio sfondotrasparente sfondOscurato">
+    <div id="mini" class="sfondotrasparente sfondOscurato">
         <div class="sottoSpazio1">
             <h2 class="benvenuto">
-                La nostra scuola
+                La Storia della scuola
             </h2>
             <hr>
-            
-            <p class="storia" id="storia0">
-            Benvenuti noi siamo studenti presso l'istituto tecnico I.T.I.S Vallauri di Velletri, una scuola in grado di fornire un ottima preparazione ai nostri studenti. La scuola offre un percorso di studi che permette una volta terminato, di proseguire con un istruzione universitaria, in caso opposto i nostri studenti escono con un ottima preparazione per il mondo lavorativo.<img src="../img/lab-sistemi-elettronici01-1.jpg" alt="IMG-scuola"> Qui nel nostro istituto durante il triennio gli studenti svolgeranno materie prettamente inerenti al percorso come : informatica-telecomunicazioni per l'indirizzo informatico e elettronica-robotica per l'indirizzo elettronico.
-
+            <img id="scuola1" src="../IMG/scuola1.jpg" alt="IMG-scuola">
+            <p class="storia">
+                La scuola viene istituita nell' A. S. 1960 /61 come succursale dell'I.T.I.S. "E. Fermi" di Roma all'epoca esistevano solo tre sezioni: la sezione A di 37 alunni la sezione B di 37 alunni la sezione C di 39 alunni le quali erano seguite dal Prof. Diana Umberto. il quale è stato il coordinatore con la partecipazione dell' I.T.I.S. E. Fermi di Roma per l' avvio e la gestione iniziale della scuola. Tutti i comuni a sud di Roma come ad esempio i Castelli , Colleferro ecc. insieme ad alcuni comuni della provincia di Latina, fino a giungere a Terracina, rappresentano il bacino d 'utenza dell' attuale I.T.I.S. "Giancarlo Vallauri" di Velletri.
             </p>
-            
-            <p class="storia" id="storia1">
-            L'apprendimento sarà reso completo dai nostri laboratori dove gli studenti avranno a disposizione computer e componenti elettronico-robotiche a seconda dell'indirizzo,<img src="../img/lab-sistemi03.jpg" alt="IMG-scuola"> abbiamo 9 laboratori che vanno da materie del biennio, come chimica e fisica, a materie del triennio come informatica e robotica, qui sopra riportati ci sono il laboratorio di informatica e di sistemi elettronici. Inoltre la nostra scuola offre non solo formazione tecnica, ma tra i percorsi di studio è possibile scegliere il liceo scientifico scienze applicate, scegliendo un percorso prettamente orientato al proseguimento degli studi.
+            <img id="scuola2" src="../IMG/scuola2.jpg" alt="IMG-scuola">
+            <p class="storia">
+                Inizialmente l'Istituto si appoggiò presso l' I.T.C.G. "Cesare Battisti" , per passare poi dal palazzo comunale ad una villetta non troppo distante l'ospedale di Velletri. Nel mese di novembre dell'anno 1965 l'I.T.I.S. Vallauri, si trasferì definitivamente presso la sede attuale di via Salvo D' Acquisto. Nell' A. S. 1968 / 69 divenne istituto autonomo e prese per l'appunto il nome dell' ingegnere "Giancarlo Vallauri". Dalla sua autonomia ad oggi, più di cinquemila sono stati gli studenti diplomati. Questo perché il numero delle sezioni e degli alunni è progressivamente cresciuto nel corso del tempo; fino a raggiungere, un numero complessivo di 53 classi, 14 di esse sono state ospitate nella sede staccata di via Paolina a Velletri. La scuola dispone inoltre di diversi laboratori, dove gli alunni possono predisporre numerose esperienze. Al tempo stesso, dopo l'entrata in vigore dei bacini di utenza, (DISTRETTO N°39/42) si è precisata e definita l'area geografica dell'I.T.I.S. "G. Vallauri": gli allievi provengono ,infatti, prevalentemente da Lariano, Genzano, Albano, Ariccia, Lanuvio, Cecchina, S.Maria delle Mole, Castel Gandolfo, Ciampino, Cisterna e Artena oltre che , come ovvio, dalla stessa Velletri. Alla iniziale specializzazione in Elettronica Industriale si sono affiancati, più di recente nuovi corsi (INFORMATICA e LICEO SCIENTIFICO TECNOLOGICO), ciò nell'intento di rispondere con sempre maggiore efficacia alla domanda e alle legittime esigenze del mondo del lavoro che, alla scuola chiede un continuo sforzo di aggiornamento per adeguare i futuri periti all'apprendimento e all'uso delle nuove tecnologie.
             </p>
             <div class="timeLine">
                 <h2 class="benvenuto">---Time Line-></h2>
@@ -153,79 +172,81 @@
 
     <div></div>
 
+    <!-- partecipanti & crediti -->
+
     <div id="partecipanti">
 
         <div class="spazio sfondOscurato">
-            <h2 class="benvenuto"> 
+            <h2> 
                 Partecipanti al Progetto
                 [Professori]
             </h2>
             <hr>
 
-            <h5 class="benvenuto specialText">
+            <p class="benvenuto specialText">
                 Bonifazi Andrea [Informatica]
-            </h5>
-            <h5 class="benvenuto specialText">
+            </p>
+            <p class="benvenuto specialText">
                 Rispoli Maria [Scienze e Biologia]
-            </h5>
+            </p>
         </div>
 
         <div id="sottoPartecipanti">
 
             <div class="spazio sfondOscurato">
-                <h2 class="benvenuto"> 
+                <h2> 
                     Partecipanti al Progetto
                     [Informatica]
                 </h2>
                 <hr>
                 
-                <h5 class="benvenuto">
+                <p class="benvenuto">
                     Boaretto Lorenzo
-                </h5>
+                </p>
                 
-                <h5 class="benvenuto">
+                <p class="benvenuto">
                     Cipolla Emilio
-                </h5>
+                </p>
                 
-                <h5 class="benvenuto">
+                <p class="benvenuto">
                     Fonti Luca    
-                </h5>
+                </p>
                 
-                <h5 class="benvenuto">
+                <p class="benvenuto">
                     Fruncillo Carmine
-                </h5>
+                </p>
                 
-                <h5 class="benvenuto">
+                <p class="benvenuto">
                     Imbastari Riccardo
-                </h5>
+                </p>
                 
-                <h5 class="benvenuto">
+                <p class="benvenuto">
                     Pietrosanti Francesco
-                </h5>
+                </p>
                 
-                <h5 class="benvenuto">
+                <p class="benvenuto">
                     Somma Francesco 
-                </h5>
+                </p>
             </div>
 
             <div class="spazio sfondOscurato">
-            <h2 class="benvenuto"> 
+            <h2> 
                     Partecipanti al Progetto
                     [Scientifico]
                 </h2>
                 <hr>
                             
-                <h5 class="benvenuto">
+                <p class="benvenuto">
                     Bastianelli Tommaso
-                </h5>
+                </p>
                 
-                <h5 class="benvenuto">     
+                <p class="benvenuto">     
                     Crespi Edoardo
-                </h5>
+                </p>
                 
-                <h5 class="benvenuto">
+                <p class="benvenuto">
                     Masi Gabriele
-                </h5>
+                </p>
                
             </div>
 
@@ -233,19 +254,63 @@
     </div>
 
     <script type="text/javascript" defer>
-        miniSchermo();
+        let mappaOn = false;
+        let infoOn = false;
+        let storiaOn = false;
+
+        function mappaOpen(){
+            if(mappaOn == false){
+                mappaOn = true;
+                document.getElementById("infoArrow1").innerHTML = "keyboard_arrow_down";
+                document.querySelector("#mappaInfo").style.display="flex";
+            }else{
+                mappaaOn = false;
+                document.getElementById("infoArrow1").innerHTML = "navigate_next";
+                document.querySelector("#mappaInfo").style.display="none";
+            }
+        }
+
+        function infoOpen(){
+            if(infoOn == false){
+                infoOn = true;
+                document.getElementById("infoArrow2").innerHTML = "keyboard_arrow_down";
+                document.querySelector("#infoZone").style.display="flex";
+            }else{
+                infoOn = false;
+                document.getElementById("infoArrow2").innerHTML = "navigate_next";
+                document.querySelector("#infoZone").style.display="none";
+            }
+        }
+
+        function storiaOpen(){
+            if(storiaOn == false){
+                storiaOn = true;
+                document.getElementById("infoArrow3").innerHTML = "keyboard_arrow_down";
+            }else{
+                storiaOn = false;
+                document.getElementById("infoArrow3").innerHTML = "navigate_next";
+            }
+            miniSchermo();
+        }
+
         function miniSchermo(){
             let x = document.getElementById("chiSiamo");
             let y;
             y = x.clientWidth;
-            if(y < 1400){
-                document.querySelector("#max").style.display="none";
-                document.querySelector("#mini").style.display="flex";
+            if(storiaOn == true){
+                if(y < 1400){
+                    document.querySelector("#max").style.display="none";
+                    document.querySelector("#mini").style.display="flex";
+                }else{
+                    document.querySelector("#max").style.display="flex";
+                    document.querySelector("#mini").style.display="none";
+                }
             }else{
-                document.querySelector("#max").style.display="flex";
+                document.querySelector("#max").style.display="none";
                 document.querySelector("#mini").style.display="none";
             }
         }
+        miniSchermo();
     </script>
 </body>
 </html>

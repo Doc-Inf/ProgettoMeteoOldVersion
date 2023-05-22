@@ -133,12 +133,16 @@ video{
 
 .plusInfo{
     margin: auto;
-    width: 65%;
+    width: 95%;
     display: flex;
     flex-direction: column;
     background-color: #33333333;
     align-items: center;
     border-radius: 1rem;
+}
+
+.plusInfo h2{
+    font-size: 2rem;
 }
 
 .plusInfo a{
@@ -159,12 +163,43 @@ video{
     justify-content: space-evenly;
 }
 
+#mappaInfo{
+    display: none;
+}
+
+#infoZone{
+    display: none;
+}
+
+.barraInfo{
+    display: flex;
+    margin-top: 7rem;
+    margin-right: auto;
+    margin-left: auto;
+    width: 95%;
+    height: 5rem;
+    text-align: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.barraInfo h2{
+    font-size: 2rem;
+    width: 95%;
+}
+
+.barraInfo span{
+    width: 3%;
+}
+
 #max{
     display: flex;
+    margin-top: 1rem;
 }
 
 #mini{
     display: none;
+    margin-top: 1rem;
 }
 
 .storia{
@@ -216,6 +251,7 @@ video{
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    margin-top: 7rem;
 }
 
 #partecipanti .spazio{
@@ -259,10 +295,16 @@ video{
     padding-bottom: 1.5rem;
 }
 
-.spazio>h5{
+.spazio>h2{
+    font-size: 2.2rem;
+    margin: 0.3rem;
+}
+
+.spazio>p{
     margin-top: 0.4rem;
     margin-bottom: 0.4rem;
     text-align: center;
+    font-weight: bold;
 }
 
 .sottoSpazio1{
@@ -299,68 +341,6 @@ video{
     width: 100%;
     height: 100%;
 }
-
-/* tendina laterale 
-
-.tendalaterale{
-    display:flex;
-    position: fixed;
-    top: 1.5;
-    right: 0;
-    z-index: 1500;
-    width: 2rem;
-    height:5rem;
-    animation: anim;
-    animation-duration: 1.25s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-    animation-direction: alternate;
-    border-left:0.2rem solid #FFF;
-    border-top:0.2rem solid #FFF;
-    border-bottom:0.2rem solid #FFF;
-    border-bottom-left-radius:0.5rem ;
-    border-top-left-radius:0.5rem ;
-}
-
-
-
-#tendinalat{
-    display: flex;
-    position:relative;
-    margin: 0px;
-    height: 5rem;
-    width: 1.8rem;
-    justify-content: space-around;
-    align-items: center;
-}
-
-#tendinalat>input{
-    position: absolute;
-    z-index:2001;
-    display: flex;
-    margin: 0px;
-    padding:0px;
-    width: 1.8rem;
-    height:5rem;
-    border:0px;
-    background-color:#00000000;
-    color: #000FFF;
-}
-
-#tendacharts{
-    display: none;
-    position:fixed;
-    right: 0;
-    top: 1.5;
-    z-index: 2000;
-    width: 75%;
-    height: 80%;
-    background-color: #FFFFFFCC;
-    border:0.3rem solid #FFF;
-    border-bottom-left-radius: 1rem;
-
-}
-*/
 
 /* barra superiore di navigazione */
 
@@ -840,6 +820,23 @@ input:hover{
         width:95%;
     }
 
+    .plusInfo h2{
+        font-size: 1.5rem;
+    }
+
+    .barraInfo{
+        margin-top: 1.5rem;
+    }
+
+    .barraInfo h2{
+        font-size: 1.5rem;
+        width: 85%;
+    }
+    
+    .barraInfo span{
+        width: 10%;
+    }
+
     .storia{
         margin: 2%;
         font-size: 1rem;
@@ -927,6 +924,10 @@ input:hover{
         width: 90%;
     }
 
+    #sottoPartecipanti>.spazio{
+        height: 13rem;
+    }
+
     .formale input{
         width: 40%;
     }
@@ -935,13 +936,17 @@ input:hover{
         padding-top: 0px;
     }
 
+     .spazio>p{
+        font-size: 1.3rem;
+    }
+
     .spazio>h2{
-        font-size: 1.2rem;
+        font-size: 1.7rem;
         margin: 0.3rem;
     }
 }
 
-@media screen and (max-width:350px){
+@media screen and (max-width:365px){
     .formale{
         width: 90%;
     }
@@ -960,5 +965,9 @@ input:hover{
 
     .page{
         border-bottom: 2rem;
+    }
+
+     .spazio>p{
+        font-size: 1.2rem;
     }
 }

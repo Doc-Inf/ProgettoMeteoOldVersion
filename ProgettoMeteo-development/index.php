@@ -20,7 +20,7 @@
 
 <body onresize="drawChart()">
     <div id="vers">
-        <h6>vs 1.1</h6>
+        <h6>SnapShot 1.2</h6>
     </div>
     <!-- sfondi -->
 
@@ -28,22 +28,6 @@
     <video src="./img/Nuvole - 8599.mp4" autoplay loop muted></video> 
     </div>
     <div class="sfondo"></div>
-
-    <!-- tendina laterale (ancora da testase se tenere o meno) -->
-    <!--
-    <div class="tendalaterale">
-        <form action="" id="tendinalat">
-            <span class="material-symbols-outlined">
-                Monitor_Heart
-            </span>
-            
-            <input id="inputend" type="button" value="" onclick="tenda()" >
-        </form>
-    </div>
-    <div id="tendacharts">
-    </div>
-
-    -->
 
     <!-- barra superiore di navigazione -->
 
@@ -138,7 +122,7 @@
             $umiditaSettimanale = [];
             for($i=6;$i>=0;--$i){
                 $currentDay = (new DateTime($endDate->format("Y-m-d H:i:s")))->modify("-$i day");
-                $res = $db->query("SELECT AVG(umidita) as umiditaMedia, AVG(temperatura) as temperaturaMedia FROM `y$year` WHERE data= '".$currentDay->format('Y/m/d H:i:s')."';");
+                $res = $db->query("SELECT AVG(umidita) as umiditaMedia, AVG(temperatura) as temperaturaMedia FROM `y$year` WHERE DATE(data)= '".$currentDay->format('Y-m-d')."';");
                 $giorni[] = $currentDay;
                 $temperaturaSettimanale[] = $res[0]['temperaturaMedia'];
                 $umiditaSettimanale[] = $res[0]['umiditaMedia'];
@@ -313,6 +297,7 @@
 
             }
         }
+        cambiaIcona();
         function cambiaSfondo(){
             switch(wtStatus){
                 case "cloudy": {
@@ -336,10 +321,7 @@
                 }
                 
             }
-
-            
         }
-        cambiaIcona();
         cambiaSfondo();
 
         function cambiaInfo(){
