@@ -178,7 +178,7 @@
             if($dataSelezionata != null){
                 $endDate = $dataSelezionata;
             }else{
-                $endDate = new DateTime( $db->query("SELECT MAX(data) as data FROM `y$year`")[0]["data"] );
+                $endDate = new DateTime(getLastDay($db));
             }
             
             $startDate = (new DateTime($endDate->format("Y-m-d H:i:s")))->modify("-31 day");
@@ -187,10 +187,11 @@
             $giornoMese = [];
             for($i=30;$i>=0;--$i){
                 $currentDay = (new DateTime($endDate->format("Y-m-d H:i:s")))->modify("-$i day");
-                $res = $db->query("SELECT AVG(umidita) as umiditaMedia, AVG(temperatura) as temperaturaMedia FROM `y$year` WHERE DATE(data)= '".$currentDay->format('Y-m-d')."';");
-                $temperaturaMensile[] = $res[0]['temperaturaMedia'];
+                $res= getData($db,$currentDay->format("Y-m-d H:i:s"));
+                //$res = $db->query("SELECT AVG(umidita) as umiditaMedia, AVG(temperatura) as temperaturaMedia FROM `y$year` WHERE DATE(data)= '".$currentDay->format('Y-m-d')."';");
+                $temperaturaMensile[] = $res['temperaturaMedia'];
                 
-                $umiditaMensile[] = $res[0]['umiditaMedia'];
+                $umiditaMensile[] = $res['umiditaMedia'];
                 $giornoMese[] = $currentDay->format("M-d");
             }
             
@@ -287,5 +288,8 @@
             
         }
     </script>
+    <?php
+        $db->close();
+    ?>
 </body>
 </html>

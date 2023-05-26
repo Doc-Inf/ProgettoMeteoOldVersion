@@ -310,5 +310,8 @@
         }
         cambiaInfo();
     </script>
+    <?php
+        $db->close();
+    ?>
 </body>       
 </html>
