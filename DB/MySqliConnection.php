@@ -18,11 +18,13 @@ class MysqliConnection implements DB{
     }
 
     public function getConnection(){
-        $con = new mysqli($this->hostname,$this->username, $this->password,$this->dbname,$this->port);
-        if ($con->connect_error) {
-            die("Connection failed: " . $con->connect_error);
-        } 
-        return $con;
+        if($this->con==null){
+            $this->con = new mysqli($this->hostname,$this->username, $this->password,$this->dbname,$this->port);
+            if ($this->con->connect_error) {
+                die("Connection failed: " . $con->connect_error);
+            } 
+        }      
+        return $this->con;
     }
 
     private function fetchData($resultSet){
@@ -43,25 +45,38 @@ class MysqliConnection implements DB{
             $res = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         }else{
             $res = $con->query($sql)->fetch_all(MYSQLI_ASSOC);            
-        }
-        $con->close();            
+        }              
         return $res;            
     }
 
     public function dmlCommand(string $sql, $param=[]) { // `
         $con = $this->getConnection();
         $result = -1;
-        if(count($param)>0){
-            $stmt = $con->prepare($sql);
-            $result = $stmt->execute($params);    
-            $stmt->close();            
+        $stmt = $con->prepare($sql);
+        if(count($param)>0){            
+            $result = $stmt->execute($params);                          
         }else{
-            $result = $con->query($sql);
-        }             
-        $con->close();    
+            $result = $stmt->execute();
+        }   
+        $stmt->close();          
         return $result;        
     }
 
+    public function beginTransaction(){
+        $this->con->begin_transaction();
+    }
+
+    public function commit(){
+        $this->con->commit();
+    }
+
+    public function roolback(){
+        $this->con->rollback();
+    }
+
+    public function close(){
+        $this->con->close(); 
+    }
 }
 
 

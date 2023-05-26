@@ -102,23 +102,35 @@
     <?php        
         $date = new DateTime(date('Y/m/d H:i:s'));
         $year = $date->format("Y");
-        $res = $db->query("SELECT * FROM `y$year` where data = (SELECT MAX(data) FROM `y$year`);")[0];
-    ?>
+      
+        /* 
+            SELECT r.data as'data', MAX(r.temperatura) as 'maxTemperatura', MIN(r.temperatura) as 'minTemperatura', FORMAT(AVG(r.temperatura),1) as 'temperatura', MAX(r.umidita) as 'maxUmidita', MIN(r.umidita) as 'minUmidita', FORMAT(AVG(r.umidita),1) as 'umidita', MAX(r.pressione) as 'maxPressione', MIN(r.pressione) as 'minPressione', FORMAT(AVG(r.pressione),1) as 'pressione', MAX(r.`km-h`) as 'maxVelocitaVento', MIN(r.`km-h`) as 'minVelocitaVento', FORMAT(AVG(r.`km-h`),1) as `km-h`
+            FROM  (SELECT DATE(data) as 'data', TIME(data) as 'ora',temperatura, pressione,umidita,`direzione-vento`,`km-h` FROM y2023 WHERE DATE(data) = (SELECT DATE(MAX(data)) FROM y2023) ) as r
+            GROUP BY r.data;
+
+        */
+        $lastDataDay = getLastDay($db);
+        $res = getData($db, $lastDataDay);
+
+        $endDate = $lastDataDay;
+       
+    ?>    
   
     <script type="text/javascript" defer>
         //variabili per il cambio di dati
         const giorniSet = ["Lun","Mar","Mer","Gio","Ven","Sab","Dom"];
-        let conta = [];       
+        let conta = [];   
+        
         let giorno = <?php 
-            $endDate = new DateTime( $db->query("SELECT MAX(data) as data FROM `y$year`")[0]["data"] );
-            echo ( $endDate->format("N")-1);
-        ?>; 
-        let dataMisurazione = "<?php echo formatDate($res['data']); ?>";        
-        let valoreTemperatura = <?php echo $res['temperatura']?>;
-        let valoreUmidità = <?php echo $res['umidita']?>; //al valore dell'umidità va dato un numero da 0 a 100 in base alla rispettiva %
-        let valorePressione = <?php echo $res['pressione']?>;
-        let direzioneVento = '<?php echo $res['direzione-vento']?>';
-        let velocitàVento = <?php echo $res['km-h']?>;
+                        $endDate = new DateTime($endDate);
+                        echo ( $endDate->format("N")-1);
+                    ?>; 
+        let dataMisurazione = "<?php echo formatDate($res['dataOraUltimaRilevazione']); ?>";        
+        let valoreTemperatura = <?php echo $res['temperaturaUltimaRilevazione']?>;
+        let valoreUmidità = <?php echo $res['umiditaUltimaRilevazione']?>; //al valore dell'umidità va dato un numero da 0 a 100 in base alla rispettiva %
+        let valorePressione = <?php echo $res['pressioneUltimaRilevazione']?>;
+        let direzioneVento = '<?php echo $res['direzioneVentoUltimaRilevazione']?>';
+        let velocitàVento = <?php echo $res['velocitaVentoUltimaRilevazione']?>;
 
         <?php            
             $startDate = (new DateTime($endDate->format("Y-m-d H:i:s")))->modify("-7 day");
@@ -127,10 +139,11 @@
             $umiditaSettimanale = [];
             for($i=6;$i>=0;--$i){
                 $currentDay = (new DateTime($endDate->format("Y-m-d H:i:s")))->modify("-$i day");
-                $res = $db->query("SELECT AVG(umidita) as umiditaMedia, AVG(temperatura) as temperaturaMedia FROM `y$year` WHERE data= '".$currentDay->format('Y/m/d H:i:s')."';");
+                //$res = $db->query("SELECT AVG(umidita) as umiditaMedia, AVG(temperatura) as temperaturaMedia FROM `y$year` WHERE data= '".$currentDay->format('Y/m/d H:i:s')."';");
+                $res= getData($db,$currentDay->format("Y-m-d H:i:s"));
                 $giorni[] = $currentDay;
-                $temperaturaSettimanale[] = $res[0]['temperaturaMedia'];
-                $umiditaSettimanale[] = $res[0]['umiditaMedia'];
+                $temperaturaSettimanale[] = $res['temperaturaMedia'];
+                $umiditaSettimanale[] = $res['umiditaMedia'];
             }
             
         ?>
