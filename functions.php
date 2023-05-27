@@ -80,7 +80,7 @@
         $db->dmlCommand("SET @direzioneVentoUltimaRilevazione = (SELECT `direzione-vento` FROM y$year WHERE data=@dataOraUltimaRilevazione)");
         $db->dmlCommand("SET @velocitaVentoUltimaRilevazione = (SELECT `km-h` FROM y$year WHERE data=@dataOraUltimaRilevazione)");
         $db->dmlCommand("SET @dataUltimaRilevazione = DATE(@dataOraUltimaRilevazione)");
-        $db->dmlCommand("CREATE TEMPORARY TABLE IF NOT EXISTS ultimeMisurazioni SELECT DATE(data) as 'data', TIME(data) as 'ora',temperatura, pressione,umidita,`direzione-vento` as 'direzioneVento',`km-h` as 'velocitaVento' FROM y2023 WHERE DATE(data) = @dataUltimaRilevazione;");
+        $db->dmlCommand("CREATE TEMPORARY TABLE IF NOT EXISTS ultimeMisurazioni SELECT DATE(data) as 'data', TIME(data) as 'ora',temperatura, pressione,umidita,`direzione-vento` as 'direzioneVento',`km-h` as 'velocitaVento' FROM y$year WHERE DATE(data) = @dataUltimaRilevazione;");
           
         $db->dmlCommand("SET @maxTemperatura = (SELECT MAX(temperatura) FROM ultimeMisurazioni)");
         $db->dmlCommand("SET @oraMaxTemperatura = (SELECT ora FROM ultimeMisurazioni WHERE temperatura=@maxTemperatura)");
