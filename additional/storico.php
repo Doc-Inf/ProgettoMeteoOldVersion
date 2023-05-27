@@ -62,11 +62,11 @@
     if($_POST) {
             
         function cielo($res) { // $res MUST be an array containing numeric values labeled as "umidita" and "temperatura"
-            if($res["umidita"] >= 90 && $res["temperatura"] <= 15) {
+            if($res["umiditaMedia"] >= 90 && $res["temperaturaMedia"] <= 15) {
                 return "Pioggia";
-            } else if($res["umidita"] <= 85 && $res["umidita"] >= 75 && $res["temperatura"] <= 21) {
+            } else if($res["umiditaMedia"] <= 85 && $res["umiditaMedia"] >= 75 && $res["temperaturaMedia"] <= 21) {
                 return "Cielo Nuvoloso";
-            } else if($res["umidita"] <= 50 ) {
+            } else if($res["umiditaMedia"] <= 50 ) {
                 return "Cielo Soleggiato";
             } else {
                 return "Cielo Parzialmente nuvoloso";
@@ -78,24 +78,26 @@
         $year = $date->format("Y");
         
         $date->setTime(23,9,4); // set time at last measure for day Hour:minute:second 
-        $sql = "SELECT * FROM `y$year` WHERE DATE(data)='".$date->format('Y-m-d')."';";           
-        $res = $db->query($sql);            
+        //$sql = "SELECT * FROM `y$year` WHERE DATE(data)='".$date->format('Y-m-d')."';";           
+        //$res = $db->query($sql);
+        
+        $res = getData($db, $date->format('Y-m-d'));            
         
 
-        if( $res && isset($res[0]['data'])) {     
-            $res = $res[0];
+        if( $res && isset($res['data']) && isset($res['temperaturaMedia'])) {     
             echo '<div class="page" id="zona"> 
                     <div class="pacchetto">
                         <div class="info" id="infolarghezza1">
                             <h3 class="bordo">Misurazione giornaliera</h3>
                             <h3 class="bordo">Data: '. extractDate($res['data']) .'</h3>
                             <h3 class="bordo">'.cielo($res).'</h3>
-                            <h3 class="bordo">Gradi: '.$res['temperatura'].'°</h3>
-                            <h3 class="bordo">Umidita: '.$res['umidita'].'%</h3>
-                            <h3 class="bordo">Pressione: '.$res['pressione'].' hPa</h3>
-                            <h3 class="bordo">Direzione vento: '.$res['direzione-vento'].'</h3>
-                            <h3 class="bordo">Velocità del vento: '.$res['km-h'].' Km/h</h3>
-                            <h3>Misurazione n. '.$res['id'].'<h3>                            
+                            <h3 class="bordo">Temperatura media: '.$res['temperaturaMedia'].'°</h3>
+                            <h3 class="bordo">Temperatura max: '.$res['maxTemperatura'].'° - Ore: ' . substr($res['oraMaxTemperatura'],0,5) . ' </h3>
+                            <h3 class="bordo">Temperatura min: '.$res['minTemperatura'].'° - Ore: ' . substr($res['oraMinTemperatura'],0,5) . ' </h3>
+                            <h3 class="bordo">Umidita media: '.$res['umiditaMedia'].'%</h3>
+                            <h3 class="bordo">Pressione media: '.$res['pressioneMedia'].' hPa</h3>
+                            <h3 class="bordo">Direzione vento: '.$res['direzioneMaxVento'].'</h3>
+                            <h3 class="bordo">Velocità media del vento: '.$res['mediaVelocitaVento'].' Km/h</h3>                                                      
                         </div>                        
                     </div>
                 </div>';

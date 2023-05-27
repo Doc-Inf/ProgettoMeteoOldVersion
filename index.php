@@ -92,18 +92,22 @@
                 <h3 class="bordo" id="umidità">Umidita: --0%</h3>
                 <h3 class="bordo" id="pressione">Pressione: --hPa</h3>
                 <h3 class="bordo" id="dirVento">Direzione vento: --</h3>
-                <h3 id="velVento">Velocità vento: --Km/h</h3>
+                <h3 class="bordo" id="velVento">Velocità vento: --Km/h</h3>
+                <h3 class="bordo" id="temperaturaMediaGiornaliera">Temperatura media: --°</h3>
+                <h3 class="bordo" id="temperaturaMaxGiornaliera">Temperatura max: --° - Ore: --:--</h3>
+                <h3 id="temperaturaMinGiornaliera">Temperatura min: --° - Ore: --:--</h3>
+                
             </div>
         </div>
         
         <div id="curve_chart" class="grafico"></div>
         
     </div>
-    <?php        
-        $date = new DateTime(date('Y/m/d H:i:s'));
-        $year = $date->format("Y");
-      
-        /* 
+    <?php     
+        /*    
+            $date = new DateTime(date('Y/m/d H:i:s'));
+            $year = $date->format("Y");
+             
             SELECT r.data as'data', MAX(r.temperatura) as 'maxTemperatura', MIN(r.temperatura) as 'minTemperatura', FORMAT(AVG(r.temperatura),1) as 'temperatura', MAX(r.umidita) as 'maxUmidita', MIN(r.umidita) as 'minUmidita', FORMAT(AVG(r.umidita),1) as 'umidita', MAX(r.pressione) as 'maxPressione', MIN(r.pressione) as 'minPressione', FORMAT(AVG(r.pressione),1) as 'pressione', MAX(r.`km-h`) as 'maxVelocitaVento', MIN(r.`km-h`) as 'minVelocitaVento', FORMAT(AVG(r.`km-h`),1) as `km-h`
             FROM  (SELECT DATE(data) as 'data', TIME(data) as 'ora',temperatura, pressione,umidita,`direzione-vento`,`km-h` FROM y2023 WHERE DATE(data) = (SELECT DATE(MAX(data)) FROM y2023) ) as r
             GROUP BY r.data;
@@ -131,6 +135,11 @@
         let valorePressione = <?php echo $res['pressioneUltimaRilevazione']?>;
         let direzioneVento = '<?php echo $res['direzioneVentoUltimaRilevazione']?>';
         let velocitàVento = <?php echo $res['velocitaVentoUltimaRilevazione']?>;
+        let temperaturaMediaGiornaliera = <?php echo $res['temperaturaMedia']?>;
+        let temperaturaMaxGiornaliera = <?php echo $res['maxTemperatura']?>;
+        let oraTemperaturaMaxGiornaliera = '<?php echo $res['oraMaxTemperatura']?>';
+        let temperaturaMinGiornaliera = <?php echo $res['minTemperatura']?>;
+        let oraTemperaturaMinGiornaliera = '<?php echo $res['oraMinTemperatura']?>';
 
         <?php            
             $startDate = (new DateTime($endDate->format("Y-m-d H:i:s")))->modify("-7 day");
@@ -306,7 +315,10 @@
             document.getElementById("umidità").innerHTML = "Umidità: " + valoreUmidità + "%";
             document.getElementById("pressione").innerHTML = "Pressione: " + valorePressione + " hPa";
             document.getElementById("dirVento").innerHTML = "Direzione vento: " + direzioneVento;
-            document.getElementById("velVento").innerHTML = "Velocità vento: " + velocitàVento + " Km/h"
+            document.getElementById("velVento").innerHTML = "Velocità vento: " + velocitàVento + " Km/h";
+            document.getElementById("temperaturaMediaGiornaliera").innerHTML = "Temperatura Media: " + temperaturaMediaGiornaliera + "°";
+            document.getElementById("temperaturaMaxGiornaliera").innerHTML = "Temperatura Max: " + temperaturaMaxGiornaliera + "° - Ora: " + oraTemperaturaMaxGiornaliera.substr(0,5);
+            document.getElementById("temperaturaMinGiornaliera").innerHTML = "Temperatura Min: " + temperaturaMinGiornaliera + "° - Ora: " + oraTemperaturaMinGiornaliera.substr(0,5);                    
         }
         cambiaInfo();
     </script>

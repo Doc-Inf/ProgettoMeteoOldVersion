@@ -107,6 +107,7 @@
        
         $result =  $db->query("SELECT @dataOraUltimaRilevazione as'dataOraUltimaRilevazione', @temperaturaUltimaRilevazione as 'temperaturaUltimaRilevazione', @umiditaUltimaRilevazione as 'umiditaUltimaRilevazione', @pressioneUltimaRilevazione as 'pressioneUltimaRilevazione', @direzioneVentoUltimaRilevazione as 'direzioneVentoUltimaRilevazione', @velocitaVentoUltimaRilevazione as 'velocitaVentoUltimaRilevazione', @dataUltimaRilevazione as'data', @maxTemperatura as 'maxTemperatura', @oraMaxTemperatura as 'oraMaxTemperatura', @minTemperatura as 'minTemperatura', @oraMinTemperatura as 'oraMinTemperatura', FORMAT(@mediaTemperatura,1) as 'temperaturaMedia', @maxUmidita as 'maxUmidita', @oraMaxUmidita as 'oraMaxUmidita', @minUmidita as 'minUmidita', @oraMinUmidita as 'oraMinUmidita', FORMAT(@mediaUmidita,1) as 'umiditaMedia', @maxPressione as 'maxPressione', @oraMaxPressione as 'oraMaxPressione', @minPressione as 'minPressione', @oraMinPressione as 'oraMinPressione', FORMAT(@mediaPressione,1) as 'pressioneMedia', @maxVelocitaVento as 'maxVelocitaVento', @oraMaxVelocitaVento as 'oraMaxVelocitaVento', @minVelocitaVento as 'minVelocitaVento', @oraMinVelocitaVento as 'oraMinVelocitaVento', FORMAT(@mediaVelocitaVento,1) as `mediaVelocitaVento`, @direzioneMaxVento as 'direzioneMaxVento';");
         $db->commit();
+        
         /*
         foreach($result[0] as $key=>$value){
             echo "$key: $value<br>";

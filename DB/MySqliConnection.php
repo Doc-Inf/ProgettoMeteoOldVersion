@@ -76,6 +76,7 @@ class MysqliConnection implements DB{
 
     public function close(){
         $this->con->close(); 
+        $this->con = null;
     }
 }
 
