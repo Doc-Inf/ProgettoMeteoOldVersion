@@ -15,7 +15,7 @@ CREATE TABLE `y2022` (
   temperatura       int NOT NULL,
   pressione         double NOT NULL,
   umidita           int NOT NULL,
-  `direzione-vento` varchar(2) NOT NULL,
+  `direzione-vento` varchar(3) NOT NULL,
   `km-h`            int NOT NULL
 );
 
@@ -27,7 +27,7 @@ CREATE TABLE `y2023` (
   temperatura       int NOT NULL,
   pressione         double NOT NULL,
   umidita           int NOT NULL,
-  `direzione-vento` varchar(2) NOT NULL,
+  `direzione-vento` varchar(3) NOT NULL,
   `km-h`            int NOT NULL
 );
 
@@ -39,7 +39,7 @@ CREATE TABLE `y2024` (
   temperatura       int NOT NULL,
   pressione         double NOT NULL,
   umidita           int NOT NULL,
-  `direzione-vento` varchar(2) NOT NULL,
+  `direzione-vento` varchar(3) NOT NULL,
   `km-h`            int NOT NULL
 );
 
@@ -51,7 +51,7 @@ CREATE TABLE `y2025` (
   temperatura       int NOT NULL,
   pressione         double NOT NULL,
   umidita           int NOT NULL,
-  `direzione-vento` varchar(2) NOT NULL,
+  `direzione-vento` varchar(3) NOT NULL,
   `km-h`            int NOT NULL
 );
 
@@ -63,7 +63,7 @@ CREATE TABLE `y2026` (
   temperatura       int NOT NULL,
   pressione         double NOT NULL,
   umidita           int NOT NULL,
-  `direzione-vento` varchar(2) NOT NULL,
+  `direzione-vento` varchar(3) NOT NULL,
   `km-h`            int NOT NULL
 );
 
@@ -75,7 +75,7 @@ CREATE TABLE `y2027` (
   temperatura       int NOT NULL,
   pressione         double NOT NULL,
   umidita           int NOT NULL,
-  `direzione-vento` varchar(2) NOT NULL,
+  `direzione-vento` varchar(3) NOT NULL,
   `km-h`            int NOT NULL
 );
 
@@ -87,7 +87,7 @@ CREATE TABLE `y2028` (
   temperatura       int NOT NULL,
   pressione         double NOT NULL,
   umidita           int NOT NULL,
-  `direzione-vento` varchar(2) NOT NULL,
+  `direzione-vento` varchar(3) NOT NULL,
   `km-h`            int NOT NULL
 );
 
@@ -99,7 +99,7 @@ CREATE TABLE `y2029` (
   temperatura       int NOT NULL,
   pressione         double NOT NULL,
   umidita           int NOT NULL,
-  `direzione-vento` varchar(2) NOT NULL,
+  `direzione-vento` varchar(3) NOT NULL,
   `km-h`            int NOT NULL
 );
 
@@ -111,7 +111,7 @@ CREATE TABLE `y2030` (
   temperatura       int NOT NULL,
   pressione         double NOT NULL,
   umidita           int NOT NULL,
-  `direzione-vento` varchar(2) NOT NULL,
+  `direzione-vento` varchar(3) NOT NULL,
   `km-h`            int NOT NULL
 );
 
@@ -123,7 +123,7 @@ CREATE TABLE `y2031` (
   temperatura       int NOT NULL,
   pressione         double NOT NULL,
   umidita           int NOT NULL,
-  `direzione-vento` varchar(2) NOT NULL,
+  `direzione-vento` varchar(3) NOT NULL,
   `km-h`            int NOT NULL
 );
 
@@ -135,7 +135,7 @@ CREATE TABLE `y2032` (
   temperatura       int NOT NULL,
   pressione         double NOT NULL,
   umidita           int NOT NULL,
-  `direzione-vento` varchar(2) NOT NULL,
+  `direzione-vento` varchar(3) NOT NULL,
   `km-h`            int NOT NULL
 );
 
@@ -147,7 +147,7 @@ CREATE TABLE `y2033` (
   temperatura       int NOT NULL,
   pressione         double NOT NULL,
   umidita           int NOT NULL,
-  `direzione-vento` varchar(2) NOT NULL,
+  `direzione-vento` varchar(3) NOT NULL,
   `km-h`            int NOT NULL
 );
 
@@ -159,7 +159,7 @@ CREATE TABLE `y2034` (
   temperatura       int NOT NULL,
   pressione         double NOT NULL,
   umidita           int NOT NULL,
-  `direzione-vento` varchar(2) NOT NULL,
+  `direzione-vento` varchar(3) NOT NULL,
   `km-h`            int NOT NULL
 );
 

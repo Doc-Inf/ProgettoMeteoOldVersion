@@ -21,7 +21,7 @@ class MysqliConnection implements DB{
         if($this->con==null){
             $this->con = new mysqli($this->hostname,$this->username, $this->password,$this->dbname,$this->port);
             if ($this->con->connect_error) {
-                die("Connection failed: " . $con->connect_error);
+                die("Connection failed: " . $this->con->connect_error);
             } 
         }      
         return $this->con;
@@ -38,9 +38,9 @@ class MysqliConnection implements DB{
     public function query(string $sql,$params=[]) { // `
         $con = $this->getConnection();            
         if(count($params)>1){
-            //$res = ($con->execute_query($sql,$param))->fetch_all(MYSQLI_ASSOC);
+            //$res = ($con->execute_query($sql,$params))->fetch_all(MYSQLI_ASSOC);
             $stmt = $con->prepare($sql);
-            $stmt->bind_param($param[0],...array_slice($params,1));
+            $stmt->bind_param($params[0],...array_slice($params,1));
             $stmt->execute();           
             $res = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         }else{
@@ -49,18 +49,33 @@ class MysqliConnection implements DB{
         return $res;            
     }
 
-    public function dmlCommand(string $sql, $param=[]) { // `
+    /*public function dmlCommand(string $sql, $params=[]) { // `
         $con = $this->getConnection();
         $result = -1;
         $stmt = $con->prepare($sql);
-        if(count($param)>0){            
+        if(count($params)>0){            
             $result = $stmt->execute($params);                          
         }else{
             $result = $stmt->execute();
         }   
         $stmt->close();          
         return $result;        
+    }*/
+
+    public function dmlCommand(string $sql, $params = []) { // meglio :)
+        $con = $this->getConnection();
+        $result = -1;
+        $stmt = $con->prepare($sql);
+    
+        if (count($params) > 0) {
+            $stmt->bind_param($params[0], ...array_slice($params, 1));
+        }
+    
+        $result = $stmt->execute();
+        $stmt->close();
+        return $result;
     }
+    
 
     public function beginTransaction(){
         $this->con->begin_transaction();
