@@ -90,24 +90,29 @@
     
     <div id="infoZone" class="sfondOscurato">
         <h2>Le nostre attività</h2>
+        <hr>
+    <div>
         <div class="subActive">
-            <div>
                 <h3>Informatica</h3>
-                <p>Nella sezione informatica vengono insegnate le fondamenta della programmazione e della gestione e costruzione di un computer</p>
+                <img src="../img/infoimg1.jpg" alt="info img 1">
+                <p>Nella sezione informatica vengono insegnate le fondamenta della programmazione e della gestione e costruzione di un computer:
+                    <br>
+                    "Il Diplomato in Informatica e Telecomunicazioni ha competenze specifiche nel campo dei sistemi informatici, dell’elaborazione dell’informazione."
+                </p>
             </div>
-            <img src="" alt="">
-        </div>
-
-        <div>
-            <h3>Hardware</h3>
-            <img src="" alt="">
-            <p></p>
-        </div>
-
-        <div>
-            <h3>Software</h3>
-            <img src="" alt="">
-            <p></p>
+            <div class="subActive">
+                <h3>Elettronica</h3>   
+                <img src="../img/infoimg2.jpg" alt="info img 2">
+                <p>"Il Diplomato in Elettronica ed Elettrotecnica ha competenze specifiche nel campo dei materiali e delle tecnologie costruttive dei sistemi elettrici, elettronici"
+                    <br>
+                    In collabborazione alle classi di elettronica vengono gestiti e realizzati progetti di vario tipo, come la "ROME CUP"
+                </p>
+            </div>
+            <div class="subActive">
+                <h3>Robotica</h3>
+                <img src="../img/infoimg3.webp" alt="info img 3">
+                <p></p>
+            </div>
         </div>
     </div>
 
@@ -116,7 +121,7 @@
     <div id="mappaInfo" class="google-maps">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2980.0416283289383!2d12.775315615372184!3d41.676444379238745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13259d347813ad7d%3A0x973948516bf1e19f!2sITIS%20Giancarlo%20Vallauri!5e0!3m2!1sit!2sit!4v1678190626853!5m2!1sit!2sit" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
-
+            
 
     <!-- storia -->
 

@@ -217,26 +217,43 @@ video{
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    height: 10rem;
+    margin-top: 1rem;
+    margin-right: auto;
+    margin-left: auto;
+    width: 95%;
+}
+
+#infoZone>div{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+#infoZone hr{
     width: 95%;
 }
 
 .subActive{
     display: flex;
-    flex-direction: row;
-}
-
-.subActive>div{
-    width: 70%;
+    flex-direction: column;
+    align-items: center;
+    width: 31%;
 }
 
 .subActive p{
     text-align: justify;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0.4rem solid #FFFFFF33;
+    border-radius: 1rem;
 }
 
-
 .subActive>img{
-    width: 30%;
+    border-radius: 1rem;
+    width: 100%;
 }
 
 .barraInfo{
@@ -726,6 +743,11 @@ input:hover{
     border-bottom-right-radius: 1rem;
     border-bottom-left-radius: 1rem;
     background-color: #33333333;
+    backdrop-filter: blur(5px);
+}
+
+.sub2 p{
+    font-weight: bold;
 }
 
 

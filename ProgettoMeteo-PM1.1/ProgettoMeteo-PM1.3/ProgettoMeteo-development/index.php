@@ -30,7 +30,7 @@
     </div>
 
     <div id="vers">
-        <h6>SnapShot 1.3</h6>
+        <h6>SnapShot 1.4</h6>
     </div>
 
     <!-- sfondi -->
@@ -91,11 +91,7 @@
                 <h3 class="bordo" id="umidità">Umidita: --0%</h3>
                 <h3 class="bordo" id="pressione">Pressione: --hPa</h3>
                 <h3 class="bordo" id="dirVento">Direzione vento: --</h3>
-                <h3 class="bordo" id="velVento">Velocità vento: --Km/h</h3>
-                <h3 class="bordo" id="temperaturaMediaGiornaliera">Temperatura media: --°</h3>
-                <h3 class="bordo" id="temperaturaMaxGiornaliera">Temperatura max: --° - Ore: --:--</h3>
-                <h3 id="temperaturaMinGiornaliera">Temperatura min: --° - Ore: --:--</h3>
-                
+                <h3 class="bordo" id="velVento">Velocità vento: --Km/h</h3>          
             </div>
         </div>
         
@@ -111,7 +107,7 @@
                 <h3>temperatura max:</h3>
             </div>
             <div class="sub2">
-             <!-- qui temperaturna massima  -->
+                <p id="temperaturaMaxGiornaliera"> --° - Ore: --:-- </p>
             </div>            
         </div>
         <div class="SubExInfo">
@@ -119,27 +115,37 @@
                 <h3>temperatura min:</h3>
             </div>
             <div class="sub2">
-                 <!-- qui temperaturna minima  -->
+                 <p id="temperaturaMinGiornaliera">  --° - Ore: --:-- </p>
             </div>
         </div>
         <div class="SubExInfo">
             <div class="sub1">
-                <h3>umidità max:</h3>
+                <h3>temperatura media:</h3>
             </div>
             <div class="sub2">
-                <!-- qui umidità massima -->
+                <p id="temperaturaMediaGiornaliera"> --° </p>
             </div>
         </div>
         <div class="SubExInfo">
             <div class="sub1">
-                <h3>umidità min:</h3>
+                <h3>umidità media:</h3>
             </div>
             <div class="sub2">
-                <!-- qui umidità minima  -->
+                <p id="umiditaMedia"></p>
             </div>
         </div>
     </div>
-
+    <div class="chartsAdd" id= "ca">
+        <form action="">
+            <input type="button" value="Esci" onclick="chiusura()">
+        </form>
+        <div id="chart_div" style="width: 100%; height: 500px;"></div>
+    </div>
+    <script>
+        function chiusura(){
+            document.getElementById("ca").style.display= "none";
+        }
+    </script>
     <?php     
         /*    
             $date = new DateTime(date('Y/m/d H:i:s'));
@@ -193,6 +199,8 @@
             }
             
         ?>
+
+        let umiditaMedia = '<?php echo (($umiditaSettimanale[6]==null)?0:$umiditaSettimanale[6])?>';
     
         //umidità registrata settimanalmente
         let umiLun = <?php echo (($umiditaSettimanale[0]==null)?0:$umiditaSettimanale[0])?>;
@@ -284,12 +292,15 @@
             if(x.clientWidth/2 <= 441){
                 z = x.clientWidth-25;
                 k = y.clientHeight/2;
+
             }else if(x.clientWidth/2 >= 700){
                 z = 700;
                 k = y.clientHeight/1.25;
+
             }else{
                 z= x.clientWidth/2;
                 k = y.clientHeight/1.25;
+
             }
 
             var data = google.visualization.arrayToDataTable([
@@ -315,6 +326,33 @@
 
             chart.draw(data, options);
         }
+
+
+
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart1);
+
+        function drawChart1() {
+            var data = google.visualization.arrayToDataTable([
+            ['Year', 'Sales', 'Expenses'],
+            ['2013',  1000,      400],
+            ['2014',  1170,      460],
+            ['2015',  660,       1120],
+            ['2016',  1030,      540]
+            ]);
+
+            var options = {
+            title: 'Company Performance',
+            hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
+            vAxis: {minValue: 0}
+            };
+
+            var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        }
+
+
+
 
         //per cambiare icona !!! ANCORA DA MODIFICARE, IMPRECISO !!!
         
@@ -375,8 +413,10 @@
             document.getElementById("dirVento").innerHTML = "Direzione vento: " + direzioneVento;
             document.getElementById("velVento").innerHTML = "Velocità vento: " + velocitàVento + " Km/h";
             document.getElementById("temperaturaMediaGiornaliera").innerHTML = "Temperatura Media: " + temperaturaMediaGiornaliera + "°";
-            document.getElementById("temperaturaMaxGiornaliera").innerHTML = "Temperatura Max: " + temperaturaMaxGiornaliera + "° - Ora: " + oraTemperaturaMaxGiornaliera.substr(0,5);
-            document.getElementById("temperaturaMinGiornaliera").innerHTML = "Temperatura Min: " + temperaturaMinGiornaliera + "° - Ora: " + oraTemperaturaMinGiornaliera.substr(0,5);                    
+
+            document.getElementById("temperaturaMaxGiornaliera").innerHTML = temperaturaMaxGiornaliera + "° - Ora: " + oraTemperaturaMaxGiornaliera.substr(0,5);
+            document.getElementById("temperaturaMinGiornaliera").innerHTML = temperaturaMinGiornaliera + "° - Ora: " + oraTemperaturaMinGiornaliera.substr(0,5);
+            document.getElementById("umiditaMedia").innerHTML = umiditaMedia + "%";                    
         }
         cambiaInfo();
 
