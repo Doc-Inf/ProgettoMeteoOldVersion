@@ -190,7 +190,7 @@
             for($i=30;$i>=0;--$i){
                 $currentDay = (new DateTime($endDate->format("Y-m-d H:i:s")))->modify("-$i day");
                 $res= getData($db,$currentDay->format("Y-m-d H:i:s"));
-                //$res = $db->query("SELECT AVG(umidita) as umiditaMedia, AVG(temperatura) as temperaturaMedia FROM `y$year` WHERE DATE(data)= '".$currentDay->format('Y-m-d')."';");
+                //$res = $db->query("SELECT AVG(outHum) as umiditaMedia, AVG(tempOut) as temperaturaMedia FROM `y$year` WHERE DATE(data)= '".$currentDay->format('Y-m-d')."';");
                 $temperaturaMensile[] = $res['temperaturaMedia'];
                 
                 $umiditaMensile[] = $res['umiditaMedia'];

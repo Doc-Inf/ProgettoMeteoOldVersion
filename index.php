@@ -108,8 +108,8 @@
             $date = new DateTime(date('Y/m/d H:i:s'));
             $year = $date->format("Y");
              
-            SELECT r.data as'data', MAX(r.temperatura) as 'maxTemperatura', MIN(r.temperatura) as 'minTemperatura', FORMAT(AVG(r.temperatura),1) as 'temperatura', MAX(r.umidita) as 'maxUmidita', MIN(r.umidita) as 'minUmidita', FORMAT(AVG(r.umidita),1) as 'umidita', MAX(r.pressione) as 'maxPressione', MIN(r.pressione) as 'minPressione', FORMAT(AVG(r.pressione),1) as 'pressione', MAX(r.`km-h`) as 'maxVelocitaVento', MIN(r.`km-h`) as 'minVelocitaVento', FORMAT(AVG(r.`km-h`),1) as `km-h`
-            FROM  (SELECT DATE(data) as 'data', TIME(data) as 'ora',temperatura, pressione,umidita,`direzione-vento`,`km-h` FROM y2023 WHERE DATE(data) = (SELECT DATE(MAX(data)) FROM y2023) ) as r
+            SELECT r.data as'data', MAX(r.tempOut) as 'maxTemperatura', MIN(r.tempOut) as 'minTemperatura', FORMAT(AVG(r.tempOut),1) as 'temperatura', MAX(r.outHum) as 'maxUmidita', MIN(r.outHum) as 'minUmidita', FORMAT(AVG(r.outHum),1) as 'umidita', MAX(r.bar) as 'maxPressione', MIN(r.bar) as 'minPressione', FORMAT(AVG(r.bar),1) as 'pressione', MAX(r.windSpeed) as 'maxVelocitaVento', MIN(r.windSpeed) as 'minVelocitaVento', FORMAT(AVG(r.windSpeed),1) as windSpeed
+            FROM  (SELECT DATE(data) as 'data', TIME(data) as 'ora',tempOut, bar,outHum,windDir,windSpeed FROM y2023 WHERE DATE(data) = (SELECT DATE(MAX(data)) FROM y2023) ) as r
             GROUP BY r.data;
 
         */
@@ -148,7 +148,7 @@
             $umiditaSettimanale = [];
             for($i=6;$i>=0;--$i){
                 $currentDay = (new DateTime($endDate->format("Y-m-d H:i:s")))->modify("-$i day");
-                //$res = $db->query("SELECT AVG(umidita) as umiditaMedia, AVG(temperatura) as temperaturaMedia FROM `y$year` WHERE data= '".$currentDay->format('Y/m/d H:i:s')."';");
+                //$res = $db->query("SELECT AVG(outHum) as umiditaMedia, AVG(tempOut) as temperaturaMedia FROM `y$year` WHERE data= '".$currentDay->format('Y/m/d H:i:s')."';");
                 $res= getData($db,$currentDay->format("Y-m-d H:i:s"));
                 $giorni[] = $currentDay;
                 $temperaturaSettimanale[] = $res['temperaturaMedia'];

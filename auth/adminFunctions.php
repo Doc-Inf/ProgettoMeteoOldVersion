@@ -14,7 +14,7 @@
         $date = new DateTime($data . " " . $time);
         $year = $date->format("Y");
         $formattedDate = $date->format("Y-m-d H:i:s");
-        $sql = "INSERT INTO `y$year`(data,temperatura,pressione,umidita,`direzione-vento`,`km-h`) VALUES ('$formattedDate',$temperatura, $pressione, $umidita, '$direzione', $velocita);";
+        $sql = "INSERT INTO `y$year`(data,tempOut,bar,outHum,windDir,windSpeed) VALUES ('$formattedDate',$temperatura, $pressione, $umidita, '$direzione', $velocita);";
         $db->dmlCommand($sql);
         $_POST['insert'] = "done";        
     }

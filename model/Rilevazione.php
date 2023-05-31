@@ -3,18 +3,18 @@
 class Rilevazione{
     private $id;
     private $data;
-    private $temperatura;
-    private $pressione;
-    private $umidita;
+    private $tempOut;
+    private $bar;
+    private $outHum;
     private $direzioneVento;
     private $intensitaVento;
 
-    public function __construct(int $id=-1,DateTime $data,int $temperatura,float $pressione,float $umidita,string $direzioneVento,int $intensitaVento){
+    public function __construct(int $id=-1,DateTime $data,int $tempOut,float $bar,float $outHum,string $direzioneVento,int $intensitaVento){
         $this->id = $id;
         $this->data = $data;
-        $this->temperatura = $temperatura;
-        $this->pressione = $pressione;
-        $this->umidita = $umidita;
+        $this->tempOut = $tempOut;
+        $this->bar = $bar;
+        $this->outHum = $outHum;
         $this->direzioneVento = $direzioneVento;
         $this->intensitaVento = $intensitaVento;
     }
@@ -27,16 +27,16 @@ class Rilevazione{
         return $this->data;
     }
 
-    public function getTemperatura(){
-        return $this->temperatura;
+    public function getTempOut(){
+        return $this->tempOut;
     }
 
-    public function getPressione(){
-        return $this->pressione;
+    public function getBar(){
+        return $this->bar;
     }
 
-    public function getUmidita(){
-        return $this->umidita;
+    public function getOutHum(){
+        return $this->outHum;
     }
 
     public function getDirezioneVento(){
