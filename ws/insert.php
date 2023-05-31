@@ -26,7 +26,7 @@
             $data[$i]['coolDD'] . "',". "'" . $data[$i]['inTemp'] . "',". "'" . $data[$i]['inHum'] . "',". "'" . $data[$i]['inDew'] . "',". "'" . $data[$i]['inHeat'] . "',". "'" . 
             $data[$i]['inEMC'] . "',". "'" . $data[$i]['inAirDensity'] . "',". "'" . $data[$i]['windSamp'] . "',". "'" . $data[$i]['windTx'] . "',". "'" . $data[$i]['issRecept'] . "',". "'" . 
             $data[$i]['arcInt'] . "');";
-            logData($sql);
+            logData($sql."\n");
             $db->dmlCommand($sql);
         }
         
@@ -46,7 +46,7 @@
     }
 
     function logData($text){
-        file_put_contents("log.txt",$text);
+        file_put_contents("log.txt",$text,FILE_APPEND);
     }
    
 ?>
