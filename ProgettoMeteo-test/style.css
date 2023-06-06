@@ -22,11 +22,12 @@ p{
     position: fixed;
     bottom: 0;
     left: 0;
-    margin-left: 2px;
+    margin-left: 1px;
 
 }
 #vers h6{
-    color: black;
+    margin-bottom: 0.5rem;
+    color: #33333366;
 }
 h2{
     text-align: center; 
@@ -98,9 +99,20 @@ p.descrizione{
     margin:auto;
 }
 
+a{
+    text-decoration: none;
+}
+
 h2.scuola{
     font-family: 'Charm', serif;
     font-size: 4rem;
+}
+
+.scuola:hover{
+    background: linear-gradient(#00b3ff55, #0000FFff);
+    background-clip: inherit;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .importante{
@@ -146,10 +158,6 @@ video{
 
 /* chi siamo */
 
-.link{
-    width: 80%;
-}
-
 .sfondOscurato{
     background-color: #33333333;
     backdrop-filter: blur(5px);
@@ -159,35 +167,6 @@ video{
     background-color: #27689633;
     backdrop-filter: blur(5px);
     border-radius: 1rem;
-}
-
-.plusInfo{
-    margin: auto;
-    width: 95%;
-    display: flex;
-    flex-direction: column;
-    background-color: #33333333;
-    align-items: center;
-    border-radius: 1rem;
-}
-
-.plusInfo h2{
-    font-size: 2rem;
-}
-
-.plusInfo a{
-    text-decoration: none;
-    background: linear-gradient(#00b3ff55, #0000FFff);
-    background-clip: inherit;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.plusInfo a :hover{
-    background: linear-gradient(#00b3ff11,#ffffFF55);
-    background-clip: inherit;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
 .sfondotrasparente{
@@ -750,7 +729,16 @@ input:hover{
     font-weight: bold;
 }
 
+/* charts */
 
+#ca{
+    display: none;
+}
+
+.sub1 button{
+    background-color: #00000000;
+    border: none;
+}
 
 
 /* animazioni */
@@ -962,14 +950,6 @@ input:hover{
         margin-top: 5rem;
     }
 
-    .plusInfo{
-        width:95%;
-    }
-
-    .plusInfo h2{
-        font-size: 1.5rem;
-    }
-
     .barraInfo{
         margin-top: 1.5rem;
     }
@@ -981,6 +961,16 @@ input:hover{
     
     .barraInfo span{
         width: 20%;
+    }
+
+    #infoZone>div{
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    .subActive{
+        width: 80%;
     }
 
     .storia{

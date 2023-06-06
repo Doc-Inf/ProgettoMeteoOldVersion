@@ -43,24 +43,16 @@
         ?>
     </nav>
 
-    <h2 class="scuola noiSiamo">
-        ITIS G. Vallauri di Velletri
-    </h2>
+    <a href="https://www.itisvallauri.edu.it">
+        <h2 class="scuola noiSiamo">
+            ITIS G. Vallauri di Velletri
+        </h2>
+    </a>
 
     <p class="descrizione">
         Questo progetto è stato sviluppato per rendere fruibile i dati raccolti dalle rilevazioni della nostra stazione meteorologica in modo semplice e veloce, attraverso il Web.
         Per la creazione della piattaforma, il reperimento e la catalogazione dei dati hanno lavorato gruppi di studenti provenienti dalle classi 3F, 5e e 5G nell'a.s. 2022/2023
     </p>
-
-    <div class="plusInfo noiSiamo">
-        <h2>
-            Per maggiori informazioni sulla scuola:
-        </h2>
-
-        <a href="https://www.itisvallauri.edu.it" class="link">
-            <h2>| Sito della Scuola |</h2>
-        </a>
-    </div>
 
     <!-- barra scuola info -->
     <div id="barraTot">
@@ -103,15 +95,16 @@
             <div class="subActive">
                 <h3>Elettronica</h3>   
                 <img src="../img/infoimg2.jpg" alt="info img 2">
-                <p>"Il Diplomato in Elettronica ed Elettrotecnica ha competenze specifiche nel campo dei materiali e delle tecnologie costruttive dei sistemi elettrici, elettronici"
+                <p>"Il Diplomato in Elettronica ed Elettrotecnica ha competenze specifiche nel campo dei materiali e delle tecnologie costruttive dei sistemi elettrici, elettronici."
                     <br>
-                    In collabborazione alle classi di elettronica vengono gestiti e realizzati progetti di vario tipo, come la "ROME CUP"
+                    In collabborazione alle classi di elettronica vengono gestiti e realizzati progetti di vario tipo, come la "ROME CUP".
                 </p>
             </div>
             <div class="subActive">
                 <h3>Robotica</h3>
                 <img src="../img/infoimg3.webp" alt="info img 3">
-                <p></p>
+                <p>I progetti di robotica comprendono l'utilizzo di vari strumenti all'avanguardia, dall'utilizzo alla creazioni di arti meccanici, anche tramite le stampanti 3D e la costruzioni di modelli e pezzi meccanici.
+                </p>
             </div>
         </div>
     </div>
@@ -488,6 +481,7 @@
         }
         barraMini();
 
+        infoOpen();
     </script>
 
 </body>

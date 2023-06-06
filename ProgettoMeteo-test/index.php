@@ -30,7 +30,7 @@
     </div>
 
     <div id="vers">
-        <h6>SnapShot 1.4</h6>
+        <h6>Release 2.0</h6>
     </div>
 
     <!-- sfondi -->
@@ -105,6 +105,7 @@
         <div class="SubExInfo">
             <div class="sub1">
                 <h3>temperatura max:</h3>
+                <!-- <button onclick="apertura()"><h3>temperatura max:</h3></button> -->
             </div>
             <div class="sub2">
                 <p id="temperaturaMaxGiornaliera"> --° - Ore: --:-- </p>
@@ -135,17 +136,27 @@
             </div>
         </div>
     </div>
+
+    <!-- !!!IN TEST!!!
     <div class="chartsAdd" id= "ca">
         <form action="">
             <input type="button" value="Esci" onclick="chiusura()">
         </form>
         <div id="chart_div" style="width: 100%; height: 500px;"></div>
     </div>
+
     <script>
+        function apertura(){
+            document.getElementById("ca").style.display= "flex";
+        }
         function chiusura(){
             document.getElementById("ca").style.display= "none";
         }
     </script>
+    -->
+
+
+
     <?php     
         /*    
             $date = new DateTime(date('Y/m/d H:i:s'));
