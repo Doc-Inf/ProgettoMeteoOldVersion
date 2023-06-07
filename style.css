@@ -15,8 +15,45 @@ p{
     text-align: center;
 }
 
+#vers{
+    display: flex;
+    width: 10%;
+    z-index: 1;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    margin-left: 1px;
+
+}
+#vers h6{
+    margin-bottom: 0.5rem;
+    color: #33333366;
+}
 h2{
     text-align: center; 
+}
+.medpan h2,h3{
+    text-align: center;
+    align-content: center;
+}
+.medpan{
+    animation: anim;
+    animation-duration: 1.25s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-direction: alternate;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin: 2rem;
+}
+.graf{
+    display: flex;
+    position: fixed;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    background-color: white;
 }
 body{
     overflow: auto;
@@ -46,6 +83,7 @@ body{
 }
 
 .specialText{
+    font-size: 2rem;
     background: linear-gradient(#00b3ff, #0000FF);
     background-clip: inherit;
     -webkit-background-clip: text;
@@ -61,9 +99,20 @@ p.descrizione{
     margin:auto;
 }
 
+a{
+    text-decoration: none;
+}
+
 h2.scuola{
     font-family: 'Charm', serif;
     font-size: 4rem;
+}
+
+.scuola:hover{
+    background: linear-gradient(#00b3ff55, #0000FFff);
+    background-clip: inherit;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .importante{
@@ -109,35 +158,15 @@ video{
 
 /* chi siamo */
 
-.link{
-    width: 80%;
-}
-
 .sfondOscurato{
     background-color: #33333333;
     backdrop-filter: blur(5px);
     border-radius: 1rem;
 }
-
-.plusInfo{
-    margin: auto;
-    width: 65%;
-    display: flex;
-    flex-direction: column;
-    background-color: #33333333;
-    align-items: center;
+.sfondOscurato:hover{
+    background-color: #27689633;
+    backdrop-filter: blur(5px);
     border-radius: 1rem;
-}
-
-.plusInfo a{
-    text-decoration: none;
-}
-
-.plusInfo a :hover{
-    background: linear-gradient(#00b3ff33, #0000FF77);
-    background-clip: inherit;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
 .sfondotrasparente{
@@ -147,12 +176,91 @@ video{
     justify-content: space-evenly;
 }
 
+#barraTot{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 95%;
+    margin-top: 4rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#mappaInfo{
+    display: none;
+}
+
+#infoZone{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 1rem;
+    margin-right: auto;
+    margin-left: auto;
+    width: 95%;
+}
+
+#infoZone>div{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+#infoZone hr{
+    width: 95%;
+}
+
+.subActive{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 31%;
+}
+
+.subActive p{
+    text-align: justify;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0.4rem solid #FFFFFF33;
+    border-radius: 1rem;
+}
+
+.subActive>img{
+    border-radius: 1rem;
+    width: 100%;
+}
+
+.barraInfo{
+    display: flex;
+    width: 30%;
+    height: 5rem;
+    text-align: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.barraInfo h2{
+    font-size: 2rem;
+    width: 80%;
+}
+
+.barraInfo span{
+    width: 17%;
+}
+
 #max{
     display: flex;
+    margin-top: 1rem;
 }
 
 #mini{
     display: none;
+    margin-top: 1rem;
 }
 
 .storia{
@@ -204,6 +312,7 @@ video{
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    margin-top: 7rem;
 }
 
 #partecipanti .spazio{
@@ -247,10 +356,16 @@ video{
     padding-bottom: 1.5rem;
 }
 
-.spazio>h5{
+.spazio>h2{
+    font-size: 2.2rem;
+    margin: 0.3rem;
+}
+
+.spazio>p{
     margin-top: 0.4rem;
     margin-bottom: 0.4rem;
     text-align: center;
+    font-weight: bold;
 }
 
 .sottoSpazio1{
@@ -268,6 +383,7 @@ video{
     margin-bottom: 8rem;
     border-radius: 0.5rem;
     width: 97%;
+    float: left;
 }
 
 .noiSiamo{
@@ -286,68 +402,6 @@ video{
     width: 100%;
     height: 100%;
 }
-
-/* tendina laterale 
-
-.tendalaterale{
-    display:flex;
-    position: fixed;
-    top: 1.5;
-    right: 0;
-    z-index: 1500;
-    width: 2rem;
-    height:5rem;
-    animation: anim;
-    animation-duration: 1.25s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-    animation-direction: alternate;
-    border-left:0.2rem solid #FFF;
-    border-top:0.2rem solid #FFF;
-    border-bottom:0.2rem solid #FFF;
-    border-bottom-left-radius:0.5rem ;
-    border-top-left-radius:0.5rem ;
-}
-
-
-
-#tendinalat{
-    display: flex;
-    position:relative;
-    margin: 0px;
-    height: 5rem;
-    width: 1.8rem;
-    justify-content: space-around;
-    align-items: center;
-}
-
-#tendinalat>input{
-    position: absolute;
-    z-index:2001;
-    display: flex;
-    margin: 0px;
-    padding:0px;
-    width: 1.8rem;
-    height:5rem;
-    border:0px;
-    background-color:#00000000;
-    color: #000FFF;
-}
-
-#tendacharts{
-    display: none;
-    position:fixed;
-    right: 0;
-    top: 1.5;
-    z-index: 2000;
-    width: 75%;
-    height: 80%;
-    background-color: #FFFFFFCC;
-    border:0.3rem solid #FFF;
-    border-bottom-left-radius: 1rem;
-
-}
-*/
 
 /* barra superiore di navigazione */
 
@@ -615,11 +669,76 @@ input:hover{
     text-align:center;
 }
 
+/* informazioni extra */
 
+#extraInfo{
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 5rem;
+    margin-right: auto;
+    margin-left: auto;
+}
 
+.SubExInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20%;
+    margin: 0px;
+}
 
+.SubExInfo h3{
+    margin: 0px;
+}
 
+.sub1{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 4rem;
+    margin-top: 2rem;
+    margin-bottom: 0px;
+    border-top-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+    animation: anim;
+    animation-duration: 1.25s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-direction: alternate;
+}
 
+.sub2{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 4rem;
+    margin-top: 0px;
+    margin-bottom: 2rem;
+    border-bottom-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    background-color: #33333333;
+    backdrop-filter: blur(5px);
+}
+
+.sub2 p{
+    font-weight: bold;
+}
+
+/* charts */
+
+#ca{
+    display: none;
+}
+
+.sub1 button{
+    background-color: #00000000;
+    border: none;
+}
 
 
 /* animazioni */
@@ -789,6 +908,10 @@ input:hover{
 
 @media screen and (max-width:650px){
 
+    .specialText{
+        margin: 0px;
+    }
+
     .log{
         width: 85%;
     }
@@ -811,6 +934,10 @@ input:hover{
         font-size: 1.5rem;
     }
 
+    .specialText{
+        font-size:1.5rem;
+    }
+
     p.descrizione{
         font-size: 1.4rem;
     }
@@ -823,15 +950,39 @@ input:hover{
         margin-top: 5rem;
     }
 
-    .plusInfo{
-        width:95%;
+    .barraInfo{
+        margin-top: 1.5rem;
+    }
+
+    .barraInfo h2{
+        font-size: 1.2rem;
+        width: 78%;
+    }
+    
+    .barraInfo span{
+        width: 20%;
+    }
+
+    #infoZone>div{
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    .subActive{
+        width: 80%;
     }
 
     .storia{
         margin: 2%;
         font-size: 1rem;
     }
-
+    #storia0 img{
+        float: left;
+    }
+    #storia1 img{
+        float: right;
+    }
     body{
         margin:0px;
     }
@@ -897,6 +1048,26 @@ input:hover{
     .info div div{
         width: 100%;
     }
+
+    #extraInfo{
+        flex-direction: column;
+        margin-top: 2rem;
+        margin-bottom: 5rem;
+    }
+    
+    .SubExInfo{
+        width: 100%;
+    }
+
+    .sub1{
+        height: 2.5rem;
+        margin-top: 1rem;
+    }
+    
+    .sub2{
+        height: 2.5rem;
+        margin-bottom: 1rem;
+    }
 }
 
 @media screen and (max-width:460px){
@@ -909,6 +1080,10 @@ input:hover{
         width: 90%;
     }
 
+    #sottoPartecipanti>.spazio{
+        height: 13rem;
+    }
+
     .formale input{
         width: 40%;
     }
@@ -917,13 +1092,17 @@ input:hover{
         padding-top: 0px;
     }
 
+     .spazio>p{
+        font-size: 1.3rem;
+    }
+
     .spazio>h2{
-        font-size: 1.2rem;
+        font-size: 1.7rem;
         margin: 0.3rem;
     }
 }
 
-@media screen and (max-width:350px){
+@media screen and (max-width:365px){
     .formale{
         width: 90%;
     }
@@ -942,5 +1121,9 @@ input:hover{
 
     .page{
         border-bottom: 2rem;
+    }
+
+     .spazio>p{
+        font-size: 1.2rem;
     }
 }

@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32x32.png">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <!--script src="./script.js" defer></script--> 
@@ -20,21 +21,11 @@
     <video src="./img/Nuvole - 8599.mp4" autoplay loop muted></video> 
     <div class="sfondo"></div>
 
-    <!-- tendina laterale (ancora da testase se tenere o meno) -->
-    <!--
-    <div class="tendalaterale">
-        <form action="" id="tendinalat">
-            <span class="material-symbols-outlined">
-                Monitor_Heart
-            </span>
-            
-            <input id="inputend" type="button" value="" onclick="tenda()" >
-        </form>
-    </div>
-    <div id="tendacharts">
-    </div>
+    <!-- versione ! questa parte indica la versione del sito per facilitare navigare tra le versioni dei file ! -->
 
-    -->
+    <div id="vers">
+        <h6>Release 2.0</h6><!-- !!! AGGIORNARE IL NUMERO OGNI VOLTA CHE VENGONO APPLICATE MODIFICHE !!!-->
+    </div>
 
     <!-- barra superiore di navigazione -->
 
@@ -93,16 +84,49 @@
                 <h3 class="bordo" id="pressione">Pressione: --hPa</h3>
                 <h3 class="bordo" id="dirVento">Direzione vento: --</h3>
                 <h3 class="bordo" id="velVento">Velocità vento: --Km/h</h3>
-                <h3 class="bordo" id="temperaturaMediaGiornaliera">Temperatura media: --°</h3>
-                <h3 class="bordo" id="temperaturaMaxGiornaliera">Temperatura max: --° - Ore: --:--</h3>
-                <h3 id="temperaturaMinGiornaliera">Temperatura min: --° - Ore: --:--</h3>
-                
             </div>
         </div>
         
         <div id="curve_chart" class="grafico"></div>
         
     </div>
+
+    <div id="extraInfo">
+        <div class="SubExInfo">
+            <div class="sub1">
+                <h3>temperatura max:</h3>
+                <!-- <button onclick="apertura()"><h3>temperatura max:</h3></button> -->
+            </div>
+            <div class="sub2">
+                <p id="temperaturaMaxGiornaliera"> --° - Ore: --:-- </p>
+            </div>            
+        </div>
+        <div class="SubExInfo">
+            <div class="sub1">
+                <h3>temperatura min:</h3>
+            </div>
+            <div class="sub2">
+                 <p id="temperaturaMinGiornaliera">  --° - Ore: --:-- </p>
+            </div>
+        </div>
+        <div class="SubExInfo">
+            <div class="sub1">
+                <h3>temperatura media:</h3>
+            </div>
+            <div class="sub2">
+                <p id="temperaturaMediaGiornaliera"> --° </p>
+            </div>
+        </div>
+        <div class="SubExInfo">
+            <div class="sub1">
+                <h3>umidità media:</h3>
+            </div>
+            <div class="sub2">
+                <p id="umiditaMedia"> --% </p>
+            </div>
+        </div>
+    </div>
+
     <?php     
         /*    
             $date = new DateTime(date('Y/m/d H:i:s'));
@@ -156,6 +180,8 @@
             }
             
         ?>
+
+        let umiditaMedia = '<?php echo (($umiditaSettimanale[6]==null)?0:$umiditaSettimanale[6])?>';
     
         //umidità registrata settimanalmente
         let umiLun = <?php echo (($umiditaSettimanale[0]==null)?0:$umiditaSettimanale[0])?>;
@@ -319,6 +345,7 @@
             document.getElementById("temperaturaMediaGiornaliera").innerHTML = "Temperatura Media: " + temperaturaMediaGiornaliera + "°";
             document.getElementById("temperaturaMaxGiornaliera").innerHTML = "Temperatura Max: " + temperaturaMaxGiornaliera + "° - Ora: " + oraTemperaturaMaxGiornaliera.substr(0,5);
             document.getElementById("temperaturaMinGiornaliera").innerHTML = "Temperatura Min: " + temperaturaMinGiornaliera + "° - Ora: " + oraTemperaturaMinGiornaliera.substr(0,5);                    
+            document.getElementById("umiditaMedia").innerHTML = umiditaMedia + "%";
         }
         cambiaInfo();
     </script>
