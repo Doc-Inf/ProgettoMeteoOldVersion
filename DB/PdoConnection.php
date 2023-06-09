@@ -20,11 +20,13 @@
 
         public function getConnection(){
             try {
-                $con = new PDO($this->dbmsName . ":host=" . $this->hostname . ";dbname=" . $this->dbname,$this->username, $this->password,[PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+                if($this->con==null){
+                    $this->con = new PDO($this->dbmsName . ":host=" . $this->hostname . ";dbname=" . $this->dbname,$this->username, $this->password,[PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+                }                
             } catch (PDOException $e){
                 die("Connessione fallita ".$e->getMessage());
             }
-            return $con;
+            return $this->con;
         }
     
         private function fetchData($resultSet){
@@ -34,35 +36,48 @@
             }
             return $res;
         }
-    
-        public function query(string $sql,$param=[]) { // `
+                   
+        public function query(string $sql,$params=[]) { 
             $con = $this->getConnection();            
-            if(count($param)>0){
+            if(count($params)>0){
                 $stmt = $con->prepare($sql);
-                $stmt->execute($param);
+                $stmt->execute($params);
                 $res = $stmt->fetchAll();
                 $stmt = null;
             }else{
                 $resultSet = $con->query($sql);
                 $res = $this->fetchData($resultSet);
-            }            
-            $con = null;
+            }         
             return $res;            
         }
     
-        public function dmlCommand(string $sql, $params=[]) { // `
+        public function dmlCommand(string $sql, $param=[]) { // `
             $con = $this->getConnection();
             $result = -1;
-            if(count($params)>0){
-                $stmt = $con->prepare($sql);
-                $result = $stmt->execute($param); 
-                $stmt = null;               
+            $stmt = $con->prepare($sql);
+            if(count($param)>0){                
+                $result = $stmt->execute($params);                             
             }else{
-                $result = $con->query($sql);
-            }      
-            $con = null;           
+                $result = $stmt->execute();                 
+            }     
+            $stmt = null;                     
             return $result;        
         }
+
+        public function beginTransaction(){
+            $this->con->beginTransaction();
+        }
     
+        public function commit(){
+            $this->con->commit();
+        }
+    
+        public function roolback(){
+            $this->con->rollback();
+        }
+    
+        public function close(){
+            $this->con = null;
+        }
     }
 ?>

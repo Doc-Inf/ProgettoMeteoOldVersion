@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="../style.css">
@@ -13,7 +14,7 @@
     
     <!-- sfondi -->
 
-    <video src="../IMG/Nuvole - 8599.mp4" autoplay loop muted></video>
+    <video src="../img/Nuvole - 8599.mp4" autoplay loop muted></video>
     <div class="sfondo"></div>
 
     <!-- barra superiore di navigazione -->

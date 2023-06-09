@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon-32x32.png">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <!--script src="./script.js" defer></script--> 
@@ -16,24 +18,14 @@
       
     <!-- sfondi -->
 
-    <video src="./IMG/Nuvole - 8599.mp4" autoplay loop muted></video> 
+    <video src="./img/Nuvole - 8599.mp4" autoplay loop muted></video> 
     <div class="sfondo"></div>
 
-    <!-- tendina laterale (ancora da testase se tenere o meno) -->
-    <!--
-    <div class="tendalaterale">
-        <form action="" id="tendinalat">
-            <span class="material-symbols-outlined">
-                Monitor_Heart
-            </span>
-            
-            <input id="inputend" type="button" value="" onclick="tenda()" >
-        </form>
-    </div>
-    <div id="tendacharts">
-    </div>
+    <!-- versione ! questa parte indica la versione del sito per facilitare navigare tra le versioni dei file ! -->
 
-    -->
+    <div id="vers">
+        <h6>Release 2.0</h6><!-- !!! AGGIORNARE IL NUMERO OGNI VOLTA CHE VENGONO APPLICATE MODIFICHE !!!-->
+    </div>
 
     <!-- barra superiore di navigazione -->
 
@@ -91,33 +83,87 @@
                 <h3 class="bordo" id="umidità">Umidita: --0%</h3>
                 <h3 class="bordo" id="pressione">Pressione: --hPa</h3>
                 <h3 class="bordo" id="dirVento">Direzione vento: --</h3>
-                <h3 id="velVento">Velocità vento: --Km/h</h3>
+                <h3 class="bordo" id="velVento">Velocità vento: --Km/h</h3>
             </div>
         </div>
         
         <div id="curve_chart" class="grafico"></div>
         
     </div>
-    <?php        
-        $date = new DateTime(date('Y/m/d H:i:s'));
-        $year = $date->format("Y");
-        $res = $db->query("SELECT * FROM `Y$year` where data = (SELECT MAX(data) FROM `Y$year`)")[0];
-    ?>
+
+    <div id="extraInfo">
+        <div class="SubExInfo">
+            <div class="sub1">
+                <h3>temperatura max:</h3>
+                <!-- <button onclick="apertura()"><h3>temperatura max:</h3></button> -->
+            </div>
+            <div class="sub2">
+                <p id="temperaturaMaxGiornaliera"> --° - Ore: --:-- </p>
+            </div>            
+        </div>
+        <div class="SubExInfo">
+            <div class="sub1">
+                <h3>temperatura min:</h3>
+            </div>
+            <div class="sub2">
+                 <p id="temperaturaMinGiornaliera">  --° - Ore: --:-- </p>
+            </div>
+        </div>
+        <div class="SubExInfo">
+            <div class="sub1">
+                <h3>temperatura media:</h3>
+            </div>
+            <div class="sub2">
+                <p id="temperaturaMediaGiornaliera"> --° </p>
+            </div>
+        </div>
+        <div class="SubExInfo">
+            <div class="sub1">
+                <h3>umidità media:</h3>
+            </div>
+            <div class="sub2">
+                <p id="umiditaMedia"> --% </p>
+            </div>
+        </div>
+    </div>
+
+    <?php     
+        /*    
+            $date = new DateTime(date('Y/m/d H:i:s'));
+            $year = $date->format("Y");
+             
+            SELECT r.data as'data', MAX(r.tempOut) as 'maxTemperatura', MIN(r.tempOut) as 'minTemperatura', FORMAT(AVG(r.tempOut),1) as 'temperatura', MAX(r.outHum) as 'maxUmidita', MIN(r.outHum) as 'minUmidita', FORMAT(AVG(r.outHum),1) as 'umidita', MAX(r.bar) as 'maxPressione', MIN(r.bar) as 'minPressione', FORMAT(AVG(r.bar),1) as 'pressione', MAX(r.windSpeed) as 'maxVelocitaVento', MIN(r.windSpeed) as 'minVelocitaVento', FORMAT(AVG(r.windSpeed),1) as windSpeed
+            FROM  (SELECT DATE(data) as 'data', TIME(data) as 'ora',tempOut, bar,outHum,windDir,windSpeed FROM y2023 WHERE DATE(data) = (SELECT DATE(MAX(data)) FROM y2023) ) as r
+            GROUP BY r.data;
+
+        */
+        $lastDataDay = getLastDay($db);
+        $res = getData($db, $lastDataDay);
+
+        $endDate = $lastDataDay;
+       
+    ?>    
   
     <script type="text/javascript" defer>
         //variabili per il cambio di dati
         const giorniSet = ["Lun","Mar","Mer","Gio","Ven","Sab","Dom"];
-        let conta = [];       
+        let conta = [];   
+        
         let giorno = <?php 
-            $endDate = new DateTime( $db->query("SELECT MAX(data) as data FROM `Y$year`")[0]["data"] );
-            echo ( $endDate->format("N")-1);
-        ?>; 
-        let dataMisurazione = "<?php echo formatDate($res['data']); ?>";        
-        let valoreTemperatura = <?php echo $res['temperatura']?>;
-        let valoreUmidità = <?php echo $res['umidita']?>; //al valore dell'umidità va dato un numero da 0 a 100 in base alla rispettiva %
-        let valorePressione = <?php echo $res['pressione']?>;
-        let direzioneVento = '<?php echo $res['direzione-vento']?>';
-        let velocitàVento = <?php echo $res['km-h']?>;
+                        $endDate = new DateTime($endDate);
+                        echo ( $endDate->format("N")-1);
+                    ?>; 
+        let dataMisurazione = "<?php echo formatDate($res['dataOraUltimaRilevazione']); ?>";        
+        let valoreTemperatura = <?php echo $res['temperaturaUltimaRilevazione']?>;
+        let valoreUmidità = <?php echo $res['umiditaUltimaRilevazione']?>; //al valore dell'umidità va dato un numero da 0 a 100 in base alla rispettiva %
+        let valorePressione = <?php echo $res['pressioneUltimaRilevazione']?>;
+        let direzioneVento = '<?php echo $res['direzioneVentoUltimaRilevazione']?>';
+        let velocitàVento = <?php echo $res['velocitaVentoUltimaRilevazione']?>;
+        let temperaturaMediaGiornaliera = <?php echo $res['temperaturaMedia']?>;
+        let temperaturaMaxGiornaliera = <?php echo $res['maxTemperatura']?>;
+        let oraTemperaturaMaxGiornaliera = '<?php echo $res['oraMaxTemperatura']?>';
+        let temperaturaMinGiornaliera = <?php echo $res['minTemperatura']?>;
+        let oraTemperaturaMinGiornaliera = '<?php echo $res['oraMinTemperatura']?>';
 
         <?php            
             $startDate = (new DateTime($endDate->format("Y-m-d H:i:s")))->modify("-7 day");
@@ -126,13 +172,16 @@
             $umiditaSettimanale = [];
             for($i=6;$i>=0;--$i){
                 $currentDay = (new DateTime($endDate->format("Y-m-d H:i:s")))->modify("-$i day");
-                $res = $db->query("SELECT AVG(umidita) as umiditaMedia, AVG(temperatura) as temperaturaMedia FROM `Y$year` WHERE data= '".$currentDay->format('Y/m/d H:i:s')."';");
+                //$res = $db->query("SELECT AVG(outHum) as umiditaMedia, AVG(tempOut) as temperaturaMedia FROM `y$year` WHERE data= '".$currentDay->format('Y/m/d H:i:s')."';");
+                $res= getData($db,$currentDay->format("Y-m-d H:i:s"));
                 $giorni[] = $currentDay;
-                $temperaturaSettimanale[] = $res[0]['temperaturaMedia'];
-                $umiditaSettimanale[] = $res[0]['umiditaMedia'];
+                $temperaturaSettimanale[] = $res['temperaturaMedia'];
+                $umiditaSettimanale[] = $res['umiditaMedia'];
             }
             
         ?>
+
+        let umiditaMedia = '<?php echo (($umiditaSettimanale[6]==null)?0:$umiditaSettimanale[6])?>';
     
         //umidità registrata settimanalmente
         let umiLun = <?php echo (($umiditaSettimanale[0]==null)?0:$umiditaSettimanale[0])?>;
@@ -292,9 +341,16 @@
             document.getElementById("umidità").innerHTML = "Umidità: " + valoreUmidità + "%";
             document.getElementById("pressione").innerHTML = "Pressione: " + valorePressione + " hPa";
             document.getElementById("dirVento").innerHTML = "Direzione vento: " + direzioneVento;
-            document.getElementById("velVento").innerHTML = "Velocità vento: " + velocitàVento + " Km/h"
+            document.getElementById("velVento").innerHTML = "Velocità vento: " + velocitàVento + " Km/h";
+            document.getElementById("temperaturaMediaGiornaliera").innerHTML = "Temperatura Media: " + temperaturaMediaGiornaliera + "°";
+            document.getElementById("temperaturaMaxGiornaliera").innerHTML = "Temperatura Max: " + temperaturaMaxGiornaliera + "° - Ora: " + oraTemperaturaMaxGiornaliera.substr(0,5);
+            document.getElementById("temperaturaMinGiornaliera").innerHTML = "Temperatura Min: " + temperaturaMinGiornaliera + "° - Ora: " + oraTemperaturaMinGiornaliera.substr(0,5);                    
+            document.getElementById("umiditaMedia").innerHTML = umiditaMedia + "%";
         }
         cambiaInfo();
     </script>
+    <?php
+        $db->close();
+    ?>
 </body>       
 </html>

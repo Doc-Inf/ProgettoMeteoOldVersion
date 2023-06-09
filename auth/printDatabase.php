@@ -6,6 +6,8 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
         <link rel="stylesheet" href="admin.css">
+        <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
         <title>printDatabase</title>
     </head>
 
@@ -13,7 +15,7 @@
         
         <!-- sfondi -->
 
-        <video src="../IMG/Nuvole - 8599.mp4" autoplay loop muted></video> 
+        <video src="../img/Nuvole - 8599.mp4" autoplay loop muted></video> 
         <div class="sfondo"></div>
 
         <?php
@@ -40,23 +42,64 @@
                 <table class="print-table">
                     <tr>
                         <?php
-                            $res = $db->query("SELECT * FROM `".$_GET["table"]."`;");
-                            foreach ($res[0] as $key => $value) {
-                            echo "<th>$key</th>";
-                        }
-                    ?>
-                    </tr>
-                    <?php
-                        foreach ($res as $key => $value) {
-                            echo "<tr>";
-                            foreach($value as $kkey => $vvalue) {
-                                echo "<td>$vvalue</td>";
+                            $dbname = getConfig()->database->dbname;
+                            $ruolo = $_SESSION['ruolo'];
+                            if($_GET["table"] == "login" && $ruolo == "operatore") {
+                                die("<p>Non hai il permesso</p>");
                             }
-                            echo "</tr>";
-                        }
+
+                            if(count($db->query("SHOW TABLES where Tables_in_$dbname LIKE '$_GET[table]';")) == 0) {
+                                die("<p>Tabella non trovata</p>");
+                            }
+
+                            if($_GET["table"] == "login" && $ruolo == "admin") {
+                                $res = $db->query("SELECT * FROM $_GET[table] WHERE ruolo NOT LIKE 'superadmin';");
+                            } else {
+                                $res = $db->query("SELECT * FROM `".$_GET["table"]."`;");
+                            }
+                            
+                            if(count($res)>0){
+                                foreach ($res[0] as $key => $value) {
+                                    echo "<th>$key</th>";
+                                }
+                                echo "<th>Modifica</th>";
+                                echo "<th>Cancella</th>";
+                            }                            
+
                         ?>
-                </table>
+                    </tr>
+                        <?php
+                            if(count($res)>0){
+                                for ($i=0; $i<count($res); ++$i) {
+                                    echo "<tr>";
+                                    $thisFilePath = __FILE__;
+                                    foreach($res[$i] as $key => $value) {
+                                        $data = urlencode(json_encode($value));
+                                        echo "<td>$value</td>";
+                                    }
+                                    $id = $res[$i]['id'];
+                                    echo <<<ITEM
+                                        <form action="edit.php" method="POST">
+                                            <input type="hidden" name="table" value="$_GET[table]">
+                                            <td>
+                                            <button style='color: black;' type="submit" name="id" value="$id">Modifica</button>
+                                            </td>
+                                        </form>
+                                        <form action="executeSQL.php" method="post">
+                                            <input type="hidden" name="fromwhere" value="printDatabase.php">
+                                            <input type="hidden" name="table" value="$_GET[table]">
+                                            <td>
+                                                <button style="color: black;" type="submit" name="sql" value="DELETE FROM $_GET[table] WHERE id = $id">Cancella</button>
+                                            </td>
+                                        </form>
+                                    ITEM;
+                                    echo "</tr>";
+                                }
+                            }    
+                        ?>
+                </table>          
             </div>
         </div>
     </body>
+
 </html>
