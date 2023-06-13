@@ -226,13 +226,23 @@ video{
     padding: 0.5rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
+    height:30%;
     border: 0.4rem solid #FFFFFF33;
     border-radius: 1rem;
+    font-size: 1.2rem;
+    text-shadow: 1px 1px #333333EE;
+    height: 12rem;
+    overflow-y: scroll;
 }
 
 .subActive>img{
     border-radius: 1rem;
     width: 100%;
+}
+
+
+.subActive>.img2{
+    margin-bottom: 1rem;
 }
 
 .barraInfo{
@@ -971,6 +981,10 @@ input:hover{
 
     .subActive{
         width: 80%;
+    }
+
+    .subActive p{
+        text-align: start;
     }
 
     .storia{

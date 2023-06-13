@@ -6,6 +6,8 @@
         "port" : "3306",
         "dbmsName" : "mysql",
         "dbname" : "meteo",
-        "dbLibrary" : "pdo"
+        "dbLibrary" : "pdo",
+        "wsAdmin" : "wsDocente",
+        "wsAdminPassword" : "@#Meteorite23"
     }
 }

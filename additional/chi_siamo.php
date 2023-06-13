@@ -82,27 +82,37 @@
     <div id="infoZone" class="sfondOscurato">
         <h2>Le nostre attività</h2>
         <hr>
-    <div>
-        <div class="subActive">
+        <div>
+            <div class="subActive">
                 <h3>Informatica</h3>
                 <img src="../img/infoimg1.jpg" alt="info img 1">
-                <p>Nella sezione informatica vengono insegnate le fondamenta della programmazione e della gestione e costruzione di un computer:
+                <p>Nella sezione Informatica vengono insegnate le fondamenta della programmazione e della gestione e costruzione di un computer:
+                    <br>
                     <br>
                     "Il Diplomato in Informatica e Telecomunicazioni ha competenze specifiche nel campo dei sistemi informatici, dell’elaborazione dell’informazione."
                 </p>
             </div>
             <div class="subActive">
-                <h3>Elettronica</h3>   
+                <h3>Elettronica e Robotica</h3>   
                 <img src="../img/infoimg2.jpg" alt="info img 2">
                 <p>"Il Diplomato in Elettronica ed Elettrotecnica ha competenze specifiche nel campo dei materiali e delle tecnologie costruttive dei sistemi elettrici, elettronici."
                     <br>
-                    In collabborazione alle classi di elettronica vengono gestiti e realizzati progetti di vario tipo, come la "ROME CUP".
+                    <br>
+                    In collabborazione tra classi di Elettronica, Informatica e Robotica vengono gestiti e realizzati progetti di vario tipo, come la "ROME CUP".
+                    I progetti comprendono l'utilizzo di vari strumenti all'avanguardia, dall'utilizzo alla creazioni di arti meccanici, anche tramite le stampanti 3D e la costruzioni di modelli e pezzi meccanici.
                 </p>
             </div>
             <div class="subActive">
-                <h3>Robotica</h3>
-                <img src="../img/infoimg3.webp" alt="info img 3">
-                <p>I progetti di robotica comprendono l'utilizzo di vari strumenti all'avanguardia, dall'utilizzo alla creazioni di arti meccanici, anche tramite le stampanti 3D e la costruzioni di modelli e pezzi meccanici.
+                <h3>Scientifico</h3>
+                <img src="../img/infoimg3.jpg" alt="info img 3">
+                <p>
+                    "L'indirizzo di studio è finalizzato al potenziamento delle conoscenze scientifiche e tecnologiche del discente."
+                    <br>
+                    <br>
+                    Il percorso di formazione Liceale è quello classico della formazione liceale-scientifica della tradizione italiana, con un occhio di riguardo agli elementi applicativi delle conoscenze scientifiche, a partire sin dal primo anno;
+                    <br>
+                    <br>
+                    Tramite la sezione scentifica è possibile l'uso nello specifico del dispositivo di rilevazioni dati e della loro corretta applicazione.
                 </p>
             </div>
         </div>
