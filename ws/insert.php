@@ -15,16 +15,16 @@
 
         $user = $config->database->wsAdmin;
         $password = $config->database->wsAdminPassword;
-        $dataTime = new DateTime();
+        $dataTime = new DateTime("now",new DateTimeZone("Europe/Rome"));
         $anno = $dataTime->format('Y');     
         $mese = $dataTime->format('n');
         $giorno = $dataTime->format('j');
         $ora = $dataTime->format('H');
         $testo = "" . $user . $password . $anno . $mese . $giorno . $ora;
-        //header( "TestoPrimaHash: $testo");
+        header( "TestoPrimaHash: $testo");
         $binario = hash('sha256', $testo, true);
         $encoded = base64_encode($binario);
-        //header( "TestoEncoded: $encoded");
+        header( "TestoEncoded: $encoded");
 
         if($headers['Auth'] === $encoded){
                 // Takes raw data from the request
