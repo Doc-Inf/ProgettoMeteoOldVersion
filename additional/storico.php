@@ -264,7 +264,15 @@
                     curveType: 'function',
                     legend: { position: 'bottom' },
                     width: Math.trunc(z),
-                    height: Math.trunc(k)
+                    height: Math.trunc(k),
+                    series: {
+                        0: { color: '#e2431e' },
+                        1: { color: '#43459d' },
+                        2: { color: '#f1ca3a' },
+                        3: { color: '#6f9654' },
+                        4: { color: '#1c91c0' },                    
+                        5: { color: '#e7711b' }
+                    }
                 };
 
                 var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
@@ -278,11 +286,19 @@
                     legend: { position: 'bottom' },
                     width: Math.trunc(z),
                     height: Math.trunc(k),
+                    series: {
+                        0: { color: '#e2431e' },
+                        1: { color: '#43459d' },
+                        2: { color: '#f1ca3a' },
+                        3: { color: '#6f9654' },
+                        4: { color: '#1c91c0' },                    
+                        5: { color: '#e7711b' }
+                    },
                     hAxis: {
                         textStyle: {
                             fontSize: 9
                         }
-                    }
+                    }                    
                 };
 
                 var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
