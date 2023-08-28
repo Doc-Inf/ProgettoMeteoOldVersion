@@ -221,18 +221,31 @@ video{
     width: 31%;
 }
 
-.subActive p{
-    text-align: justify;
+.subActive section {    
     padding: 0.5rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
+    height:30%;
     border: 0.4rem solid #FFFFFF33;
-    border-radius: 1rem;
+    border-radius: 1rem;   
+    height: 12rem;
+    overflow-y: scroll;
 }
+
+.subActive section p{
+    text-align: justify;
+    font-size: 1.2rem;
+    text-shadow: 1px 1px #333333EE;
+}    
 
 .subActive>img{
     border-radius: 1rem;
     width: 100%;
+}
+
+
+.subActive>.img2{
+    margin-bottom: 1rem;
 }
 
 .barraInfo{
@@ -971,6 +984,11 @@ input:hover{
 
     .subActive{
         width: 80%;
+
+    }
+
+    .subActive p{
+        text-align: start;
     }
 
     .storia{

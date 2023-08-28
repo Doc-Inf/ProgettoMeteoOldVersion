@@ -51,11 +51,11 @@
             return $res;            
         }
     
-        public function dmlCommand(string $sql, $param=[]) { // `
+        public function dmlCommand(string $sql, $params=[]) { // `
             $con = $this->getConnection();
             $result = -1;
             $stmt = $con->prepare($sql);
-            if(count($param)>0){                
+            if(count($params)>0){                
                 $result = $stmt->execute($params);                             
             }else{
                 $result = $stmt->execute();                 

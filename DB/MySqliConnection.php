@@ -40,7 +40,7 @@ class MysqliConnection implements DB{
         if(count($params)>1){
             //$res = ($con->execute_query($sql,$param))->fetch_all(MYSQLI_ASSOC);
             $stmt = $con->prepare($sql);
-            $stmt->bind_param($param[0],...array_slice($params,1));
+            $stmt->bind_param($params[0],...array_slice($params,1));
             $stmt->execute();           
             $res = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         }else{
@@ -49,11 +49,12 @@ class MysqliConnection implements DB{
         return $res;            
     }
 
-    public function dmlCommand(string $sql, $param=[]) { // `
+    public function dmlCommand(string $sql, $params=[]) { // `
         $con = $this->getConnection();
         $result = -1;
         $stmt = $con->prepare($sql);
-        if(count($param)>0){            
+        if(count($params)>0){    
+            $stmt->bind_param($params[0],...array_slice($params,1));        
             $result = $stmt->execute($params);                          
         }else{
             $result = $stmt->execute();

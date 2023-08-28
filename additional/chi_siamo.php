@@ -82,28 +82,48 @@
     <div id="infoZone" class="sfondOscurato">
         <h2>Le nostre attività</h2>
         <hr>
-    <div>
-        <div class="subActive">
-                <h3>Informatica</h3>
+
+        <div>
+            <div class="subActive">
+                <h2>Informatica</h2>
                 <img src="../img/infoimg1.jpg" alt="info img 1">
-                <p>Nella sezione informatica vengono insegnate le fondamenta della programmazione e della gestione e costruzione di un computer:
-                    <br>
-                    "Il Diplomato in Informatica e Telecomunicazioni ha competenze specifiche nel campo dei sistemi informatici, dell’elaborazione dell’informazione."
-                </p>
+                <section>
+                <p>
+                    Il Diplomato in <strong>Informatica</strong> e <strong>Telecomunicazioni</strong> ha competenze specifiche nel campo dei <strong>sistemi informatici</strong>, dell’elaborazione dell’<strong>informazione</strong>, delle <strong>applicazioni e tecnologie Web</strong>, delle <strong>reti</strong> e degli apparati di comunicazione.
+                </p><br>
+                <p>
+                    Ha competenze e conoscenze che si rivolgono all’analisi, progettazione, installazione e gestione di sistemi informatici, <strong>basi di dati</strong>, reti di sistemi di elaborazione, sistemi multimediali e apparati di trasmissione e ricezione dei segnali
+                </p>                
+                </section>
             </div>
             <div class="subActive">
-                <h3>Elettronica</h3>   
+                <h2>Elettronica e Robotica</h2>   
                 <img src="../img/infoimg2.jpg" alt="info img 2">
-                <p>"Il Diplomato in Elettronica ed Elettrotecnica ha competenze specifiche nel campo dei materiali e delle tecnologie costruttive dei sistemi elettrici, elettronici."
-                    <br>
-                    In collabborazione alle classi di elettronica vengono gestiti e realizzati progetti di vario tipo, come la "ROME CUP".
-                </p>
+                <section>
+                    <p>
+                        Il Diplomato in <strong>Elettronica</strong> ed <strong>Elettrotecnica</strong> ha competenze specifiche nel campo dei materiali e delle tecnologie costruttive dei <strong>sistemi elettrici</strong>, <strong>elettronici</strong> e delle macchine elettriche, della generazione, elaborazione e trasmissione dei <strong>segnali elettrici ed elettronici</strong>, dei sistemi per la generazione, conversione e trasporto dell’<strong>energia elettrica</strong> e dei relativi impianti di distribuzione. 
+                    </p><br>                    
+                    <p>
+                        Collabora nella progettazione, costruzione e collaudo di sistemi elettrici ed elettronici di impianti elettrici e sistemi di automazione.
+                    </p>
+                </section>
+                
             </div>
             <div class="subActive">
-                <h3>Robotica</h3>
-                <img src="../img/infoimg3.webp" alt="info img 3">
-                <p>I progetti di robotica comprendono l'utilizzo di vari strumenti all'avanguardia, dall'utilizzo alla creazioni di arti meccanici, anche tramite le stampanti 3D e la costruzioni di modelli e pezzi meccanici.
-                </p>
+                <h2>Scientifico</h2>
+                <img src="../img/infoimg3.jpg" alt="info img 3">
+                <section>
+                    <p>
+                        Il percorso di formazione Liceale è quello classico della formazione <strong>liceale-scientifica</strong> della tradizione italiana, con un occhio di riguardo agli elementi applicativi delle conoscenze scientifiche, a partire sin dal primo anno.
+                    </p><br>
+                    <p>
+                        In tale percorso, infatti, la scelta dell’opzione di <strong>“Scienze Applicate”</strong> avviene già dal primo giorno, e dura per l’intero quinquennio.                         
+                    </p><br>
+                    <p>
+                        Tale opzione fornisce alla più completa formazione liceale una curvatura maggiormente affine all’area <strong>tecnico-scientifica</strong>, che non prevede, ad esempio, l’insegnamento della Lingua Latina.
+                    </p>
+                </section>                
+
             </div>
         </div>
     </div>
