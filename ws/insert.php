@@ -1,30 +1,39 @@
 <?php
     require_once '../functions.php';
     
-    $headers = getallheaders();
+    $headers = getallheaders();    
+    
+   
+    if( (!isset($headers['Auth'])) || (!isset($_COOKIE['DateTime'])) ){
 
-    if(!isset($headers['Auth'])){
-        echo "Access Denied";
-        header( "Response: access forbidden without authentication");
-        /*        
-        foreach ($headers as $header => $value) {
-            header( "REQUEST$header: $value ");
-        }       */
+        if( !isset($headers['Auth']) ){
+            echo "Access Denied";
+            header( "Response: access forbidden without authentication");
+        }else{
+            if( (!isset($_COOKIE['DateTime'])) ){
+                echo "Access Denied";
+                header( "Response: access forbidden without parameters");
+                header( "DateTime: " . $_COOKIE['DateTime']);
+            }
+        }        
          
     }else{
-
+        header( "Response: funziona! Cookie: " . $_COOKIE['DateTime']);
         $user = $config->database->wsAdmin;
         $password = $config->database->wsAdminPassword;
-        $dataTime = new DateTime("now",new DateTimeZone("Europe/Rome"));
+        //$dataTime = new DateTime("now",new DateTimeZone("Europe/Rome"));
+        $dataTime = DateTime::createFromFormat("d-m-Y G:i:s",$_COOKIE['DateTime']);
         $anno = $dataTime->format('Y');     
         $mese = $dataTime->format('n');
         $giorno = $dataTime->format('j');
         $ora = $dataTime->format('H');
-        $testo = "" . $user . $password . $anno . $mese . $giorno . $ora;
-        header( "TestoPrimaHash: $testo");
+        $minuti = $dataTime->format('i');
+        $secondi = $dataTime->format('s');
+        $testo = "" . $user . $password . $anno . $mese . $giorno . $ora . $minuti . $secondi;
+        header( "TestoPrimaHash: " . $testo);
         $binario = hash('sha256', $testo, true);
         $encoded = base64_encode($binario);
-        header( "TestoEncoded: $encoded");
+        header( "TestoEncoded: " . $encoded);
 
         if($headers['Auth'] === $encoded){
                 // Takes raw data from the request
@@ -79,9 +88,9 @@
                 header( "Response: request accepted");   
                 echo "Request accepted";              
             
-        }else{
-            echo "Access Denied";
+        }else{            
             header( "Response: access denied, wrong credentials");
+            echo "Access Denied";
         }
         
     }
