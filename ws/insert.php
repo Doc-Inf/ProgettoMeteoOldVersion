@@ -18,7 +18,7 @@
         }        
          
     }else{
-        header( "Response: funziona! Cookie: " . $_COOKIE['DateTime']);
+        header( "Response: Richiesta accolta, in fase di autenticazione Cookie: " . $_COOKIE['DateTime']);
         $user = $config->database->wsAdmin;
         $password = $config->database->wsAdminPassword;
         //$dataTime = new DateTime("now",new DateTimeZone("Europe/Rome"));
@@ -60,7 +60,10 @@
                         $data[$i]['inEMC'] . "',". "'" . $data[$i]['inAirDensity'] . "',". "'" . $data[$i]['windSamp'] . "',". "'" . $data[$i]['windTx'] . "',". "'" . $data[$i]['issRecept'] . "',". "'" . 
                         $data[$i]['arcInt'] . "');";
                         logData($sql."\n");
-                        $db->dmlCommand($sql);
+                        $result = $db->dmlCommand($sql);
+                        if(!$result){
+                            file_put_contents("insertionErrors_$giorno_$mese_$anno.txt",$db->getErrors(),FILE_APPEND);
+                        }
                     }
                     
                 }

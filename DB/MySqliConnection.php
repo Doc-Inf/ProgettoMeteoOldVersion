@@ -79,6 +79,10 @@ class MysqliConnection implements DB{
         $this->con->close(); 
         $this->con = null;
     }
+
+    public function getErrors(){
+        return "Errors: " . $con -> error;
+    }
 }
 
 

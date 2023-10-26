@@ -7,6 +7,7 @@
         public function commit();
         public function roolback();
         public function close();
+        public function getErrors();
     }
 
 ?>

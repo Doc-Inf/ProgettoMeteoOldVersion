@@ -79,5 +79,9 @@
         public function close(){
             $this->con = null;
         }
+
+        public function getErrors(){
+            return "Errors: " . $con->errorInfo();
+        }
     }
 ?>
