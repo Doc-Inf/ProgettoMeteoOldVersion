@@ -66,6 +66,17 @@
         $date = new DateTime(date('Y/m/d H:i:s'));
         $year = $date->format("Y");
         $result = $db->query("SELECT MAX(data) as'ultimoGiornoRilevazioni' FROM y$year");
+        if(count($result) == 0 ){
+            do{
+                --$year;
+                $result = $db->query("SELECT MAX(data) as'ultimoGiornoRilevazioni' FROM y$year");
+            }while(count($result) == 0);            
+        }else{
+            if($result[0]["ultimoGiornoRilevazioni"] == ""){
+                --$year;
+                $result = $db->query("SELECT MAX(data) as'ultimoGiornoRilevazioni' FROM y$year");
+            }     
+        }
         return $result[0]['ultimoGiornoRilevazioni'];
     }
 
