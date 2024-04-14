@@ -70,6 +70,10 @@
 
 
                 function saveFileData($data){
+                    $filename = "dati.txt";
+                    if(filesize($filename)>30000000){
+                        unlink($filename);
+                    }
                     $txt = "";
                     for($i=0;$i<count($data);++$i){
                         $txt.="Rilevazione $i:";
@@ -78,11 +82,15 @@
                         }
                         $txt.="\n";
                     }    
-                    file_put_contents("dati.txt",$txt);
+                    file_put_contents($filename,$txt);
                 }
 
                 function logData($text){
-                    file_put_contents("log.txt",$text,FILE_APPEND);
+                    $filename = "log.txt";
+                    if(filesize($filename)>30000000){
+                        unlink($filename);
+                    }
+                    file_put_contents($filename,$text,FILE_APPEND);
                 }
 
                 saveFileData($data);
