@@ -19,8 +19,8 @@
             die("Errore configurazione: la libreria specificata nel file di configurazione, per connettersi al DBMS non è valida");
         }
     }
-    
       
+    
     function getConfig(string $PathToConfigJson =__DIR__ . "/config.json") {        
         for($i=0; $i<10; $i++){
             $confData = file_get_contents($PathToConfigJson);

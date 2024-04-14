@@ -467,7 +467,8 @@ CREATE TABLE login (
 SELECT 'TABELLA login CREATA' as '';
 
 -- username:root password:root (sha256) --
-INSERT INTO login(username, password,ruolo) value ("docente", '4a06fcaff060e92bcc38c5b5ecb2e599c6dc20dd92fcbe13f9fee62c2b735db9','superadmin');
+INSERT INTO login(username, password,ruolo) value ("docente", '911cf6974b1c868afb38a0e9a223925bb7a346faaaa2c8d5b8a71d06b224c991','superadmin');
+-- INSERT INTO login(username, password,ruolo) value ("docente", '4a06fcaff060e92bcc38c5b5ecb2e599c6dc20dd92fcbe13f9fee62c2b735db9','superadmin');
 -- Password originale (Studenti): '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2' 
 
 SELECT 'INSERIMENTO ACCOUNT ADMIN Completato' as '';

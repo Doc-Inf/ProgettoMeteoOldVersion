@@ -8,6 +8,7 @@
         "dbname" : "meteo",
         "dbLibrary" : "pdo",
         "wsAdmin" : "wsDocente",
-        "wsAdminPassword" : "@#Meteorite23"
+        "wsAdminPassword" : "@#Meteorite23",
+        "remotePassword" : "1Ewq?2Dsa?3Cxz"
     }
 }
