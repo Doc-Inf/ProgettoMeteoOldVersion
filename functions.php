@@ -62,21 +62,34 @@
         echo "<script>window.close()</script>";
     }
 
-    function getLastDay($db){
+    function getLastDay($db) : string{
         $date = new DateTime(date('Y/m/d H:i:s'));
         $year = $date->format("Y");
-        $result = $db->query("SELECT MAX(data) as'ultimoGiornoRilevazioni' FROM y$year");
-        if(count($result) == 0 ){
+        $terminate = false;
+        try{
             do{
-                --$year;
                 $result = $db->query("SELECT MAX(data) as'ultimoGiornoRilevazioni' FROM y$year");
-            }while(count($result) == 0);            
-        }else{
-            if($result[0]["ultimoGiornoRilevazioni"] == ""){
-                --$year;
-                $result = $db->query("SELECT MAX(data) as'ultimoGiornoRilevazioni' FROM y$year");
-            }     
+               
+                if(count ($result) == 0 || $result[0]["ultimoGiornoRilevazioni"] == ""){
+                    //echo "Scan della tabella y$year effettuato, nessuna rilevazione trovata al suo interno\n";
+                    if( !checkTableExistence($db, "y" . --$year) ){
+                        $terminate = true;
+                        //echo "La tabella y$year non esiste, controllo ultimato senza aver trovato alcuna rilevazione\n";
+                        // La data restituita indica l'assenza di una rilevazione, quindi il database è completamente vuoto
+                        return '0002-02-02 02:02:02';
+                    }          
+                }else{
+                    //echo "Scan della tabella y$year effettuato, trovata la data cercata\n";
+                    $terminate = true;
+                }
+            }while(!$terminate);
+        }catch(Exception $e){
+            echo $e->getMessage();
+            // La data restituita indica l'errore nell'esecuzione della query, l'errore viene riportato insieme alla data fittizia
+            return "0001-01-01 01:01:01*" . $e->getMessage();
         }
+        
+       
         return $result[0]['ultimoGiornoRilevazioni'];
     }
 
@@ -125,5 +138,13 @@
         }*/
 
         return $result[0];
+    }
+
+    function checkTableExistence(DB $db, string $tableName) : bool{
+        $result = $db->query("SHOW TABLES LIKE '$tableName' ");
+        if(count ($result) == 0 || !isset($result[0]) ){
+            return false;
+        }
+        return true;
     }
 ?>
